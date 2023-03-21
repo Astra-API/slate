@@ -24,7 +24,7 @@ Base URLs:
 
 <h1 id="astra-api-default">Public HTTP API</h1>
 
-## Get markets
+## Get Markets
 
 > Code samples
 
@@ -32,11 +32,11 @@ Base URLs:
 
 Returns all markets listed by the specified exchange
 
-### Parameter
+### Request
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|exchange|query|string|true|Exchange to fetch data for|
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|exchange|string|true|Exchange to fetch data for|
 
 > Example responses
 
@@ -61,26 +61,20 @@ Returns all markets listed by the specified exchange
 
 ### Response
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
-
-### Response Schema
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|[[Market](#schemamarket)]|false|none|[A single market on an exchange]|
-|» baseAsset|string|true|none|Base asset of the market|
-|» quoteAsset|string|true|none|Quote asset of the market|
+||[[Market](#market)]|true|List of markets|
+|» baseAsset|string|true|Base asset of the market|
+|» quoteAsset|string|true|Quote asset of the market|
 
-<aside class="success">
-This operation does not require authentication
-</aside>
+### Market
 
-## getPrice
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|baseAsset|string|true|Base asset of the market|
+|quoteAsset|string|true|Quote asset of the market|
+
+## Get Price
 
 > Code samples
 
@@ -90,13 +84,13 @@ This operation does not require authentication
 
 Returns the current price of the specified market
 
-### Parameters
+### Request
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|exchange|query|string|true|Exchange to fetch data for|
-|baseAsset|query|string|true|Base asset of market|
-|quoteAsset|query|string|true|Quote asset of market|
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|exchange|string|true|Exchange to fetch data for|
+|baseAsset|string|true|Base asset of market|
+|quoteAsset|string|true|Quote asset of market|
 
 > Example responses
 
@@ -108,16 +102,7 @@ Returns the current price of the specified market
 
 ### Response
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[Price](#schemaprice)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## getBbo
+## Get BBO
 
 > Code samples
 
@@ -127,13 +112,13 @@ This operation does not require authentication
 
 Returns the current BBO of the specified market
 
-### Parameters
+### Request
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|exchange|query|string|true|Exchange to fetch data for|
-|baseAsset|query|string|true|Base asset of market|
-|quoteAsset|query|string|true|Quote asset of market|
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|exchange|string|true|Exchange to fetch data for|
+|baseAsset|string|true|Base asset of market|
+|quoteAsset|string|true|Quote asset of market|
 
 > Example responses
 
@@ -156,16 +141,7 @@ Returns the current BBO of the specified market
 
 ### Response
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|[Bbo](#schemabbo)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## getOrderbook
+## Get Orderbook
 
 > Code samples
 
@@ -175,13 +151,13 @@ This operation does not require authentication
 
 Returns a snapshot of the current L2 orderbook for the specified market. Bids are sorted in descending order, and asks are sorted in ascending order. Because it is an L2 snapshot, bids and asks are aggregated by price level.
 
-### Parameters
+### Request
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|exchange|query|string|true|Exchange to fetch data for|
-|baseAsset|query|string|true|Base asset of market|
-|quoteAsset|query|string|true|Quote asset of market|
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|exchange|string|true|Exchange to fetch data for|
+|baseAsset|string|true|Base asset of market|
+|quoteAsset|string|true|Quote asset of market|
 
 > Example responses
 
@@ -195,18 +171,7 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
 
 ### Response
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
-
-### Response Schema
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## getTrades
+## Get Trades
 
 > Code samples
 
@@ -219,17 +184,17 @@ The default pageSize is 50, and the default pageNumber is 0 (pages are 0-indexed
 If neither startTime or endTime is specified, the server will return the first page of the most recent trades. The client may choose to specify just a startTime, just an endTime, or both.
 Trades are returned in increasing order of their timestamp.
 
-### Parameters
+### Request
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|exchange|query|string|true|Exchange to fetch data for|
-|baseAsset|query|string|true|Base asset of market|
-|quoteAsset|query|string|true|Quote asset of market|
-|startTime|query|string(date-time)|false|Start time for fetching data|
-|endTime|query|string(date-time)|false|End time for fetching data|
-|pageSize|query|integer(int32)|false|Page size for paginated responses|
-|pageNumber|query|integer(int32)|false|Page number for paginated responses|
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|exchange|string|true|Exchange to fetch data for|
+|baseAsset|string|true|Base asset of market|
+|quoteAsset|string|true|Quote asset of market|
+|startTime|string(date-time)|false|Start time for fetching data|
+|endTime|string(date-time)|false|End time for fetching data|
+|pageSize|integer(int32)|false|Page size for paginated responses|
+|pageNumber|integer(int32)|false|Page number for paginated responses|
 
 > Example responses
 
@@ -241,24 +206,11 @@ Trades are returned in increasing order of their timestamp.
 
 ### Response
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
-
-### Response Schema
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|» *anonymous*|any|false|none|none|
+|» *anonymous*|any|false|none|
 
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## getBalances
+## Get Balances
 
 > Code samples
 
@@ -268,11 +220,11 @@ This operation does not require authentication
 
 Fetches the balances of all assets for the specified account on the exchange. This includes deposits, collateral and open positions.
 
-### Parameters
+### Request
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|exchange|query|string|true|Exchange to fetch data for|
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|exchange|string|true|Exchange to fetch data for|
 
 > Example responses
 
@@ -297,48 +249,39 @@ Fetches the balances of all assets for the specified account on the exchange. Th
 
 ### Response
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
-
-### Response Schema
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|[[Balance](#schemabalance)]|false|none|[Balance of an asset on an exchange]|
-|» asset|number|true|none|Asset symbol|
-|» amount|number|true|none|Size of balance (in units of the asset)|
+|*anonymous*|[[Balance](#balance)]|false|[Balance of an asset on an exchange]|
+|» asset|number|true|Asset symbol|
+|» amount|number|true|Size of balance (in units of the asset)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 ExchangeApiKeyAuth, DexPrivateKeyAuth
 </aside>
 
-## placeOrder
+## Place Order
 
 > Code samples
 
-`POST /placeOrder`
+`POST /order`
 
 *Place order*
 
 Places an order on the exchange.
 
-### Parameters
+### Request
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|exchange|query|string|true|Exchange to fetch data for|
-|baseAsset|query|string|true|Base asset of market|
-|quoteAsset|query|string|true|Quote asset of market|
-|price|query|number(float)|true|Price of order (in units of quoteAsset)|
-|size|query|number(float)|true|Size of order (in units of baseAsset)|
-|side|query|string|true|Side of order|
-|timeInForce|query|string|false|Time in force for order|
-|miscOptions|query|object|false|Miscellaneous params to send to the exchange|
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|exchange|string|true|Exchange to fetch data for|
+|baseAsset|string|true|Base asset of market|
+|quoteAsset|string|true|Quote asset of market|
+|price|number(float)|true|Price of order (in units of quoteAsset)|
+|size|number(float)|true|Size of order (in units of baseAsset)|
+|side|string|true|Side of order|
+|timeInForce|string|false|Time in force for order|
+|miscOptions|object|false|Miscellaneous params to send to the exchange|
 
 #### Enumerated Values
 
@@ -362,40 +305,31 @@ Places an order on the exchange.
 
 ### Response
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
-
-### Response Schema
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|[[OrderId](#schemaorderid)]|false|none|[ID of an order on an exchange]|
+|*anonymous*|[[OrderId](#orderid)]|false|[ID of an order on an exchange]|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 ExchangeApiKeyAuth, DexPrivateKeyAuth
 </aside>
 
-## cancelOrder
+## Cancel Order
 
 > Code samples
 
-`DELETE /cancelOrder`
+`DELETE /order`
 
 *Cancel order*
 
 Cancels an order on the exchange.
 
-### Parameters
+### Request
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|exchange|query|string|true|Exchange to fetch data for|
-|orderId|query|string|true|ID of an order on an exchange|
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|exchange|string|true|Exchange to fetch data for|
+|orderId|string|true|ID of an order on an exchange|
 
 > Example responses
 
@@ -409,11 +343,6 @@ Cancels an order on the exchange.
 
 ### Response
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
-
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 ExchangeApiKeyAuth, DexPrivateKeyAuth
@@ -421,31 +350,7 @@ ExchangeApiKeyAuth, DexPrivateKeyAuth
 
 # Schemas
 
-<h2 id="tocS_Market">Market</h2>
-
-<a id="schemamarket"></a>
-<a id="schema_Market"></a>
-<a id="tocSmarket"></a>
-<a id="tocsmarket"></a>
-
-```json
-{
-  "baseAsset": "BTC",
-  "quoteAsset": "USD"
-}
-
-```
-
-A single market on an exchange
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|baseAsset|string|true|none|Base asset of the market|
-|quoteAsset|string|true|none|Quote asset of the market|
-
-<h2 id="tocS_Price">Price</h2>
+## Price
 
 <a id="schemaprice"></a>
 <a id="schema_Price"></a>
@@ -461,11 +366,11 @@ Price of an asset
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|number(float)|false|none|Price of an asset|
+|*anonymous*|number(float)|false|Price of an asset|
 
-<h2 id="tocS_Size">Size</h2>
+## Size
 
 <a id="schemasize"></a>
 <a id="schema_Size"></a>
@@ -481,11 +386,11 @@ Quantity of an asset
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|number(float)|false|none|Quantity of an asset|
+|*anonymous*|number(float)|false|Quantity of an asset|
 
-<h2 id="tocS_Side">Side</h2>
+## Side
 
 <a id="schemaside"></a>
 <a id="schema_Side"></a>
@@ -501,9 +406,9 @@ Buy or sell
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|string|false|none|Buy or sell|
+|*anonymous*|string|false|Buy or sell|
 
 #### Enumerated Values
 
@@ -512,7 +417,7 @@ Buy or sell
 |*anonymous*|buy|
 |*anonymous*|sell|
 
-<h2 id="tocS_Bbo">Bbo</h2>
+## Bbo
 
 <a id="schemabbo"></a>
 <a id="schema_Bbo"></a>
@@ -539,12 +444,12 @@ Best bid and offer on the market
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|bid|[Bid](#schemabid)|true|none|Buy order on an orderbook|
-|ask|[Ask](#schemaask)|true|none|Sell order on an orderbook|
+|bid|[Bid](#bid)|true|Buy order on an orderbook|
+|ask|[Ask](#ask)|true|Sell order on an orderbook|
 
-<h2 id="tocS_Bid">Bid</h2>
+## Bid
 
 <a id="schemabid"></a>
 <a id="schema_Bid"></a>
@@ -564,13 +469,13 @@ Buy order on an orderbook
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|price|number|true|none|Price of the order (in units of quoteAsset)|
-|size|number|true|none|Size of the order (in units of baseAsset)|
-|side|[Side](#schemaside)|true|none|Buy or sell|
+|price|number|true|Price of the order (in units of quoteAsset)|
+|size|number|true|Size of the order (in units of baseAsset)|
+|side|[Side](#side)|true|Buy or sell|
 
-<h2 id="tocS_Ask">Ask</h2>
+## Ask
 
 <a id="schemaask"></a>
 <a id="schema_Ask"></a>
@@ -590,13 +495,13 @@ Sell order on an orderbook
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|price|number|true|none|Price of the order (in units of quoteAsset)|
-|size|number|true|none|Size of the order (in units of baseAsset)|
-|side|[Side](#schemaside)|true|none|Buy or sell|
+|price|number|true|Price of the order (in units of quoteAsset)|
+|size|number|true|Size of the order (in units of baseAsset)|
+|side|[Side](#side)|true|Buy or sell|
 
-<h2 id="tocS_Order">Order</h2>
+## Order
 
 <a id="schemaorder"></a>
 <a id="schema_Order"></a>
@@ -616,13 +521,13 @@ Order on an orderbook. Could represent the aggregate of multiple orders at a pri
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|price|number|true|none|Price of the order (in units of quoteAsset)|
-|size|number|true|none|Size of the order (in units of baseAsset)|
-|side|[Side](#schemaside)|true|none|Buy or sell|
+|price|number|true|Price of the order (in units of quoteAsset)|
+|size|number|true|Size of the order (in units of baseAsset)|
+|side|[Side](#side)|true|Buy or sell|
 
-<h2 id="tocS_Orderbook">Orderbook</h2>
+## Orderbook
 
 <a id="schemaorderbook"></a>
 <a id="schema_Orderbook"></a>
@@ -653,12 +558,12 @@ Orderbook containing a list of bids and offers, aggregated by price level
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|bids|[[Bid](#schemabid)]|true|none|[Buy order on an orderbook]|
-|asks|[[Ask](#schemaask)]|true|none|[Sell order on an orderbook]|
+|bids|[[Bid](#bid)]|true|[Buy order on an orderbook]|
+|asks|[[Ask](#ask)]|true|[Sell order on an orderbook]|
 
-<h2 id="tocS_OrderId">OrderId</h2>
+## OrderId
 
 <a id="schemaorderid"></a>
 <a id="schema_OrderId"></a>
@@ -674,11 +579,11 @@ ID of an order on an exchange
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|string|false|none|ID of an order on an exchange|
+|*anonymous*|string|false|ID of an order on an exchange|
 
-<h2 id="tocS_Balance">Balance</h2>
+## Balance
 
 <a id="schemabalance"></a>
 <a id="schema_Balance"></a>
@@ -697,12 +602,12 @@ Balance of an asset on an exchange
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|asset|number|true|none|Asset symbol|
-|amount|number|true|none|Size of balance (in units of the asset)|
+|asset|number|true|Asset symbol|
+|amount|number|true|Size of balance (in units of the asset)|
 
-<h2 id="tocS_Trade">Trade</h2>
+## Trade
 
 <a id="schematrade"></a>
 <a id="schema_Trade"></a>
@@ -723,14 +628,14 @@ A trade that has occurred
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|price|number|true|none|Price of the trade (in units of quoteAsset)|
-|size|number|true|none|Size of the trade (in units of baseAsset)|
-|side|[Side](#schemaside)|true|none|Whether the taker bought or sold the baseAsset|
-|timestamp|[Timestamp](#schematimestamp)|false|none|Exchange timestamp for when the trade took place|
+|price|number|true|Price of the trade (in units of quoteAsset)|
+|size|number|true|Size of the trade (in units of baseAsset)|
+|side|[Side](#side)|true|Whether the taker bought or sold the baseAsset|
+|timestamp|[Timestamp](#timestamp)|false|Exchange timestamp for when the trade took place|
 
-<h2 id="tocS_Timestamp">Timestamp</h2>
+## Timestamp
 
 <a id="schematimestamp"></a>
 <a id="schema_Timestamp"></a>
@@ -746,11 +651,11 @@ Timestamp of an event on an exchange
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|integer(int32)|false|none|Timestamp of an event on an exchange|
+|*anonymous*|integer(int32)|false|Timestamp of an event on an exchange|
 
-<h2 id="tocS_Error">Error</h2>
+## Error
 
 <a id="schemaerror"></a>
 <a id="schema_Error"></a>
@@ -768,7 +673,7 @@ An error message from the API server
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
+|Name|Type|Required|Description|
 |---|---|---|---|---|
-|message|string|true|none|Error message|
+|message|string|true|Error message|
 
