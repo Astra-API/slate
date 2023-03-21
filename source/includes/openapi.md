@@ -22,58 +22,15 @@ Base URLs:
 * API Key (DexPrivateKeyAuth)
     - Parameter Name: **X-DEX-PRIVATE-KEY**, in: header. 
 
-<h1 id="astra-api-default">Default</h1>
+<h1 id="astra-api-default">Public HTTP API</h1>
 
-## getMarkets
+## Get markets
 
 <a id="opIdgetMarkets"></a>
 
 > Code samples
 
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('http://localhost:6789/markets', params={
-  'exchange': 'binance'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('http://localhost:6789/markets?exchange=binance',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```shell
-# You can also use wget
-curl -X GET http://localhost:6789/markets?exchange=binance \
-  -H 'Accept: application/json'
-
-```
-
 `GET /markets`
-
-*Fetch all listed markets*
 
 Returns all markets listed by the specified exchange
 
@@ -104,7 +61,7 @@ Returns all markets listed by the specified exchange
 ]
 ```
 
-<h3 id="getmarkets-responses">Responses</h3>
+<h3 id="getmarkets-responses">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -131,47 +88,6 @@ This operation does not require authentication
 
 > Code samples
 
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('http://localhost:6789/price', params={
-  'exchange': 'binance',  'baseAsset': 'BTC',  'quoteAsset': 'USDT'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('http://localhost:6789/price?exchange=binance&baseAsset=BTC&quoteAsset=USDT',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```shell
-# You can also use wget
-curl -X GET http://localhost:6789/price?exchange=binance&baseAsset=BTC&quoteAsset=USDT \
-  -H 'Accept: application/json'
-
-```
-
 `GET /price`
 
 *Fetch current price*
@@ -194,7 +110,7 @@ Returns the current price of the specified market
 27879.5
 ```
 
-<h3 id="getprice-responses">Responses</h3>
+<h3 id="getprice-responses">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -210,47 +126,6 @@ This operation does not require authentication
 <a id="opIdgetBbo"></a>
 
 > Code samples
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('http://localhost:6789/bbo', params={
-  'exchange': 'binance',  'baseAsset': 'BTC',  'quoteAsset': 'USDT'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('http://localhost:6789/bbo?exchange=binance&baseAsset=BTC&quoteAsset=USDT',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```shell
-# You can also use wget
-curl -X GET http://localhost:6789/bbo?exchange=binance&baseAsset=BTC&quoteAsset=USDT \
-  -H 'Accept: application/json'
-
-```
 
 `GET /bbo`
 
@@ -285,7 +160,7 @@ Returns the current BBO of the specified market
 }
 ```
 
-<h3 id="getbbo-responses">Responses</h3>
+<h3 id="getbbo-responses">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -301,47 +176,6 @@ This operation does not require authentication
 <a id="opIdgetOrderbook"></a>
 
 > Code samples
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('http://localhost:6789/orderbook', params={
-  'exchange': 'binance',  'baseAsset': 'BTC',  'quoteAsset': 'USDT'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('http://localhost:6789/orderbook?exchange=binance&baseAsset=BTC&quoteAsset=USDT',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```shell
-# You can also use wget
-curl -X GET http://localhost:6789/orderbook?exchange=binance&baseAsset=BTC&quoteAsset=USDT \
-  -H 'Accept: application/json'
-
-```
 
 `GET /orderbook`
 
@@ -367,7 +201,7 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
 }
 ```
 
-<h3 id="getorderbook-responses">Responses</h3>
+<h3 id="getorderbook-responses">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -385,47 +219,6 @@ This operation does not require authentication
 <a id="opIdgetTrades"></a>
 
 > Code samples
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('http://localhost:6789/trades', params={
-  'exchange': 'binance',  'baseAsset': 'BTC',  'quoteAsset': 'USDT'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('http://localhost:6789/trades?exchange=binance&baseAsset=BTC&quoteAsset=USDT',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```shell
-# You can also use wget
-curl -X GET http://localhost:6789/trades?exchange=binance&baseAsset=BTC&quoteAsset=USDT \
-  -H 'Accept: application/json'
-
-```
 
 `GET /trades`
 
@@ -456,7 +249,7 @@ Trades are returned in increasing order of their timestamp.
 []
 ```
 
-<h3 id="gettrades-responses">Responses</h3>
+<h3 id="gettrades-responses">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -480,50 +273,6 @@ This operation does not require authentication
 <a id="opIdgetBalances"></a>
 
 > Code samples
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-EXCHANGE-API-KEY': 'API_KEY'
-}
-
-r = requests.get('http://localhost:6789/balances', params={
-  'exchange': 'binance'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'X-EXCHANGE-API-KEY':'API_KEY'
-};
-
-fetch('http://localhost:6789/balances?exchange=binance',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```shell
-# You can also use wget
-curl -X GET http://localhost:6789/balances?exchange=binance \
-  -H 'Accept: application/json' \
-  -H 'X-EXCHANGE-API-KEY: API_KEY'
-
-```
 
 `GET /balances`
 
@@ -558,7 +307,7 @@ Fetches the balances of all assets for the specified account on the exchange. Th
 ]
 ```
 
-<h3 id="getbalances-responses">Responses</h3>
+<h3 id="getbalances-responses">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -585,50 +334,6 @@ ExchangeApiKeyAuth, DexPrivateKeyAuth
 <a id="opIdplaceOrder"></a>
 
 > Code samples
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-EXCHANGE-API-KEY': 'API_KEY'
-}
-
-r = requests.post('http://localhost:6789/placeOrder', params={
-  'exchange': 'binance',  'baseAsset': 'BTC',  'quoteAsset': 'USDT',  'price': '0',  'size': '0',  'side': 'buy'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'X-EXCHANGE-API-KEY':'API_KEY'
-};
-
-fetch('http://localhost:6789/placeOrder?exchange=binance&baseAsset=BTC&quoteAsset=USDT&price=0&size=0&side=buy',
-{
-  method: 'POST',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```shell
-# You can also use wget
-curl -X POST http://localhost:6789/placeOrder?exchange=binance&baseAsset=BTC&quoteAsset=USDT&price=0&size=0&side=buy \
-  -H 'Accept: application/json' \
-  -H 'X-EXCHANGE-API-KEY: API_KEY'
-
-```
 
 `POST /placeOrder`
 
@@ -669,7 +374,7 @@ Places an order on the exchange.
 ]
 ```
 
-<h3 id="placeorder-responses">Responses</h3>
+<h3 id="placeorder-responses">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -695,50 +400,6 @@ ExchangeApiKeyAuth, DexPrivateKeyAuth
 
 > Code samples
 
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'X-EXCHANGE-API-KEY': 'API_KEY'
-}
-
-r = requests.delete('http://localhost:6789/cancelOrder', params={
-  'exchange': 'binance',  'orderId': 'string'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'X-EXCHANGE-API-KEY':'API_KEY'
-};
-
-fetch('http://localhost:6789/cancelOrder?exchange=binance&orderId=string',
-{
-  method: 'DELETE',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```shell
-# You can also use wget
-curl -X DELETE http://localhost:6789/cancelOrder?exchange=binance&orderId=string \
-  -H 'Accept: application/json' \
-  -H 'X-EXCHANGE-API-KEY: API_KEY'
-
-```
-
 `DELETE /cancelOrder`
 
 *Cancel order*
@@ -762,7 +423,7 @@ Cancels an order on the exchange.
 }
 ```
 
-<h3 id="cancelorder-responses">Responses</h3>
+<h3 id="cancelorder-responses">Response</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
