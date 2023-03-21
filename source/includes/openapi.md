@@ -26,11 +26,17 @@ Base URLs:
 
 ## Get Markets
 
-> Code samples
-
 `GET /markets`
 
 Returns all markets listed by the specified exchange
+
+> Example Request
+
+```json
+{
+  "exchange": "binance"
+}
+```
 
 ### Request
 
@@ -38,23 +44,21 @@ Returns all markets listed by the specified exchange
 |---|---|---|---|
 |exchange|string|true|Exchange to fetch data for|
 
-> Example responses
-
-> 200 Response
+> Example Response
 
 ```json
 [
   {
     "baseAsset": "BTC",
-    "quoteAsset": "USD"
+    "quoteAsset": "USDT"
   },
   {
     "baseAsset": "ETH",
-    "quoteAsset": "USD"
+    "quoteAsset": "USDT"
   },
   {
     "baseAsset": "SOL",
-    "quoteAsset": "USD"
+    "quoteAsset": "USDT"
   }
 ]
 ```
@@ -63,9 +67,7 @@ Returns all markets listed by the specified exchange
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-||[[Market](#market)]|true|List of markets|
-|» baseAsset|string|true|Base asset of the market|
-|» quoteAsset|string|true|Quote asset of the market|
+|-|[[Market](#market)]|true|List of markets|
 
 ### Market
 
@@ -76,13 +78,21 @@ Returns all markets listed by the specified exchange
 
 ## Get Price
 
-> Code samples
-
 `GET /price`
 
 *Fetch current price*
 
 Returns the current price of the specified market
+
+> Example Request
+
+```json
+{
+  "exchange": "binance",
+  "baseAsset": "BTC",
+  "quoteAsset": "USDT",
+}
+```
 
 ### Request
 
@@ -92,9 +102,7 @@ Returns the current price of the specified market
 |baseAsset|string|true|Base asset of market|
 |quoteAsset|string|true|Quote asset of market|
 
-> Example responses
-
-> 200 Response
+> Example Response
 
 ```json
 27879.5
@@ -102,9 +110,11 @@ Returns the current price of the specified market
 
 ### Response
 
-## Get BBO
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|-|number(float)|true|Price of the asset|
 
-> Code samples
+## Get BBO
 
 `GET /bbo`
 
@@ -120,9 +130,7 @@ Returns the current BBO of the specified market
 |baseAsset|string|true|Base asset of market|
 |quoteAsset|string|true|Quote asset of market|
 
-> Example responses
-
-> 200 Response
+> Example Response
 
 ```json
 {
@@ -143,8 +151,6 @@ Returns the current BBO of the specified market
 
 ## Get Orderbook
 
-> Code samples
-
 `GET /orderbook`
 
 *Fetch current orderbook*
@@ -159,8 +165,6 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
 |baseAsset|string|true|Base asset of market|
 |quoteAsset|string|true|Quote asset of market|
 
-> Example responses
-
 > 404 Response
 
 ```json
@@ -172,8 +176,6 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
 ### Response
 
 ## Get Trades
-
-> Code samples
 
 `GET /trades`
 
@@ -196,9 +198,7 @@ Trades are returned in increasing order of their timestamp.
 |pageSize|integer(int32)|false|Page size for paginated responses|
 |pageNumber|integer(int32)|false|Page number for paginated responses|
 
-> Example responses
-
-> 200 Response
+> Example Response
 
 ```json
 []
@@ -212,8 +212,6 @@ Trades are returned in increasing order of their timestamp.
 
 ## Get Balances
 
-> Code samples
-
 `GET /balances`
 
 *Fetch balances*
@@ -226,9 +224,7 @@ Fetches the balances of all assets for the specified account on the exchange. Th
 |---|---|---|---|
 |exchange|string|true|Exchange to fetch data for|
 
-> Example responses
-
-> 200 Response
+> Example Response
 
 ```json
 [
@@ -262,8 +258,6 @@ ExchangeApiKeyAuth, DexPrivateKeyAuth
 
 ## Place Order
 
-> Code samples
-
 `POST /order`
 
 *Place order*
@@ -293,9 +287,7 @@ Places an order on the exchange.
 |timeInForce|IOC|
 |timeInForce|FOK|
 
-> Example responses
-
-> 200 Response
+> Example Response
 
 ```json
 [
@@ -316,8 +308,6 @@ ExchangeApiKeyAuth, DexPrivateKeyAuth
 
 ## Cancel Order
 
-> Code samples
-
 `DELETE /order`
 
 *Cancel order*
@@ -330,8 +320,6 @@ Cancels an order on the exchange.
 |---|---|---|---|
 |exchange|string|true|Exchange to fetch data for|
 |orderId|string|true|ID of an order on an exchange|
-
-> Example responses
 
 > 404 Response
 
@@ -349,26 +337,6 @@ ExchangeApiKeyAuth, DexPrivateKeyAuth
 </aside>
 
 # Schemas
-
-## Price
-
-<a id="schemaprice"></a>
-<a id="schema_Price"></a>
-<a id="tocSprice"></a>
-<a id="tocsprice"></a>
-
-```json
-27879.5
-
-```
-
-Price of an asset
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|*anonymous*|number(float)|false|Price of an asset|
 
 ## Size
 
