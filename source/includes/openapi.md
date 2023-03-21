@@ -32,7 +32,7 @@ Base URLs:
 
 Returns all markets listed by the specified exchange
 
-<h3>Parameters</h3>
+### Parameter
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -59,14 +59,14 @@ Returns all markets listed by the specified exchange
 ]
 ```
 
-<h3>Response</h3>
+### Response
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
 
-<h3>Response Schema</h3>
+### Response Schema
 
 Status Code **200**
 
@@ -90,7 +90,7 @@ This operation does not require authentication
 
 Returns the current price of the specified market
 
-<h3>Parameters</h3>
+### Parameters
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -106,7 +106,7 @@ Returns the current price of the specified market
 27879.5
 ```
 
-<h3>Response</h3>
+### Response
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -127,7 +127,7 @@ This operation does not require authentication
 
 Returns the current BBO of the specified market
 
-<h3>Parameters</h3>
+### Parameters
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -154,7 +154,7 @@ Returns the current BBO of the specified market
 }
 ```
 
-<h3>Response</h3>
+### Response
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -175,7 +175,7 @@ This operation does not require authentication
 
 Returns a snapshot of the current L2 orderbook for the specified market. Bids are sorted in descending order, and asks are sorted in ascending order. Because it is an L2 snapshot, bids and asks are aggregated by price level.
 
-<h3>Parameters</h3>
+### Parameters
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -193,14 +193,14 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
 }
 ```
 
-<h3>Response</h3>
+### Response
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
 
-<h3>Response Schema</h3>
+### Response Schema
 
 <aside class="success">
 This operation does not require authentication
@@ -219,7 +219,7 @@ The default pageSize is 50, and the default pageNumber is 0 (pages are 0-indexed
 If neither startTime or endTime is specified, the server will return the first page of the most recent trades. The client may choose to specify just a startTime, just an endTime, or both.
 Trades are returned in increasing order of their timestamp.
 
-<h3>Parameters</h3>
+### Parameters
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -239,14 +239,14 @@ Trades are returned in increasing order of their timestamp.
 []
 ```
 
-<h3>Response</h3>
+### Response
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
 
-<h3>Response Schema</h3>
+### Response Schema
 
 Status Code **200**
 
@@ -268,7 +268,7 @@ This operation does not require authentication
 
 Fetches the balances of all assets for the specified account on the exchange. This includes deposits, collateral and open positions.
 
-<h3>Parameters</h3>
+### Parameters
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -295,14 +295,14 @@ Fetches the balances of all assets for the specified account on the exchange. Th
 ]
 ```
 
-<h3>Response</h3>
+### Response
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
 
-<h3>Response Schema</h3>
+### Response Schema
 
 Status Code **200**
 
@@ -327,7 +327,7 @@ ExchangeApiKeyAuth, DexPrivateKeyAuth
 
 Places an order on the exchange.
 
-<h3>Parameters</h3>
+### Parameters
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -360,14 +360,14 @@ Places an order on the exchange.
 ]
 ```
 
-<h3>Response</h3>
+### Response
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not found|[Error](#schemaerror)|
 
-<h3>Response Schema</h3>
+### Response Schema
 
 Status Code **200**
 
@@ -390,7 +390,7 @@ ExchangeApiKeyAuth, DexPrivateKeyAuth
 
 Cancels an order on the exchange.
 
-<h3>Parameters</h3>
+### Parameters
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -407,7 +407,7 @@ Cancels an order on the exchange.
 }
 ```
 
-<h3>Response</h3>
+### Response
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
