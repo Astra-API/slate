@@ -122,6 +122,16 @@ Returns the current price of the specified market
 
 Returns the current BBO of the specified market
 
+> Example Request
+
+```json
+{
+  "exchange": "binance",
+  "baseAsset": "BTC",
+  "quoteAsset": "USDT",
+}
+```
+
 ### Request
 
 |Parameter|Type|Required|Description|
@@ -148,6 +158,27 @@ Returns the current BBO of the specified market
 ```
 
 ### Response
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|bid|[Bid](#bid)|true|Buy order on an orderbook|
+|ask|[Ask](#ask)|true|Sell order on an orderbook|
+
+### Bid
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|price|number|true|Price of the order (in units of quoteAsset)|
+|size|number|true|Size of the order (in units of baseAsset)|
+|side|[Side](#side)|true|Buy or sell|
+
+### Ask
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|price|number|true|Price of the order (in units of quoteAsset)|
+|size|number|true|Size of the order (in units of baseAsset)|
+|side|[Side](#side)|true|Buy or sell|
 
 ## Get Orderbook
 
@@ -384,90 +415,6 @@ Buy or sell
 |---|---|
 |*anonymous*|buy|
 |*anonymous*|sell|
-
-## Bbo
-
-<a id="schemabbo"></a>
-<a id="schema_Bbo"></a>
-<a id="tocSbbo"></a>
-<a id="tocsbbo"></a>
-
-```json
-{
-  "bid": {
-    "price": 27879.5,
-    "size": 1.5,
-    "side": "buy"
-  },
-  "ask": {
-    "price": 27879.5,
-    "size": 1.5,
-    "side": "sell"
-  }
-}
-
-```
-
-Best bid and offer on the market
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|bid|[Bid](#bid)|true|Buy order on an orderbook|
-|ask|[Ask](#ask)|true|Sell order on an orderbook|
-
-## Bid
-
-<a id="schemabid"></a>
-<a id="schema_Bid"></a>
-<a id="tocSbid"></a>
-<a id="tocsbid"></a>
-
-```json
-{
-  "price": 27879.5,
-  "size": 1.5,
-  "side": "buy"
-}
-
-```
-
-Buy order on an orderbook
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|price|number|true|Price of the order (in units of quoteAsset)|
-|size|number|true|Size of the order (in units of baseAsset)|
-|side|[Side](#side)|true|Buy or sell|
-
-## Ask
-
-<a id="schemaask"></a>
-<a id="schema_Ask"></a>
-<a id="tocSask"></a>
-<a id="tocsask"></a>
-
-```json
-{
-  "price": 27879.5,
-  "size": 1.5,
-  "side": "sell"
-}
-
-```
-
-Sell order on an orderbook
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|price|number|true|Price of the order (in units of quoteAsset)|
-|size|number|true|Size of the order (in units of baseAsset)|
-|side|[Side](#side)|true|Buy or sell|
 
 ## Order
 
