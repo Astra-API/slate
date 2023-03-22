@@ -1,5 +1,5 @@
 
-<h1 id="astra-api">Astra API v0.1.0</h1>
+# Introduction
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -22,7 +22,7 @@ Base URLs:
 * API Key (DexPrivateKeyAuth)
     - Parameter Name: **X-DEX-PRIVATE-KEY**, in: header. 
 
-<h1 id="astra-api-default">Public HTTP API</h1>
+# Public HTTP API
 
 ## Get Markets
 
@@ -80,8 +80,6 @@ Returns all markets listed by the specified exchange
 
 `GET /price`
 
-*Fetch current price*
-
 Returns the current price of the specified market
 
 > Example Request
@@ -118,8 +116,6 @@ Returns the current price of the specified market
 
 `GET /bbo`
 
-*Fetch current BBO*
-
 Returns the current BBO of the specified market
 
 > Example Request
@@ -147,12 +143,10 @@ Returns the current BBO of the specified market
   "bid": {
     "price": 27879.5,
     "size": 1.5,
-    "side": "buy"
   },
   "ask": {
     "price": 27879.5,
     "size": 1.5,
-    "side": "sell"
   }
 }
 ```
@@ -168,54 +162,31 @@ Returns the current BBO of the specified market
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|price|number|true|Price of the order (in units of quoteAsset)|
-|size|number|true|Size of the order (in units of baseAsset)|
-|side|[Side](#side)|true|Buy or sell|
+|price|number|true|Price of the bid (in units of quoteAsset)|
+|size|number|true|Size of the bid (in units of baseAsset)|
 
 ### Ask
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|price|number|true|Price of the order (in units of quoteAsset)|
-|size|number|true|Size of the order (in units of baseAsset)|
-|side|[Side](#side)|true|Buy or sell|
+|price|number|true|Price of the ask (in units of quoteAsset)|
+|size|number|true|Size of the ask (in units of baseAsset)|
 
 ## Get Orderbook
 
 `GET /orderbook`
 
-*Fetch current orderbook*
-
 Returns a snapshot of the current L2 orderbook for the specified market. Bids are sorted in descending order, and asks are sorted in ascending order. Because it is an L2 snapshot, bids and asks are aggregated by price level.
 
-### Request
-
-|Parameter|Type|Required|Description|
-|---|---|---|---|
-|exchange|string|true|Exchange to fetch data for|
-|baseAsset|string|true|Base asset of market|
-|quoteAsset|string|true|Quote asset of market|
-
-> 404 Response
+> Example Request
 
 ```json
 {
-  "message": "The specified market was not found"
+  "exchange": "binance",
+  "baseAsset": "BTC",
+  "quoteAsset": "USDT",
 }
 ```
-
-### Response
-
-## Get Trades
-
-`GET /trades`
-
-*Fetch last trades*
-
-Returns trades for the specified market within the specified time window. 
-The default pageSize is 50, and the default pageNumber is 0 (pages are 0-indexed).
-If neither startTime or endTime is specified, the server will return the first page of the most recent trades. The client may choose to specify just a startTime, just an endTime, or both.
-Trades are returned in increasing order of their timestamp.
 
 ### Request
 
@@ -224,28 +195,127 @@ Trades are returned in increasing order of their timestamp.
 |exchange|string|true|Exchange to fetch data for|
 |baseAsset|string|true|Base asset of market|
 |quoteAsset|string|true|Quote asset of market|
-|startTime|string(date-time)|false|Start time for fetching data|
-|endTime|string(date-time)|false|End time for fetching data|
-|pageSize|integer(int32)|false|Page size for paginated responses|
-|pageNumber|integer(int32)|false|Page number for paginated responses|
 
 > Example Response
 
 ```json
-[]
+{
+  "bids": [
+    {
+      "price": 27000.00,
+      "size": 1.5,
+    },
+    {
+      "price": 26000.00,
+      "size": 5.0,
+    }
+  ],
+  "asks": [
+    {
+      "price": 27500.00,
+      "size": 1,
+    },
+    {
+      "price": 29000.00,
+      "size": 10.0,
+    }
+  ]
+}
+
 ```
 
 ### Response
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|» *anonymous*|any|false|none|
+|bids|[[Bid](#bid)]|true|List of buy orders|
+|asks|[[Ask](#ask)]|true|List of sell orders|
+
+## Get Trades
+
+`GET /trades`
+
+Returns trades for the specified market within the specified time window. 
+
+The default pageSize is 50, and the default pageNumber is 0 (pages are 0-indexed).
+
+If neither startTime or endTime is specified, the server will return the first page of the most recent trades. The client may choose to specify just a startTime, just an endTime, or both.
+
+Trades are returned in increasing order of their timestamp.
+
+> Example Request
+
+```json
+{
+  "exchange": "binance",
+  "baseAsset": "BTC",
+  "quoteAsset": "USDT",
+  "startTime": 1679443991.61,
+  "endTime": 1679444001.61,
+  "pageSize": 50,
+  "pageNumber": 0
+}
+```
+
+### Request
+
+|Parameter|Type|Default|Description|
+|---|---|---|---|
+|exchange|string|*required*|Exchange to fetch data for|
+|baseAsset|string|*required*|Base asset of market|
+|quoteAsset|string|*required*|Quote asset of market|
+|startTime|integer(int32)|null|Start time for fetching data (unix timestamp)|
+|endTime|integer(int32)|null|End time for fetching data (unix timestamp)|
+|pageSize|integer(int32)|50|Page size for paginated responses|
+|pageNumber|integer(int32)|0|Page number for paginated responses|
+
+> Example Response
+
+```json
+[
+  {
+    "price": 0,
+    "size": 0,
+    "side": "buy",
+    "timestamp": 0
+  },
+  {
+    "price": 0,
+    "size": 0,
+    "side": "sell",
+    "timestamp": 0
+  }
+]
+
+```
+
+### Response
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|-|[[Trade]](#trade)|true|List of trades|
+
+### Trade
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|price|number|true|Price of the trade (in units of quoteAsset)|
+|size|number|true|Size of the trade (in units of baseAsset)|
+|side|[Side](#side)|true|Whether the taker bought or sold the baseAsset|
+|timestamp|integer(int32)|true|Exchange timestamp for when the trade took place|
+
+### Side
+
+|Value|Description|
+|---|---|
+|» buy|Represents a buy order or trade|
+|» sell|Represents a sell order or trade|
+
+# Private HTTP API
 
 ## Get Balances
 
 `GET /balances`
-
-*Fetch balances*
 
 Fetches the balances of all assets for the specified account on the exchange. This includes deposits, collateral and open positions.
 
@@ -258,40 +328,22 @@ Fetches the balances of all assets for the specified account on the exchange. Th
 > Example Response
 
 ```json
-[
-  {
-    "asset": "BTC",
-    "amount": 1.21
-  },
-  {
-    "asset": "ETH",
-    "amount": 5.67
-  },
-  {
-    "asset": "SOL",
-    "amount": 10.11
-  }
-]
+{
+  "BTC": 1.21,
+  "ETH": 5.67,
+  "SOL": 10.11
+}
 ```
 
 ### Response
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|[[Balance](#balance)]|false|[Balance of an asset on an exchange]|
-|» asset|number|true|Asset symbol|
-|» amount|number|true|Size of balance (in units of the asset)|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-ExchangeApiKeyAuth, DexPrivateKeyAuth
-</aside>
+|*asset symbol*|number|false|Quantity of balance (in units of the asset)|
 
 ## Place Order
 
 `POST /order`
-
-*Place order*
 
 Places an order on the exchange.
 
@@ -332,16 +384,9 @@ Places an order on the exchange.
 |---|---|---|---|---|
 |*anonymous*|[[OrderId](#orderid)]|false|[ID of an order on an exchange]|
 
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-ExchangeApiKeyAuth, DexPrivateKeyAuth
-</aside>
-
 ## Cancel Order
 
 `DELETE /order`
-
-*Cancel order*
 
 Cancels an order on the exchange.
 
@@ -361,11 +406,6 @@ Cancels an order on the exchange.
 ```
 
 ### Response
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-ExchangeApiKeyAuth, DexPrivateKeyAuth
-</aside>
 
 # Schemas
 
@@ -388,33 +428,6 @@ Quantity of an asset
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |*anonymous*|number(float)|false|Quantity of an asset|
-
-## Side
-
-<a id="schemaside"></a>
-<a id="schema_Side"></a>
-<a id="tocSside"></a>
-<a id="tocsside"></a>
-
-```json
-"buy"
-
-```
-
-Buy or sell
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|*anonymous*|string|false|Buy or sell|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|*anonymous*|buy|
-|*anonymous*|sell|
 
 ## Order
 
@@ -441,42 +454,6 @@ Order on an orderbook. Could represent the aggregate of multiple orders at a pri
 |price|number|true|Price of the order (in units of quoteAsset)|
 |size|number|true|Size of the order (in units of baseAsset)|
 |side|[Side](#side)|true|Buy or sell|
-
-## Orderbook
-
-<a id="schemaorderbook"></a>
-<a id="schema_Orderbook"></a>
-<a id="tocSorderbook"></a>
-<a id="tocsorderbook"></a>
-
-```json
-{
-  "bids": [
-    {
-      "price": 27879.5,
-      "size": 1.5,
-      "side": "buy"
-    }
-  ],
-  "asks": [
-    {
-      "price": 27879.5,
-      "size": 1.5,
-      "side": "sell"
-    }
-  ]
-}
-
-```
-
-Orderbook containing a list of bids and offers, aggregated by price level
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|bids|[[Bid](#bid)]|true|[Buy order on an orderbook]|
-|asks|[[Ask](#ask)]|true|[Sell order on an orderbook]|
 
 ## OrderId
 
@@ -521,54 +498,6 @@ Balance of an asset on an exchange
 |---|---|---|---|---|
 |asset|number|true|Asset symbol|
 |amount|number|true|Size of balance (in units of the asset)|
-
-## Trade
-
-<a id="schematrade"></a>
-<a id="schema_Trade"></a>
-<a id="tocStrade"></a>
-<a id="tocstrade"></a>
-
-```json
-{
-  "price": 0,
-  "size": 0,
-  "side": "buy",
-  "timestamp": 0
-}
-
-```
-
-A trade that has occurred
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|price|number|true|Price of the trade (in units of quoteAsset)|
-|size|number|true|Size of the trade (in units of baseAsset)|
-|side|[Side](#side)|true|Whether the taker bought or sold the baseAsset|
-|timestamp|[Timestamp](#timestamp)|false|Exchange timestamp for when the trade took place|
-
-## Timestamp
-
-<a id="schematimestamp"></a>
-<a id="schema_Timestamp"></a>
-<a id="tocStimestamp"></a>
-<a id="tocstimestamp"></a>
-
-```json
-0
-
-```
-
-Timestamp of an event on an exchange
-
-### Properties
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|*anonymous*|integer(int32)|false|Timestamp of an event on an exchange|
 
 ## Error
 
