@@ -142,11 +142,11 @@ Returns the current BBO of the specified market
 {
   "bid": {
     "price": 27879.5,
-    "size": 1.5,
+    "quantity": 1.5,
   },
   "ask": {
     "price": 27879.5,
-    "size": 1.5,
+    "quantity": 1.5,
   }
 }
 ```
@@ -163,14 +163,14 @@ Returns the current BBO of the specified market
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |price|number|true|Price of the bid (in units of quoteAsset)|
-|size|number|true|Size of the bid (in units of baseAsset)|
+|quantity|number|true|Quantity of the bid (in units of baseAsset)|
 
 ### Ask
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |price|number|true|Price of the ask (in units of quoteAsset)|
-|size|number|true|Size of the ask (in units of baseAsset)|
+|quantity|number|true|Quantity of the ask (in units of baseAsset)|
 
 ## Get Orderbook
 
@@ -203,21 +203,21 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
   "bids": [
     {
       "price": 27000.00,
-      "size": 1.5,
+      "quantity": 1.5,
     },
     {
       "price": 26000.00,
-      "size": 5.0,
+      "quantity": 5.0,
     }
   ],
   "asks": [
     {
       "price": 27500.00,
-      "size": 1,
+      "quantity": 1,
     },
     {
       "price": 29000.00,
-      "size": 10.0,
+      "quantity": 10.0,
     }
   ]
 }
@@ -275,13 +275,13 @@ Trades are returned in increasing order of their timestamp.
 [
   {
     "price": 0,
-    "size": 0,
+    "quantity": 0,
     "side": "buy",
     "timestamp": 0
   },
   {
     "price": 0,
-    "size": 0,
+    "quantity": 0,
     "side": "sell",
     "timestamp": 0
   }
@@ -300,7 +300,7 @@ Trades are returned in increasing order of their timestamp.
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |price|number|true|Price of the trade (in units of quoteAsset)|
-|size|number|true|Size of the trade (in units of baseAsset)|
+|quantity|number|true|Quantity of the trade (in units of baseAsset)|
 |side|[Side](#side)|true|Whether the taker bought or sold the baseAsset|
 |timestamp|integer(int32)|true|Exchange timestamp for when the trade took place|
 
@@ -355,7 +355,7 @@ Places an order on the exchange.
 |baseAsset|string|true|Base asset of market|
 |quoteAsset|string|true|Quote asset of market|
 |price|number(float)|true|Price of order (in units of quoteAsset)|
-|size|number(float)|true|Size of order (in units of baseAsset)|
+|quantity|number(float)|true|Quantity of order (in units of baseAsset)|
 |side|string|true|Side of order|
 |timeInForce|string|false|Time in force for order|
 |miscOptions|object|false|Miscellaneous params to send to the exchange|
@@ -409,7 +409,7 @@ Cancels an order on the exchange.
 
 # Schemas
 
-## Size
+## Quantity
 
 <a id="schemasize"></a>
 <a id="schema_Size"></a>
@@ -439,7 +439,7 @@ Quantity of an asset
 ```json
 {
   "price": 27879.5,
-  "size": 1.5,
+  "quantity": 1.5,
   "side": "buy"
 }
 
@@ -452,7 +452,7 @@ Order on an orderbook. Could represent the aggregate of multiple orders at a pri
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |price|number|true|Price of the order (in units of quoteAsset)|
-|size|number|true|Size of the order (in units of baseAsset)|
+|quantity|number|true|Quantity of the order (in units of baseAsset)|
 |side|[Side](#side)|true|Buy or sell|
 
 ## OrderId
@@ -497,7 +497,7 @@ Balance of an asset on an exchange
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |asset|number|true|Asset symbol|
-|amount|number|true|Size of balance (in units of the asset)|
+|amount|number|true|Quantity of balance (in units of the asset)|
 
 ## Error
 
