@@ -299,6 +299,8 @@ Trades are returned in increasing order of their timestamp.
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
+|baseAsset|string|true|Base asset of market|
+|quoteAsset|string|true|Quote asset of market|
 |price|number|true|Price of the trade (in units of quoteAsset)|
 |quantity|number|true|Quantity of the trade (in units of baseAsset)|
 |side|[Side](#side)|true|Whether the taker bought or sold the baseAsset|
@@ -313,11 +315,83 @@ Trades are returned in increasing order of their timestamp.
 
 # Private HTTP API
 
+## Get Orders
+
+`GET /orders`
+
+Fetches the user's open orders for the specified market.
+
+> Example Request
+
+```json
+{
+  "exchange": "binance",
+  "baseAsset": "BTC",
+  "quoteAsset": "USDT"
+}
+```
+
+### Request
+
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|exchange|string|true|Exchange to fetch data for|
+|baseAsset|string|true|Base asset of market|
+|quoteAsset|string|true|Quote asset of market|
+
+> Example Response
+
+```json
+[
+  {
+    "id": "123456789",
+    "baseAsset": "BTC",
+    "quoteAsset": "USD",
+    "price": 20000.00,
+    "quantity": 1.2,
+    "side": "buy"
+  },
+  {
+    "id": "2345678910",
+    "baseAsset": "ETH",
+    "quoteAsset": "USD",
+    "price": 1200.00,
+    "quantity": 2.4,
+    "side": "sell"
+  }
+]
+```
+
+### Response
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|-|[[Order]](#order)|true|List of open orders|
+
+### Order
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|id|string|true|ID of the order on the exchange|
+|baseAsset|string|true|Base asset of market|
+|quoteAsset|string|true|Quote asset of market|
+|price|number|true|Price of the order (in units of quoteAsset)|
+|quantity|number|true|Quantity of the order (in units of baseAsset)|
+|side|[Side](#side)|true|Buy or sell order|
+
 ## Get Balances
 
 `GET /balances`
 
-Fetches the balances of all assets for the specified account on the exchange. This includes deposits, collateral and open positions.
+Fetches the user's balances of all assets on the exchange. This includes deposits, collateral and open positions.
+
+> Example Request
+
+```json
+{
+  "exchange": "binance"
+}
+```
 
 ### Request
 
@@ -343,7 +417,7 @@ Fetches the balances of all assets for the specified account on the exchange. Th
 
 ## Place Order
 
-`POST /order`
+`POST /orders`
 
 Places an order on the exchange.
 
@@ -386,7 +460,7 @@ Places an order on the exchange.
 
 ## Cancel Order
 
-`DELETE /order`
+`DELETE /orders`
 
 Cancels an order on the exchange.
 
