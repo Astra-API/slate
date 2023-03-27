@@ -1,130 +1,78 @@
 # Websockets API
 
-> Scroll down for code samples, example headers and payloads. Select a language for code samples from the tabs above or the mobile navigation menu.
-
-This is Astra's unified crypto trading API.
-
 Default `content-Type`: `application/json`
 
-Servers:
+The Websocket endpoint is available without authentication. Once the socket is connected, you can subscribe to a channel by sending a 'subscribe' message.
 
-* `public` - Protocol: `wss` 
-    >Public server available without authorization.
-Once the socket is open you can subscribe to a public channel by sending a subscribe request message.
+Endpoint: TBD
 
-    * <a href="wss://api.greyduckcapital.xyz/ws">wss://api.greyduckcapital.xyz/ws</a>
+## Subscribing
 
-# Default
+You can subscribe to a channel by sending a `subscribe` message through the websocket connection:
 
-## /
+```json
+{
+  "action": "subscribe",
+  "subscriptions": [
 
-<h3 id="root-publish">publish</h3>
-
-`sendMessage`:
-
-<h4 id="root-publish-sendMessage">sendMessage</h4>
-
-> Code Samples
-
-```javascript--nodejs
-const hermes = require('hermesjs');
-const app = hermes();
-
-app.from.client.send({
-  topic: '/',
-  payload: undefined
-});
-
-```
-
-```javascript
-//Coming soon...
-
-```
-
-```ruby
-# Coming soon...
-
-```
-
-```python
-//Coming soon...
-
-```
-
-```java
-/* asyncapi-java-tools */
-try (JmsServer client = builder.build()) {
-
-  client..()
-    .publish(undefined)
-    .toCompletableFuture()
-    .get();
+  ]
 }
-
 ```
 
-```go
-//Coming soon...
+### Message
 
-```
+|Parameter|Type|Default|Description|
+|---|---|---|---|
+|action|[Action](#action)|*required*|Action to perform|
+|subscriptions|[[Subscription]](#subscription)|true|Exchange to subscribe/unsubscribe|
+|orderId|string|true|ID of an order on an exchange|
 
-<aside class="success">
-This operation does not require authentication
-</aside>
+### Action
 
-<h3 id="root-subscribe">subscribe</h3>
+|Value|Description|
+|---|---|
+|» subscribe|Subscribe to a channel|
+|» unsubscribe|Unsubscribe from a channel|
 
-`processMessage`:
 
-<h4 id="root-subscribe-processMessage">processMessage</h4>
+### Subscription
 
-> Code Samples
+|Parameter|Type|Default|Description|
+|---|---|---|---|
+|exchange|string|*required*|Action to perform|
+|market|string|*required*|Exchange to subscribe/unsubscribe|
+|dataType|[DataType](#datatype)|*required*|ID of an order on an exchange|
 
-```javascript--nodejs
-const hermes = require('hermesjs');
-const app = hermes();
+### DataType
 
-app.from.client.send({
-  topic: '/',
-  payload: undefined
-});
+|Value|Description|
+|---|---|
+|» orderbook|Orderbook updates|
+|» trade|Trade updates|
 
-```
 
-```javascript
-//Coming soon...
+## Orderbook Channel
 
-```
+### Message
 
-```ruby
-# Coming soon...
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|bids|[[OrderbookUpdate]](#orderbookupdate)|true|List of updates to bids|
+|asks|[[OrderbookUpdate]](#orderbookupdate)|true|List of updates to asks|
 
-```
+### OrderbookUpdate
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|side|string|true|Side for the update|
+|price|number|true|Price level for the update|
+|quantity|number|true|New quantity for bid at this price level|
+|sequenceNumber|number|true|Sequence number for update|
 
-```python
-//Coming soon...
 
-```
+## Trades Channel
 
-```java
-/* asyncapi-java-tools */
-try (JmsServer client = builder.build()) {
+### Message
 
-  client..()
-    .publish(undefined)
-    .toCompletableFuture()
-    .get();
-}
-
-```
-
-```go
-//Coming soon...
-
-```
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|trades|[[Trade]](#trade)|true|List of trades that have occurred since last message|

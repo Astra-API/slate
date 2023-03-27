@@ -1,7 +1,7 @@
 
 # Introduction
 
-> Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
+> Scroll down for example requests and responses.
 
 This is the reference documentation for Astra's unified crypto trading API. Each client will
 be provided a binary to run on their own machines, which exposes the following API over localhost.
@@ -15,6 +15,8 @@ Base URLs:
 * <a href="http://localhost:6789">http://localhost:6789</a>
 
 # Authentication
+
+TODO
 
 * API Key (ExchangeApiKeyAuth)
     - Parameter Name: **X-EXCHANGE-API-KEY**, in: header. 
