@@ -279,13 +279,13 @@ Trades are returned in increasing order of their timestamp.
     "price": 0,
     "quantity": 0,
     "side": "buy",
-    "timestamp": 0
+    "timestamp": 1679899308.07
   },
   {
     "price": 0,
     "quantity": 0,
     "side": "sell",
-    "timestamp": 0
+    "timestamp": 1679899208.07
   }
 ]
 

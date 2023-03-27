@@ -10,11 +10,28 @@ Endpoint: TBD
 
 You can subscribe to a channel by sending a `subscribe` message through the websocket connection:
 
+> Example message
+
 ```json
 {
   "action": "subscribe",
   "subscriptions": [
-
+    {
+      "exchange": "binance",
+      "market": {
+        "baseAsset": "BTC",
+        "quoteAsset": "USDT"
+      },
+      "dataType": "orderbook"
+    },
+    {
+      "exchange": "coinbase",
+      "market": {
+        "baseAsset": "ETH",
+        "quoteAsset": "USD"
+      },
+      "dataType": "trade"
+    }
   ]
 }
 ```
@@ -53,6 +70,37 @@ You can subscribe to a channel by sending a `subscribe` message through the webs
 
 ## Orderbook Channel
 
+> Example message
+
+```json
+{
+  "bids": [
+    {
+      "side": "buy",
+      "price": 27000.00,
+      "quantity": 1.00
+    },
+    {
+      "side": "buy",
+      "price": 26000.00,
+      "quantity": 2.00
+    }
+  ],
+  "asks": [
+    {
+      "side": "sell",
+      "price": 28000.00,
+      "quantity": 1.00
+    },
+    {
+      "side": "sell",
+      "price": 29000.00,
+      "quantity": 2.00
+    }
+  ],
+}
+```
+
 ### Message
 
 |Parameter|Type|Required|Description|
@@ -70,6 +118,27 @@ You can subscribe to a channel by sending a `subscribe` message through the webs
 
 
 ## Trades Channel
+
+> Example message
+
+```json
+{
+  "trades": [
+    {
+      "price": 0,
+      "quantity": 0,
+      "side": "buy",
+      "timestamp": 1679899308.07
+    },
+    {
+      "price": 0,
+      "quantity": 0,
+      "side": "sell",
+      "timestamp": 1679899208.07
+    }
+  ]
+}
+```
 
 ### Message
 
