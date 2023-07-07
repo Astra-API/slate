@@ -11,8 +11,12 @@ toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - openapi
-  - asyncapi
+  - introduction
+  - authentication
+  - public_http_api
+  - private_http_api
+  - websockets_api
+  - schema
 
 search: true
 
