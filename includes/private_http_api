@@ -267,9 +267,9 @@ Support for Private HTTP API is not yet released.
 </thead><tbody>
 <tr>
 <td><em>anonymous</em></td>
-<td>[<a href="#orderid">OrderId</a>]</td>
-<td>false</td>
-<td>[ID of an order on an exchange]</td>
+<td>Integer (i32)</td>
+<td>true</td>
+<td>ID of an order on an exchange</td>
 </tr>
 </tbody></table>
 <h2 id='cancel-order'>Cancel Order</h2>

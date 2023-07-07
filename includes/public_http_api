@@ -20,7 +20,7 @@
 </thead><tbody>
 <tr>
 <td>exchange</td>
-<td>String (lowercase)</td>
+<td>String</td>
 <td>True</td>
 <td>Exchange to fetch data from</td>
 </tr>
@@ -331,11 +331,7 @@ Returns SPOT asset pairs only.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">1679443991.61</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">1679444001.61</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pageNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <aside class="notice">
@@ -346,37 +342,37 @@ Specifying <code>startTime</code>, <code>endTime</code>,<code>pageSize</code>,an
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>exchange</td>
 <td>String</td>
-<td><em>required</em></td>
+<td>True</td>
 <td>Exchange to fetch data from.</td>
 </tr>
 <tr>
 <td>baseAsset</td>
 <td>String</td>
-<td><em>required</em></td>
+<td>True</td>
 <td>Base asset of market</td>
 </tr>
 <tr>
 <td>quoteAsset</td>
 <td>String</td>
-<td><em>required</em></td>
+<td>True</td>
 <td>Quote asset of market</td>
 </tr>
 <tr>
 <td>startTime</td>
-<td>Integer (i32)</td>
+<td>Float (f64)</td>
 <td>null</td>
 <td>Start time for fetching data (unix timestamp)</td>
 </tr>
 <tr>
 <td>endTime</td>
-<td>Integer (i32)</td>
+<td>Float (f64)</td>
 <td>null</td>
 <td>End time for fetching data (unix timestamp)</td>
 </tr>

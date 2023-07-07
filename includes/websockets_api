@@ -3,7 +3,7 @@
 
 <p>The Websocket endpoint is available without authentication. Once the socket is connected, you can subscribe to a channel by sending a <code>subscribe</code> message, detailed in Schema.</p>
 
-<p>Endpoint: <code>wss://prod.astra-api.dev/ws</code></p>
+<!-- Endpoint: `wss://prod.astra-api.dev/ws` -->
 <h2 id='subscribing'>Subscribing</h2>
 <p>You can subscribe to a channel by sending a <code>subscribe</code> message through the websocket connection:</p>
 
@@ -61,11 +61,11 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>» subscribe</td>
+<td>SUBSCRIBE</td>
 <td>Subscribe to a channel</td>
 </tr>
 <tr>
-<td>» unsubscribe</td>
+<td>UNSUBSCRIBE</td>
 <td>Unsubscribe from a channel</td>
 </tr>
 </tbody></table>
@@ -86,11 +86,11 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>» orderbook</td>
+<td>ORDERBOOK</td>
 <td>Orderbook updates</td>
 </tr>
 <tr>
-<td>» trade</td>
+<td>TRADE</td>
 <td>Trade updates</td>
 </tr>
 </tbody></table>

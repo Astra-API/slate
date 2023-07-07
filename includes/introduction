@@ -13,6 +13,8 @@
 </ul>
 <h3 id='general-information'>General Information</h3>
 <ul>
+<li>REST Feed: <code>https://prod.astra-api.dev</code></li>
+<li><p>WEBSOCKET Feed: <code>wss://prod.astra-api.dev/ws</code></p></li>
 <li><p>All <code>String</code> type parameters are passed in <code>UPPERCASE</code> only, unless written otherwise in a information tag.</p></li>
 <li><p>Features are continously in development, and this API documentation will routinely update as features are rolled out.</p></li>
 <li><p>If you have suggestions, please reach out to contact@astra-api.dev.</p></li>

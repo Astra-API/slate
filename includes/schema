@@ -24,18 +24,23 @@
 </thead><tbody>
 <tr>
 <td>baseAsset</td>
-<td>[<a href="#asset">Base Asset</a>]</td>
+<td>[<a href="#base-asset">Base Asset</a>]</td>
 <td>True</td>
 <td>Describes the type and name of asset</td>
 </tr>
 <tr>
 <td>quoteAsset</td>
-<td>[<a href="#asset">Quote Asset</a>]</td>
+<td>[<a href="#quote-asset">Quote Asset</a>]</td>
 <td>True</td>
 <td>Asset which price is in units of.</td>
 </tr>
 </tbody></table>
-<h2 id='asset'>Asset</h2><h3 id='base-asset'>Base Asset</h3>
+<h2 id='base-asset'>Base Asset</h2>
+<p>Astra represents <code>baseAsset</code> as a struct of <code>type</code> and <code>asset</code>. Currently, Astra provides
+support for SPOT and PERPETUALS.</p>
+
+<p>The implementation of Asset can change depending on the type of Asset you are trying to fetch data on. Below are the specific formats for SPOT, </p>
+<h3 id='spot-asset'>SPOT Asset</h3>
 <blockquote>
 <p>Sample SPOT</p>
 </blockquote>
@@ -44,16 +49,7 @@
     </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<blockquote>
-<p>Sample PERPETUAL</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERPETUAL"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Astra represents <code>baseAsset</code> as a struct of <code>type</code> and <code>asset</code>. Currently, Astra provides
-support for SPOT and PERPETUALS.</p>
+<p>Astra represents SPOT through a <code>baseAsset</code>implementation holding <code>type</code> and <code>asset</code>.</p>
 
 <table><thead>
 <tr>
@@ -67,7 +63,7 @@ support for SPOT and PERPETUALS.</p>
 <td>type</td>
 <td>String</td>
 <td>True</td>
-<td>Type of asset</td>
+<td>Type of asset: SPOT</td>
 </tr>
 <tr>
 <td>asset</td>
@@ -76,15 +72,147 @@ support for SPOT and PERPETUALS.</p>
 <td>Name of asset</td>
 </tr>
 </tbody></table>
+<h3 id='perpetual-asset'>PERPETUAL Asset</h3>
+<blockquote>
+<p>Sample PERPETUAL</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERPETUAL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents PERPETUAL through a <code>baseAsset</code> implementation holding <code>type</code> and <code>underlying</code>.</p>
 
-<aside class="notice">
-Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
-</aside>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>True</td>
+<td>Type of asset: PERPETUAL</td>
+</tr>
+<tr>
+<td>underlying</td>
+<td>String</td>
+<td>True</td>
+<td>Name of asset</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 PERPETUAL assets supported for Binance only. Rollout of PERPETUAL for other exchanges (OKX, COINBASE, HUOBI) to arrive within a couple days.
 </aside>
-<h3 id='quote-asset'>Quote Asset</h3>
+<h3 id='dated-future-asset'>DATED FUTURE Asset</h3>
+<aside class="notice">
+Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
+</aside>
+
+<blockquote>
+<p>Sample DATED FUTURE</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATED_FUTURE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">format</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">date</span><span class="w"> </span><span class="err">TBD</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents PERPETUAL through a <code>baseAsset</code> implementation holding <code>type</code>, <code>underlying</code>, and <code>expiry</code>.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>True</td>
+<td>Type of asset: PERPETUAL</td>
+</tr>
+<tr>
+<td>underlying</td>
+<td>String</td>
+<td>True</td>
+<td>Name of asset</td>
+</tr>
+<tr>
+<td>expiry</td>
+<td>TBD</td>
+<td>True</td>
+<td>When the contract expires</td>
+</tr>
+</tbody></table>
+<h3 id='option-asset'>OPTION Asset</h3>
+<aside class="notice">
+Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
+</aside>
+
+<blockquote>
+<p>Sample OPTION</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATED_FUTURE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"strike"</span><span class="p">:</span><span class="w"> </span><span class="mi">350000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">format</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">date</span><span class="w"> </span><span class="err">TBD</span><span class="w">
+    </span><span class="nl">"duration_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Monthly"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">format</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">date</span><span class="w"> </span><span class="err">TBD</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents PERPETUAL through a <code>baseAsset</code> implementation holding <code>type</code>, <code>underlying</code>, <code>strike</code>, <code>expiry</code>, and <code>duration_type</code>.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>True</td>
+<td>Type of asset: PERPETUAL</td>
+</tr>
+<tr>
+<td>underlying</td>
+<td>String</td>
+<td>True</td>
+<td>Name of asset</td>
+</tr>
+<tr>
+<td>strike</td>
+<td>Unisigned Integer (u32)</td>
+<td>True</td>
+<td>Strike price of the option</td>
+</tr>
+<tr>
+<td>expiry</td>
+<td>TBD</td>
+<td>True</td>
+<td>When the contract expires</td>
+</tr>
+<tr>
+<td>duration_type</td>
+<td>String</td>
+<td>True</td>
+<td>Duration type of the option</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Possible values for <code>duration_type</code> are Daily, Weekly, Monthly, Quarterly.
+</aside>
+<h2 id='quote-asset'>Quote Asset</h2>
 <blockquote>
 <p>Sample data</p>
 </blockquote>
@@ -240,7 +368,7 @@ Possible values for <code>dataType</code> are TRADE and ORDERBOOK.
 </thead><tbody>
 <tr>
 <td>exchange_market</td>
-<td>[Exchange Market(#trade)]</td>
+<td>[<a href="#exchange-market">Exchange Market</a>]</td>
 <td>True</td>
 <td>Contains exchange and market which was traded</td>
 </tr>
@@ -261,6 +389,28 @@ Possible values for <code>dataType</code> are TRADE and ORDERBOOK.
 <td>String</td>
 <td>True</td>
 <td>Direction of taker</td>
+</tr>
+</tbody></table>
+<h3 id='exchange-market'>Exchange Market</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String</td>
+<td>True</td>
+<td>Exchange to fetch data from.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Float (f64)</td>
+<td>True</td>
+<td>Price of trade units of quote asset</td>
 </tr>
 </tbody></table>
 <h2 id='order'>Order</h2>
@@ -301,7 +451,7 @@ Similarity in order and trade objects is intuitive! <code>trade</code> updates r
 </tr>
 <tr>
 <td>baseAsset</td>
-<td>String</td>
+<td>[<a href="#base-asset">Base Asset</a>]</td>
 <td>True</td>
 <td>Base asset of market</td>
 </tr>
