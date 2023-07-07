@@ -8,7 +8,9 @@ The Websocket endpoint is available without authentication. Once the socket is c
 
 ## Subscribing
 
-You can subscribe to a channel by sending a `subscribe` message through the websocket connection:
+You can subscribe to one or multiple different exchange's specific Trade or Orderbook Snapshot channel simultaneously by sending a `subscribe` message through the websocket connection. 
+
+To understand more about how we handle the ability to subscribe to different exchanges, please see the `subcribe` input data type in the Schema tab.
 
 > Sample message
 
@@ -70,7 +72,7 @@ You can subscribe to a channel by sending a `subscribe` message through the webs
 
 ## Orderbook Channel
 
-Subscribe to any exchanges orderbook snapshot updates. 
+Subscribe to any exchanges orderbook snapshot updates. This makes use of the `subscribe` data type to record which type (ORDERBOOK) and the specific asset pair the developer is interested in.
 
 > Sample Message
 
@@ -135,8 +137,7 @@ Subscribe to any exchanges orderbook snapshot updates.
 
 ## Trades Channel
 
-Subscribe to any exchange's latest trade updates. Updates recieved are the latest trades
-from the respective 
+Subscribe to any exchange's latest trade updates. There is one trade update per message sent.
 
 > Sample Message
 

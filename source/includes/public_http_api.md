@@ -68,7 +68,7 @@ Returns the current price of the specified market.
 ```json
 {
   "exchange": "binance",
-  "baseAsset": "BTC",
+  "base_asset": "BTC",
   "quoteAsset": "USDT",
 }
 ```
@@ -108,8 +108,8 @@ Returns the current BBO of the specified market on the specified exchange.
 ```json
 {
   "exchange": "binance",
-  "baseAsset": "BTC",
-  "quoteAsset": "USDT",
+  "base_asset": "BTC",
+  "quote_asset": "USDT",
 }
 ```
 
@@ -228,8 +228,8 @@ Trades are returned in increasing order of their timestamp.
 ```json
 {
   "exchange": "binance",
-  "baseAsset": "BTC",
-  "quoteAsset": "USDT"
+  "base_asset": "BTC",
+  "quote_asset": "USDT"
 }
 ```
 <aside class="notice">
