@@ -12,6 +12,9 @@ The API is separated intow three categories: Public HTTP API, Private HTTP API, 
 
 ### General Information
 
+- REST Feed: `https://prod.astra-api.dev`
+- WEBSOCKET Feed: `wss://prod.astra-api.dev/ws`
+
 - All `String` type parameters are passed in `UPPERCASE` only, unless written otherwise in a information tag.
 
 - Features are continously in development, and this API documentation will routinely update as features are rolled out.

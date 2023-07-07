@@ -161,7 +161,7 @@ Places an order on the exchange.
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|[[OrderId](#orderid)]|false|[ID of an order on an exchange]|
+|*anonymous*|Integer (i32)|true|ID of an order on an exchange|
 
 ## Cancel Order
 

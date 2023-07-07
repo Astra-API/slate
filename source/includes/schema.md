@@ -20,12 +20,17 @@ Astra represent asset pairs across every exchange through `Markets`. It is made 
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|baseAsset|[[Base Asset](#asset)]|True|Describes the type and name of asset|
-|quoteAsset|[[Quote Asset](#asset)]|True|Asset which price is in units of.|
+|baseAsset|[[Base Asset](#base-asset)]|True|Describes the type and name of asset|
+|quoteAsset|[[Quote Asset](#quote-asset)]|True|Asset which price is in units of.|
 
-## Asset
+## Base Asset
 
-### Base Asset
+Astra represents `baseAsset` as a struct of `type` and `asset`. Currently, Astra provides
+support for SPOT and PERPETUALS.
+
+The implementation of Asset can change depending on the type of Asset you are trying to fetch data on. Below are the specific formats for SPOT, 
+
+### SPOT Asset
 
 > Sample SPOT
 
@@ -36,6 +41,15 @@ Astra represent asset pairs across every exchange through `Markets`. It is made 
 }
 ```
 
+Astra represents SPOT through a `baseAsset`implementation holding `type` and `asset`.
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|type|String|True|Type of asset: SPOT|
+|asset|String|True|Name of asset|
+
+### PERPETUAL Asset
+
 > Sample PERPETUAL
 
 ```json
@@ -45,22 +59,75 @@ Astra represent asset pairs across every exchange through `Markets`. It is made 
 }
 ```
 
-Astra represents `baseAsset` as a struct of `type` and `asset`. Currently, Astra provides
-support for SPOT and PERPETUALS.
+Astra represents PERPETUAL through a `baseAsset` implementation holding `type` and `underlying`.
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|type|String|True|Type of asset|
-|asset|String|True|Name of asset|
+|type|String|True|Type of asset: PERPETUAL|
+|underlying|String|True|Name of asset|
 
-<aside class="notice">
-Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
-</aside>
 <aside class="notice">
 PERPETUAL assets supported for Binance only. Rollout of PERPETUAL for other exchanges (OKX, COINBASE, HUOBI) to arrive within a couple days.
 </aside>
 
-### Quote Asset
+### DATED FUTURE Asset
+
+<aside class="notice">
+Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
+</aside>
+
+> Sample DATED FUTURE
+
+```json
+{
+    "type": "DATED_FUTURE",
+    "underlying": "BTC",
+    "expiry": "DATE"  // format for date TBD
+}
+```
+
+Astra represents PERPETUAL through a `baseAsset` implementation holding `type`, `underlying`, and `expiry`.
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|type|String|True|Type of asset: PERPETUAL|
+|underlying|String|True|Name of asset|
+|expiry|TBD|True|When the contract expires|
+
+### OPTION Asset
+
+<aside class="notice">
+Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
+</aside>
+
+> Sample OPTION
+
+```json
+{
+    "type": "DATED_FUTURE",
+    "underlying": "BTC",
+    "strike": 350000,
+    "expiry": "DATE", // format for date TBD
+    "duration_type": "Monthly"  // format for date TBD
+}
+```
+
+Astra represents PERPETUAL through a `baseAsset` implementation holding `type`, `underlying`, `strike`, `expiry`, and `duration_type`.
+
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|type|String|True|Type of asset: PERPETUAL|
+|underlying|String|True|Name of asset|
+|strike|Unisigned Integer (u32)|True|Strike price of the option|
+|expiry|TBD|True|When the contract expires|
+|duration_type|String|True|Duration type of the option|
+
+<aside class="notice">
+Possible values for <code>duration_type</code> are Daily, Weekly, Monthly, Quarterly.
+</aside>
+
+## Quote Asset
 
 > Sample data
 
@@ -171,10 +238,17 @@ Astra represents all trades across all platforms through this `trade` which hold
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|exchange_market|[Exchange Market(#trade)]|True|Contains exchange and market which was traded|
+|exchange_market|[[Exchange Market](#exchange-market)]|True|Contains exchange and market which was traded|
 |price|Float (f64)|True|Price of trade units of quote asset|
 |quantity| Float (f64)|True|Quantity of trade in units of base asset|
 |side|String|True|Direction of taker|
+
+### Exchange Market
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|exchange|String|True|Exchange to fetch data from.|
+|price|Float (f64)|True|Price of trade units of quote asset|
+
 
 ## Order
 
@@ -203,7 +277,7 @@ Similarity in order and trade objects is intuitive! <code>trade</code> updates r
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |id|String|True|ID of the order on the exchange|
-|baseAsset|String|True|Base asset of market|
+|baseAsset|[[Base Asset](#base-asset)]|True|Base asset of market|
 |quoteAsset|String|True|Quote asset of market|
 |price|number|True|Price of the order (in units of quoteAsset)|
 |quantity|number|True|Quantity of the order (in units of baseAsset)|

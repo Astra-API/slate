@@ -18,7 +18,7 @@ Returns all markets listed by the specified exchange.
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
-|exchange|String (lowercase) |True|Exchange to fetch data from|
+|exchange|String|True|Exchange to fetch data from|
 
 > Successful Sample Response
 
@@ -229,11 +229,7 @@ Trades are returned in increasing order of their timestamp.
 {
   "exchange": "binance",
   "baseAsset": "BTC",
-  "quoteAsset": "USDT",
-  "startTime": 1679443991.61,
-  "endTime": 1679444001.61,
-  "pageSize": 50,
-  "pageNumber": 0
+  "quoteAsset": "USDT"
 }
 ```
 <aside class="notice">
@@ -242,13 +238,13 @@ Specifying <code>startTime</code>, <code>endTime</code>,<code>pageSize</code>,an
 
 ### Request
 
-|Parameter|Type|Default|Description|
+|Parameter|Type|Required|Description|
 |---|---|---|---|
-|exchange|String|*required*|Exchange to fetch data from.|
-|baseAsset|String|*required*|Base asset of market|
-|quoteAsset|String|*required*|Quote asset of market|
-|startTime|Integer (i32)|null|Start time for fetching data (unix timestamp)|
-|endTime|Integer (i32)|null|End time for fetching data (unix timestamp)|
+|exchange|String|True|Exchange to fetch data from.|
+|baseAsset|String|True|Base asset of market|
+|quoteAsset|String|True|Quote asset of market|
+|startTime|Float (f64)|null|Start time for fetching data (unix timestamp)|
+|endTime|Float (f64)|null|End time for fetching data (unix timestamp)|
 |pageSize|Integer (i32)|50|Page size for paginated responses|
 |pageNumber|Integer (i32)|0|Page number for paginated responses|
 
