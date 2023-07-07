@@ -1,0 +1,332 @@
+<h1 id='schema'>Schema</h1>
+<p>Astra&#39;s strength is consolidating data from (eventually) numerous exchanges into a singular, easily distributable unified data format. Below is a list of these formats which help define how developers can interact with data sent to and received from Astra.</p>
+<h2 id='market'>Market</h2>
+<blockquote>
+<p>Sample Data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represent asset pairs across every exchange through <code>Markets</code>. It is made up of two elements, <code>baseAsset</code> and <code>quoteAsset</code> which fully represent a particular market. For usage, refer to &#39;Public HTTP API&#39; &gt; &#39;Get Markets&#39;.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>baseAsset</td>
+<td>[<a href="#asset">Base Asset</a>]</td>
+<td>True</td>
+<td>Describes the type and name of asset</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td>[<a href="#asset">Quote Asset</a>]</td>
+<td>True</td>
+<td>Asset which price is in units of.</td>
+</tr>
+</tbody></table>
+<h2 id='asset'>Asset</h2><h3 id='base-asset'>Base Asset</h3>
+<blockquote>
+<p>Sample SPOT</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample PERPETUAL</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERPETUAL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents <code>baseAsset</code> as a struct of <code>type</code> and <code>asset</code>. Currently, Astra provides
+support for SPOT and PERPETUALS.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>True</td>
+<td>Type of asset</td>
+</tr>
+<tr>
+<td>asset</td>
+<td>String</td>
+<td>True</td>
+<td>Name of asset</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
+</aside>
+
+<aside class="notice">
+PERPETUAL assets supported for Binance only. Rollout of PERPETUAL for other exchanges (OKX, COINBASE, HUOBI) to arrive within a couple days.
+</aside>
+<h3 id='quote-asset'>Quote Asset</h3>
+<blockquote>
+<p>Sample data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents <code>quoteAsset</code> as a String. The quote asset is the units of price for which the base asset is quoted for.</p>
+<h2 id='bid'>Bid</h2>
+<blockquote>
+<p>Sample Data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">//</span><span class="w">  </span><span class="err">This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">sample</span><span class="w"> </span><span class="err">Bid</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">relation</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> 
+</span><span class="err">//</span><span class="w">  </span><span class="err">BTC</span><span class="w"> </span><span class="err">USDT</span><span class="w"> </span><span class="err">Market</span><span class="w"> </span><span class="err">example</span><span class="w"> </span><span class="err">above.</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">27879.5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents bids across every exchange through this <code>Bid</code> which is a struct of <code>price</code> and <code>quantity</code>. <code>price</code> is represented in units of the quote asset (<code>Market</code>&#39;s quoteAsset). <code>quantity</code> is represented in units of the base asset (<code>Market</code>&#39;s baseAsset). For usage, refer to &#39;Public HTTP API&#39; &gt; &#39;Get BBO&#39;. </p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>price</td>
+<td>Float</td>
+<td>True</td>
+<td>Price of the bid (in units of quoteAsset)</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Float</td>
+<td>True</td>
+<td>Quantity of the bid (in units of baseAsset)</td>
+</tr>
+</tbody></table>
+<h2 id='ask'>Ask</h2>
+<blockquote>
+<p>Sample Data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">//</span><span class="w">  </span><span class="err">This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">sample</span><span class="w"> </span><span class="err">Ask</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">relation</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> 
+</span><span class="err">//</span><span class="w">  </span><span class="err">BTC</span><span class="w"> </span><span class="err">USDT</span><span class="w"> </span><span class="err">Market</span><span class="w"> </span><span class="err">example</span><span class="w"> </span><span class="err">above.</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">27500.00</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents bids across every exchange through this <code>Ask</code> which is a struct of <code>price</code> and <code>quantity</code>. <code>price</code> is represented in units of the quote asset (<code>Market</code>&#39;s quoteAsset). <code>quantity</code> is represented in units of the base asset (<code>Market</code>&#39;s baseAsset). For usage, refer to &#39;Public HTTP API&#39; &gt; &#39;Get BBO&#39;. </p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>price</td>
+<td>number</td>
+<td>True</td>
+<td>Price of the ask (in units of quoteAsset)</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>number</td>
+<td>True</td>
+<td>Quantity of the ask (in units of baseAsset)</td>
+</tr>
+</tbody></table>
+<h2 id='subscription'>Subscription</h2>
+<blockquote>
+<p>Sample Data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"dataType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERBOOK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Subscription messages are the unified data format Astra requires from developers to communicate to all supported exchange websocket endpoints. Astra defines
+a <code>subcription</code> as a struct of an <code>exchange</code>, <code>market</code>, and <code>dataType</code>.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String</td>
+<td>True</td>
+<td>Exchange to fetch data from.</td>
+</tr>
+<tr>
+<td>market</td>
+<td>[<a href="#market">Market</a>]</td>
+<td>True</td>
+<td>Market details. See Schema &gt; #Market.</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td>String</td>
+<td>True</td>
+<td>Type of market updates.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Possible values for <code>dataType</code> are TRADE and ORDERBOOK. 
+</aside>
+<h2 id='trade'>Trade</h2>
+<blockquote>
+<p>Sample Data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchange_market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30199.49</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0032</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sell"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents all trades across all platforms through this <code>trade</code> which holds information about the <code>exchange</code>, what <code>market</code> was traded and relevant details: <code>price</code>, <code>quantity</code>, and <code>side</code> of taker. </p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange_market</td>
+<td>[Exchange Market(#trade)]</td>
+<td>True</td>
+<td>Contains exchange and market which was traded</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Float (f64)</td>
+<td>True</td>
+<td>Price of trade units of quote asset</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Float (f64)</td>
+<td>True</td>
+<td>Quantity of trade in units of base asset</td>
+</tr>
+<tr>
+<td>side</td>
+<td>String</td>
+<td>True</td>
+<td>Direction of taker</td>
+</tr>
+</tbody></table>
+<h2 id='order'>Order</h2>
+<blockquote>
+<p>Sample Data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20000.00</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents all orders you&#39;ve initiated in this <code>order</code> similar to a <code>trade</code> object, in addition to including the specific order <code>id</code> tied to the order.</p>
+
+<aside class="success">
+Similarity in order and trade objects is intuitive! <code>trade</code> updates recieved from Astra are <code>order</code> from other traders.
+</aside>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>True</td>
+<td>ID of the order on the exchange</td>
+</tr>
+<tr>
+<td>baseAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Base asset of market</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Quote asset of market</td>
+</tr>
+<tr>
+<td>price</td>
+<td>number</td>
+<td>True</td>
+<td>Price of the order (in units of quoteAsset)</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>number</td>
+<td>True</td>
+<td>Quantity of the order (in units of baseAsset)</td>
+</tr>
+<tr>
+<td>side</td>
+<td>String</td>
+<td>True</td>
+<td>Buy or sell order</td>
+</tr>
+</tbody></table>

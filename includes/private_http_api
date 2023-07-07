@@ -1,0 +1,308 @@
+<h1 id='private-http-api'>Private HTTP API</h1>
+<aside class="warning">
+Support for Private HTTP API is not yet released.
+</aside>
+<h2 id='get-orders'>Get Orders</h2>
+<p><code>GET /orders</code></p>
+
+<p>Fetches the user&#39;s open orders for the specified market.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quote_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String</td>
+<td>True</td>
+<td>Exchange to fetch data from</td>
+</tr>
+<tr>
+<td>baseAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Base asset of market</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Quote asset of market</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <code>exchange</code> parameter is lowercase, Ex: 'binance', 'coinbase'. Update for <code>exchange</code> to become UPPERCASE will rollout. 
+</aside>
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20000.00</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2345678910"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1200.00</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.4</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-</td>
+<td><a href="#order">[Order]</a></td>
+<td>True</td>
+<td>List of open orders</td>
+</tr>
+</tbody></table>
+<h2 id='get-balances'>Get Balances</h2>
+<p><code>GET /balances</code></p>
+
+<p>Fetches the user&#39;s balances of all assets on the exchange. This includes deposits, collateral and open positions.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-2'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String</td>
+<td>True</td>
+<td>Exchange to fetch data from</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <code>exchange</code> parameter is lowercase, Ex: 'binance', 'coinbase'. Update for <code>exchange</code> to become UPPERCASE will rollout. 
+</aside>
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.21</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ETH"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.67</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"SOL"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.11</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset symbol</td>
+<td>number</td>
+<td>false</td>
+<td>Quantity of balance (in units of the asset)</td>
+</tr>
+</tbody></table>
+<h2 id='place-order'>Place Order</h2>
+<p><code>POST /orders</code></p>
+
+<p>Places an order on the exchange.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BNB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0075"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-3'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String</td>
+<td>True</td>
+<td>Exchange to fetch data for</td>
+</tr>
+<tr>
+<td>baseAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Base asset of market</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Quote asset of market</td>
+</tr>
+<tr>
+<td>price</td>
+<td>number(float)</td>
+<td>True</td>
+<td>Price of order (in units of quoteAsset)</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>number(float)</td>
+<td>True</td>
+<td>Quantity of order (in units of baseAsset)</td>
+</tr>
+<tr>
+<td>side</td>
+<td>String</td>
+<td>True</td>
+<td>Side of order</td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>String</td>
+<td>false</td>
+<td>Time in force for order</td>
+</tr>
+<tr>
+<td>miscOptions</td>
+<td>object</td>
+<td>false</td>
+<td>Miscellaneous params to send to the exchange</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>side</td>
+<td>buy</td>
+</tr>
+<tr>
+<td>side</td>
+<td>sell</td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>GTC</td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>IOC</td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>FOK</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"123456789"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>[<a href="#orderid">OrderId</a>]</td>
+<td>false</td>
+<td>[ID of an order on an exchange]</td>
+</tr>
+</tbody></table>
+<h2 id='cancel-order'>Cancel Order</h2>
+<p><code>DELETE /orders</code></p>
+
+<p>Cancels an order on the exchange.</p>
+<h3 id='request-4'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String</td>
+<td>True</td>
+<td>Exchange to fetch data for</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>String</td>
+<td>True</td>
+<td>ID of an order on an exchange</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>404 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The specified market was not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-4'>Response</h3>

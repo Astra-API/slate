@@ -1,0 +1,459 @@
+<h1 id='public-http-api'>Public HTTP API</h1><h2 id='get-markets'>Get Markets</h2>
+<p><code>GET /markets</code></p>
+
+<p>Returns all markets listed by the specified exchange.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String (lowercase)</td>
+<td>True</td>
+<td>Exchange to fetch data from</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-</td>
+<td>[<a href="#market">Market</a>]</td>
+<td>True</td>
+<td>List of all supported asset pairs</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Returns SPOT asset pairs only.
+</aside>
+
+<!-- ### Market
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|baseAsset|String|True|Base asset of the market|
+|quoteAsset|String|True|Quote asset of the market| -->
+<h2 id='get-price'>Get Price</h2>
+<p><code>GET /price</code></p>
+
+<p>Returns the current price of the specified market.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-2'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String</td>
+<td>True</td>
+<td>Exchange to fetch data from</td>
+</tr>
+<tr>
+<td>baseAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Base asset of market</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Quote asset of market</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <code>exchange</code> parameter is lowercase, Ex: 'binance', 'coinbase'. Update for <code>exchange</code> to become UPPERCASE will rollout. 
+</aside>
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="mf">27879.5</span><span class="w">
+</span></code></pre></div><h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-</td>
+<td>Float (f64)</td>
+<td>True</td>
+<td>Price of the asset in units of quote asset</td>
+</tr>
+</tbody></table>
+<h2 id='get-best-bid-offer'>Get Best Bid/Offer</h2>
+<p><code>GET /bbo</code></p>
+
+<p>Returns the current BBO of the specified market on the specified exchange.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-3'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String</td>
+<td>True</td>
+<td>Exchange to fetch data from</td>
+</tr>
+<tr>
+<td>baseAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Base asset of market</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Quote asset of market</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <code>exchange</code> parameter is lowercase, Ex: 'binance', 'coinbase'. Update for <code>exchange</code> to become UPPERCASE will rollout. 
+</aside>
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">27879.5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">27879.5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bid</td>
+<td><a href="#bid">Bid</a></td>
+<td>True</td>
+<td>Current best bid of the market</td>
+</tr>
+<tr>
+<td>ask</td>
+<td><a href="#ask">Ask</a></td>
+<td>True</td>
+<td>Current best ask of the market</td>
+</tr>
+</tbody></table>
+<h2 id='get-orderbook'>Get Orderbook</h2>
+<p><code>GET /orderbook</code></p>
+
+<p>Returns a snapshot of the current L2 orderbook for the specified market. Bids are sorted in descending order, and asks are sorted in ascending order. Because it is an L2 snapshot, bids and asks are aggregated by price level.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"base_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quote_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-4'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String</td>
+<td>True</td>
+<td>Exchange to fetch data from</td>
+</tr>
+<tr>
+<td>base_asset</td>
+<td>String</td>
+<td>True</td>
+<td>Base asset of market</td>
+</tr>
+<tr>
+<td>quote_asset</td>
+<td>String</td>
+<td>True</td>
+<td>Quote asset of market</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <code>exchange</code> parameter is lowercase, Ex: 'binance', 'coinbase'. Update for <code>exchange</code> to become UPPERCASE will rollout. 
+</aside>
+ 
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">                       </span><span class="err">//</span><span class="w">  </span><span class="err">Bid</span><span class="w"> </span><span class="err">Data</span><span class="w"> </span><span class="err">Type</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">27000.00</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">26000.00</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">                       </span><span class="err">//</span><span class="w">  </span><span class="err">Ask</span><span class="w"> </span><span class="err">Data</span><span class="w"> </span><span class="err">Type</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">27500.00</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">29000.00</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bids</td>
+<td>[<a href="#bid">Bid</a>]</td>
+<td>True</td>
+<td>List of buy orders — Bid data type. See Schema.</td>
+</tr>
+<tr>
+<td>asks</td>
+<td>[<a href="#ask">Ask</a>]</td>
+<td>True</td>
+<td>List of sell orders — Ask data type. See Schema.</td>
+</tr>
+</tbody></table>
+<h2 id='get-trades'>Get Trades</h2>
+<p><code>GET /trades</code></p>
+
+<p>Returns trades for the specified market within the specified time window. </p>
+
+<p>The default pageSize is 50, and the default pageNumber is 0 (pages are 0-indexed).</p>
+
+<p>If neither startTime or endTime is specified, the server will return the first page of the most recent trades. The client may choose to specify just a startTime, just an endTime, or both.</p>
+
+<p>Trades are returned in increasing order of their timestamp.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">1679443991.61</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">1679444001.61</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pageNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<aside class="notice">
+Specifying <code>startTime</code>, <code>endTime</code>,<code>pageSize</code>,and <code>pageNumber</code> are currently a work in progress. Currently, this endpoint provides users with the most recent trade which occured.
+</aside>
+<h3 id='request-5'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td>String</td>
+<td><em>required</em></td>
+<td>Exchange to fetch data from.</td>
+</tr>
+<tr>
+<td>baseAsset</td>
+<td>String</td>
+<td><em>required</em></td>
+<td>Base asset of market</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td>String</td>
+<td><em>required</em></td>
+<td>Quote asset of market</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>Integer (i32)</td>
+<td>null</td>
+<td>Start time for fetching data (unix timestamp)</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>Integer (i32)</td>
+<td>null</td>
+<td>End time for fetching data (unix timestamp)</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>Integer (i32)</td>
+<td>50</td>
+<td>Page size for paginated responses</td>
+</tr>
+<tr>
+<td>pageNumber</td>
+<td>Integer (i32)</td>
+<td>0</td>
+<td>Page number for paginated responses</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <code>exchange</code> parameter is lowercase, Ex: 'binance', 'coinbase'. Update for <code>exchange</code> to become UPPERCASE will rollout. 
+</aside>
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchange_market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30199.49</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0032</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sell"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-5'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-</td>
+<td>[<a href="#trade">Trade</a>]</td>
+<td>True</td>
+<td>List of Trade objects. See Schema.</td>
+</tr>
+</tbody></table>
+
+<!-- |Name|Type|Required|Description|
+|---|---|---|---|---|
+|exchange_market|[Exchange Market(#trade)]|True|Contains exchange and market which was traded|
+|price|Float (f64)|True|Price of trade units of quote asset|
+|quantity| Float (f64)|True|Quantity of trade in units of base asset|
+|side|String|True|Direction of taker| -->
+
+<!-- ### Trade
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|baseAsset|String|True|Base asset of market|
+|quoteAsset|String|True|Quote asset of market|
+|price|number|True|Price of the trade (in units of quoteAsset)|
+|quantity|number|True|Quantity of the trade (in units of baseAsset)|
+|side|[Side](#side)|True|Whether the taker bought or sold the baseAsset|
+|timestamp|integer(int32)|True|Exchange timestamp for when the trade took place|
+
+### Side
+
+|Value|Description|
+|---|---|
+|» buy|Represents a buy order or trade|
+|» sell|Represents a sell order or trade| -->
