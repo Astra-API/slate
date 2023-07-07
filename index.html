@@ -536,7 +536,7 @@ Returns SPOT asset pairs only.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-2'>Request</h3>
@@ -602,8 +602,8 @@ Returns SPOT asset pairs only.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quote_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-3'>Request</h3>
 <table><thead>
@@ -784,8 +784,8 @@ Returns SPOT asset pairs only.
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binance"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+  </span><span class="nl">"base_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quote_asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <aside class="notice">
@@ -1221,7 +1221,9 @@ Support for Private HTTP API is not yet released.
 
 <!-- Endpoint: `wss://prod.astra-api.dev/ws` -->
 <h2 id='subscribing'>Subscribing</h2>
-<p>You can subscribe to a channel by sending a <code>subscribe</code> message through the websocket connection:</p>
+<p>You can subscribe to one or multiple different exchange&#39;s specific Trade or Orderbook Snapshot channel simultaneously by sending a <code>subscribe</code> message through the websocket connection. </p>
+
+<p>To understand more about how we handle the ability to subscribe to different exchanges, please see the <code>subcribe</code> input data type in the Schema tab.</p>
 
 <blockquote>
 <p>Sample message</p>
@@ -1311,7 +1313,7 @@ Support for Private HTTP API is not yet released.
 </tr>
 </tbody></table>
 <h2 id='orderbook-channel'>Orderbook Channel</h2>
-<p>Subscribe to any exchanges orderbook snapshot updates. </p>
+<p>Subscribe to any exchanges orderbook snapshot updates. This makes use of the <code>subscribe</code> data type to record which type (ORDERBOOK) and the specific asset pair the developer is interested in.</p>
 
 <blockquote>
 <p>Sample Message</p>
@@ -1386,8 +1388,7 @@ Support for Private HTTP API is not yet released.
 |quantity|number|True|New quantity for bid at this price level|
 |sequenceNumber|number|True|Sequence number for update| -->
 <h2 id='trades-channel'>Trades Channel</h2>
-<p>Subscribe to any exchange&#39;s latest trade updates. Updates recieved are the latest trades
-from the respective </p>
+<p>Subscribe to any exchange&#39;s latest trade updates. There is one trade update per message sent.</p>
 
 <blockquote>
 <p>Sample Message</p>
