@@ -10,14 +10,40 @@ toc_footers:
   # - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
+# Order of files determines outline of website
 includes:
-  - introduction
-  - authentication
-  - public_http_api
-  - private_http_api
-  - websockets_api
-  - schema
+  - intro
 
+  - auth/intro
+  
+  - public_http_api/intro
+  - public_http_api/get_markets
+  - public_http_api/get_price
+  - public_http_api/get_bbo
+  - public_http_api/get_orderbook
+  - public_http_api/get_trades
+
+  - private_http_api/intro
+  - private_http_api/get_orders
+  - private_http_api/get_balances
+  - private_http_api/place_order
+  - private_http_api/cancel_order
+
+  - websockets/intro
+  - websockets/subscribing
+  - websockets/orderbook_updates
+  - websockets/trade_updates
+
+  - schema/intro
+  - schema/format_of_parameters
+  - schema/bid
+  - schema/ask
+  - schema/exchange
+  - schema/asset
+  - schema/market
+  - schema/subscription
+  - schema/trade
+  - schema/order
 search: true
 
 code_clipboard: true
