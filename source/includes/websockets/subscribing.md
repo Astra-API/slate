@@ -2,31 +2,24 @@
 
 You can subscribe to multiple different exchange's specific Trade or Orderbook Updates channel concurrently by forwarding an list of `Subscription` messages through the websocket connection. 
 
-To understand more about how ASTRA handles the subscribing of exchanges, please see the `Subcription` data type in the Schema tab.
+To understand more about how Astra handles the subscribing of exchanges, please see the `Subcription` data type in the Schema tab.
 
 > Sample message
 
 ```json
 {
   "action": "SUBSCRIBE",
-  "subscriptions": [
-    {
+  "payload": {
       "exchange": "BINANCE",
       "market": {
-        "baseAsset": "BTC",
+        "baseAsset": {
+          "type": "SPOT",
+          "asset": "BTC"
+        },
         "quoteAsset": "USDT"
       },
       "dataType": "ORDERBOOK"
-    },
-    {
-      "exchange": "COINBASE",
-      "market": {
-        "baseAsset": "ETH",
-        "quoteAsset": "USD"
-      },
-      "dataType": "TRADE"
     }
-  ]
 }
 ```
 
@@ -35,7 +28,7 @@ To understand more about how ASTRA handles the subscribing of exchanges, please 
 |Parameter|Type|Default|Description|
 |---|---|---|---|
 |action|[Action](#action)|True|Action to perform|
-|subscriptions|[[Subscription]](#subscription)|True|List of subscription objects defining specifics of each subscribed channel|
+|payload|[Subscription](#subscription)|True|A subscription object defining specifics of the to be subscribed channel|
 
 
 ### Action

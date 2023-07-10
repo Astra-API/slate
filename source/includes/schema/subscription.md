@@ -4,16 +4,22 @@
 
 ```json
 {
-    "exchange": "BINANCE",
-    "market": {
-        "baseAsset": "BTC",
+  "action": "SUBSCRIBE",
+  "payload": {
+      "exchange": "BINANCE",
+      "market": {
+        "baseAsset": {
+            "type": "SPOT",
+            "asset": "BTC"
+        },
         "quoteAsset": "USDT"
-    },
-    "dataType": "ORDERBOOK"
+      },
+      "dataType": "ORDERBOOK"
+    }
 }
 ```
 
-`Subscription` messages are the single unified data format ASTRA will convert into the specifc formatting, syntax, and related details an exchange requires to retrieve information.
+`Subscription` messages are the single unified data format Astra will convert into the specifc formatting, syntax, and related details an exchange requires to retrieve information.
 
 Example 1:
 

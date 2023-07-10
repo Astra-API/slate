@@ -6,17 +6,18 @@ Subscribe to any exchanges orderbook updates. This makes use of the `Subscriptio
 
 ```json
 {
-"action": "SUBSCRIBE",
-    "subscriptions": [
-    {
-      "exchange": "BINANCE",
-      "market": {
-        "baseAsset": "BTC",
-        "quoteAsset": "USDT"
-      },
-      "dataType": "ORDERBOOK"
-    },
-  ]
+    "action": "SUBSCRIBE",
+    "payload": {
+        "exchange": "BINANCE",
+        "market": {
+            "baseAsset": {
+                "type": "SPOT",
+                "asset": "ETH"
+            },
+            "quoteAsset": "USDT"
+        },
+        "dataType": "ORDERBOOK"
+    }
 }
 ```
 
@@ -24,28 +25,51 @@ Subscribe to any exchanges orderbook updates. This makes use of the `Subscriptio
 
 ```json
 {
-  "bids": [
-    {
-      "side": "buy",
-      "price": 27000.00
+    "updateId": 37828320367,
+    "exchange": "BINANCE",
+    "market": {
+        "baseAsset": {
+            "type": "SPOT",
+            "asset": "BTC"
+        },
+        "quoteAsset": "USDT"
     },
-    {
-      "side": "buy",
-      "price": 26000.00
-    }
-  ],
-  "asks": [
-    {
-      "side": "sell",
-      "price": 28000.00
-    },
-    {
-      "side": "sell",
-      "price": 29000.00
-    }
-  ],
+    "bids": [
+        {
+            "price": 30708.01,
+            "size": 1.26141
+        },
+        {
+            "price": 30707.97,
+            "size": 0.00571
+        }
+    ],
+    "asks": [
+        {
+            "price": 30708.02,
+            "size": 12.005
+        },
+        {
+            "price": 30708.1,
+            "size": 0.08388
+        }
+    ]
 }
 ```
+
+### Request
+
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|action|[Action](#action)|True|Interaction with a specific channel|
+|payload|[Subscription](#subscription)|True|Subscription data type describing orderbook update specifics|
+
+### Action
+
+|Value|Description|
+|---|---|
+|SUBSCRIBE|Subscribe to a channel|
+|UNSUBSCRIBE|Unsubscribe from a channel|
 
 ### Message
 

@@ -13,7 +13,7 @@
 
 
 
-An ask represents the price at which a buyer is willing to purchase a financial instrument or asset in a trading market. ASTRA represents a bid through a `Bid` across all exchanges.ASTRA represents an ask through an `Ask` across all exchanges.
+An ask represents the price at which a buyer is willing to purchase a financial instrument or asset in a trading market. Astra represents a bid through a `Bid` across all exchanges.Astra represents an ask through an `Ask` across all exchanges.
 
 
 |Name|Type|Required|Description|

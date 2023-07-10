@@ -4,7 +4,7 @@
 
 ```json
 {
-    "exchange_market": {
+    "exchangeMarket": {
         "exchange": "BINANCE",
         "market": {
             "baseAsset": {
@@ -16,20 +16,27 @@
     },
     "price": 30199.49,
     "quantity": 0.0032,
-    "side": "Sell"
+    "side": "SELL"
 }
 ```
  Astra represents a trade through `Trade` on a specific market on an exchange.
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|exchange_market|[[Exchange Market](#exchange-market)]|True|Contains exchange and market which was traded|
+|exchangeMarket|[Exchange Market](#exchange-market)|True|Contains exchange and market which was traded|
 |price|Float (f64)|True|Price of trade units of quote asset|
 |quantity| Float (f64)|True|Quantity of trade in units of base asset|
-|side|String|True|Direction of taker|
+|side|[Side](|True|Direction of trade|
 
 ### Exchange Market
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|exchange|[[Exchange](#exchange)]]|True|Exchange to fetch data from.|
+|exchange|[Exchange](#exchange)|True|Exchange to fetch data from.|
 |price|Float (f64)|True|Price of trade units of quote asset|
+
+### Side 
+
+|Value|Description|
+|---|---|
+|SELL|Taker is selling the asset|
+|BUY|Taker is buying the asset|

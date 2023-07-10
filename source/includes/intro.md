@@ -2,13 +2,13 @@
 
 > Scroll down for example requests and responses.
 
-Welcome to the Astra API documentation for traders and developers. ASTRA eliminates the often complex, unpredictable, and unstable behavior of communciating with cryptocurrency exchanges.
+Welcome to the Astra API documentation for traders and developers. Astra eliminates the often complex, unpredictable, and unstable behavior of communciating with cryptocurrency exchanges.
 
-ASTRA provides fast reliable connections to several exchanges to users.
+Astra provides fast reliable connections to several exchanges to users.
 
-ASTRA distills a myriad of different exchange specific data packets into ASTRA's unified data formats, designed to swiftly integrate with developers' trading systems.
+<!-- Astra distills a myriad of different exchange specific data packets into Astra's unified data formats, designed to swiftly integrate with developers' trading systems. -->
 
-Users leverage ASTRA by forwarding unified data formats (JSON's) containing exchange and market specific requests to the API which ASTRA transform into exchange compatible messages, speedily returning useful data.
+Users leverage Astra by forwarding unified data formats (JSON's) containing exchange and market specific requests to the API which Astra transform into exchange compatible messages, speedily returning useful data.
 
 The API is separated into three categories: Public HTTP API, Private HTTP API, and Websockets API. 
 

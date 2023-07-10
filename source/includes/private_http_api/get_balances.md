@@ -2,6 +2,10 @@
 
 `GET /balances`
 
+<aside class="warning">
+Support for Get Balances is a work in progress.
+</aside>
+
 Fetches the user's balances of all assets on the exchange. This includes deposits, collateral and open positions.
 
 > Sample Request
@@ -16,7 +20,7 @@ Fetches the user's balances of all assets on the exchange. This includes deposit
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
-|exchange|[[Exchange](#exchange)]|True|Exchange to fetch data from|
+|exchange|[Exchange](#exchange)|True|Exchange to fetch data from|
 
 > Successful Sample Response
 
@@ -32,4 +36,4 @@ Fetches the user's balances of all assets on the exchange. This includes deposit
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|asset symbol|number|false|Quantity of balance (in units of the asset)|
+|asset symbol|Float (f64)|False|List of assets and corresponding amounts linked to user.|

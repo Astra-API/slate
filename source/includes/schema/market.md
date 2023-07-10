@@ -22,7 +22,7 @@ Developers use `Market` to define what asset pairs they'd like to receive update
 
 Example 2:
 
-ASTRA uses `Market` when returning the complete list of supported markets using the `/markets` REST endpoint. For examples, refer to 'Public HTTP API' > 'Get Markets'.
+Astra uses `Market` when returning the complete list of supported markets using the `/markets` REST endpoint. For examples, refer to 'Public HTTP API' > 'Get Markets'.
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|

@@ -4,12 +4,19 @@
 
 Fetches the user's open orders for the specified market.
 
+<aside class="warning">
+Support for Get Orders is a work in progress.
+</aside>
+
 > Sample Request
 
 ```json
 {
 	"exchange": "BINANCE",
-	"baseAsset": "BTC",
+	"baseAsset": {
+      "type": "SPOT",
+      "asset": "BTC"
+  },
 	"quoteAsset": "USDT"
 }
 ```
@@ -18,7 +25,7 @@ Fetches the user's open orders for the specified market.
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
-|exchange|[[Exchange](#exchange)]|True|Exchange to fetch data from|
+|exchange|[Exchange](#exchange)|True|Exchange to fetch data from|
 |baseAsset|String|True|Base asset of market|
 |quoteAsset|String|True|Quote asset of market|
 

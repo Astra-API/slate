@@ -10,7 +10,7 @@
     "quantity": 1.5,
 }
 ```
-A bid represents the price at which a buyer is willing to purchase a financial instrument or asset in a trading market. ASTRA represents a bid through a `Bid` across all exchanges.
+A bid represents the price at which a buyer is willing to purchase a financial instrument or asset in a trading market. Astra represents a bid through a `Bid` across all exchanges.
 
  For usage, refer to 'Public HTTP API' > 'Get BBO'. 
 

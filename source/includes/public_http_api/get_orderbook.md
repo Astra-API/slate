@@ -9,8 +9,11 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
 
 ```json
 {
-	"exchange": "BINANCE",
-	"baseAsset": "BTC",
+	"exchange": "HUOBI",
+	"baseAsset": {
+      "type": "SPOT",
+      "asset": "ETH"
+  },
 	"quoteAsset": "USDT"
 }
 ```
@@ -19,7 +22,7 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
-|exchange|[[Exchange](#exchange)]|True|Exchange to fetch data from|
+|exchange|[Exchange](#exchange)|True|Exchange to fetch data from|
 |baseAsset|String|True|Base asset of market|
 |quoteAsset|String|True|Quote asset of market|
 
@@ -29,21 +32,21 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
 {
   "bids": [
     {                       //  Bid Data Type
-      "price": 27000.00,
+      "price": 1798.00,
       "quantity": 1.5,
     },
     {
-      "price": 26000.00,
+      "price": 1797.01,
       "quantity": 5.0,
     }
   ],
   "asks": [
     {                       //  Ask Data Type
-      "price": 27500.00,
+      "price": 1798.00,
       "quantity": 1,
     },
     {
-      "price": 29000.00,
+      "price": 1797.00,
       "quantity": 10.0,
     }
   ]

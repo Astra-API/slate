@@ -12,7 +12,7 @@
     "quoteAsset": "USD",
     "price": 20000.00,
     "quantity": 1.2,
-    "side": "buy"
+    "side": "BUY"
   }
 ```
 
@@ -25,8 +25,15 @@ Similarity in order and trade objects is intuitive! <code>Trade</code> updates r
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |id|String|True|ID of the order on the exchange|
-|baseAsset|[[Base Asset](#base-asset)]|True|Base asset of market|
-|quoteAsset|String|True|Quote asset of market|
-|price|number|True|Price of the order (in units of quoteAsset)|
-|quantity|number|True|Quantity of the order (in units of baseAsset)|
-|side|String|True|Buy or sell order|
+|baseAsset|[Asset](#asset)|True|Base asset of market|
+|quoteAsset|[Abstract Spot Asset](#abstract-spot-asset)|True|Quote asset of market|
+|price|Float (f64)|True|Price of the order (in units of quoteAsset)|
+|quantity|Float (f64)|True|Quantity of the order (in units of baseAsset)|
+|side|[Side](#side)|True|Buy or sell order|
+
+### Side 
+
+|Value|Description|
+|---|---|
+|SELL|Taker is selling the asset|
+|BUY|Taker is buying the asset|

@@ -9,7 +9,7 @@ Returns all markets listed by the specified exchange.
 
 ```json
 {
-  "exchange": "BINANCE"
+    "exchange": "BINANCE"
 }
 ```
 
@@ -17,26 +17,26 @@ Returns all markets listed by the specified exchange.
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
-|exchange|[[Exchange](#exchange)]]|True|Exchange to fetch data from|
+|exchange|[Exchange](#exchange)|True|Exchange to fetch data from|
 
 > Successful Sample Response
 
 ```json
 [
-  {
-      "baseAsset": {
-          "type": "SPOT",
-          "asset": "ETH"
-      },
-      "quoteAsset": "BTC"
-  },
-  {
-      "baseAsset": {
-          "type": "SPOT",
-          "asset": "LTC"
-      },
-      "quoteAsset": "BTC"
-  },
+    {
+        "baseAsset": {
+            "type": "SPOT",
+            "asset": "ETH"
+        },
+        "quoteAsset": "BTC"
+    },
+    {
+        "baseAsset": {
+            "type": "SPOT",
+            "asset": "LTC"
+        },
+        "quoteAsset": "BTC"
+    },
 ]
 ```
 

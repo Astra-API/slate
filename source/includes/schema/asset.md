@@ -1,6 +1,6 @@
 ## Asset
 
-An asset represents a financial instrument that holds value and can be bought, sold, or exchanged. ASTRA represents assets with an `Asset`. There are four `Asset` types: SPOT, PERPETUAL, DATED FUTURE, OPTION.
+An asset represents a financial instrument that holds value and can be bought, sold, or exchanged. Astra represents assets with an `Asset`. There are four `Asset` types: SPOT, PERPETUAL, DATED FUTURE, OPTION.
 
 <!-- Currently, Astra provides support for SPOT and PERPETUALS. -->
 
@@ -19,7 +19,7 @@ Developers uses `Asset` to specify the type of base asset within a `Market`. For
 }
 ```
 
-A SPOT asset is an asset bought and sold for immediate delivery and settlement. ASTRA represents these through `SPOT`. 
+A SPOT asset is an asset bought and sold for immediate delivery and settlement. Astra represents these through `SPOT`. 
 
 <!-- Example 1:
 
@@ -42,7 +42,7 @@ Developers uses `SPOT`, a type of `Asset`, to specify the type of base asset wit
 }
 ```
 
-A perpetual is derivative financial instrument that tracks the price of an underlying asset, allowing traders to speculate on its value without an expiration date or the need for physical delivery. ASTRA represents perpetuals through `PERPETUAL`.
+A perpetual is derivative financial instrument that tracks the price of an underlying asset, allowing traders to speculate on its value without an expiration date or the need for physical delivery. Astra represents perpetuals through `PERPETUAL`.
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
@@ -59,7 +59,7 @@ PERPETUAL assets supported for Binance only. Rollout of PERPETUAL for other exch
 Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
 </aside>
 
-A dated future is a derivative financial contract, specifying the purchase or sale of an asset at a predetermined price, with settlement occurring on a specific future date. ASTRA represents dated futures through `DATED_FUTURE`.
+A dated future is a derivative financial contract, specifying the purchase or sale of an asset at a predetermined price, with settlement occurring on a specific future date. Astra represents dated futures through `DATED_FUTURE`.
 
 > Sample DATED FUTURE
 
@@ -92,7 +92,7 @@ Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES an
     "underlying": "BTC",
     "strike": 350000,
     "expiry": "DATE", // format for date TBD
-    "duration_type": "Monthly"  // format for date TBD
+    "durationType": "MONTHLY"  // format for date TBD
 }
 ```
 
@@ -122,7 +122,7 @@ Possible values for <code>duration_type</code> are Daily, Weekly, Monthly, Quart
 }
 ```
 
-An abstract SPOT asset is a currency, centralized or decentralized. ASTRA represents these through `Abstract Spot Asset`.
+An abstract SPOT asset is a currency, centralized or decentralized. Astra represents these through `Abstract Spot Asset`.
 
 Example 1: 
 

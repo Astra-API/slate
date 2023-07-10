@@ -6,17 +6,18 @@ Subscribe to any exchange's latest trade updates. There is one `Trade` update pe
 
 ```json
 {
-"action": "SUBSCRIBE",
-  "subscriptions": [
-    {
-      "exchange": "COINBASE",
-      "market": {
-        "baseAsset": "BTC",
-        "quoteAsset": "USDT"
-      },
-      "dataType": "TRADE"
-    },
-  ]
+    "action": "SUBSCRIBE",
+    "payload": {
+        "exchange": "BINANCE",
+        "market": {
+            "baseAsset": {
+                "type": "SPOT",
+                "asset": "ETH"
+            },
+            "quoteAsset": "USDT"
+        },
+        "dataType": "TRADE"
+    }
 }
 ```
 
@@ -39,6 +40,20 @@ Subscribe to any exchange's latest trade updates. There is one `Trade` update pe
     "side": "Buy"
 }
 ```
+
+### Request
+
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|action|[Action](#action)|True|Interaction with a specific channel|
+|payload|[Subscription](#subscription)|True|Subscription data type describing trade update specifics|
+
+### Action
+
+|Value|Description|
+|---|---|
+|SUBSCRIBE|Subscribe to a channel|
+|UNSUBSCRIBE|Unsubscribe from a channel|
 
 ### Message
 

@@ -2,15 +2,17 @@
 
 `POST /orders`
 
-Places an order on the exchange.
+<aside class="warning">
+Support for Place Order is a work in progress.
+</aside>
 
 > Sample Request
 
 ```json
 {
     "exchange": "BINANCE",
-    "base_asset": "BNB",
-    "quote_asset": "BTC",
+    "baseAsset": "BNB",
+    "quoteAsset": "BTC",
     "side": "BUY",
     "price": "0.0075",
     "quantity": "1"
@@ -20,24 +22,29 @@ Places an order on the exchange.
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
-|exchange|[[Exchange](#exchange)]]|True|Exchange to fetch data for|
-|baseAsset|String|True|Base asset of market|
-|quoteAsset|String|True|Quote asset of market|
-|price|number(float)|True|Price of order (in units of quoteAsset)|
-|quantity|number(float)|True|Quantity of order (in units of baseAsset)|
-|side|String|True|Side of order|
-|timeInForce|String|false|Time in force for order|
-|miscOptions|object|false|Miscellaneous params to send to the exchange|
+|exchange|[Exchange](#exchange)|True|Exchange to fetch data for|
+|baseAsset|[Asset](#asset)|True|Base asset of market|
+|quoteAsset|[Abstract Spot Asset](#abstract-spot-asset)|True|Quote asset of market|
+|price|Float (f64)|True|Price of order (in units of quoteAsset)|
+|quantity|Float (f64)|True|Quantity of order (in units of baseAsset)|
+|side|[Side](#side)|True|Side of order|
+|timeInForce|[Time In Force](#time-in-force)|False|Time in force for order|
+|miscOptions|object|False|Miscellaneous params to send to the exchange|
 
-#### Enumerated Values
+### Side 
 
-|Parameter|Value|
+|Value|Description|
 |---|---|
-|side|buy|
-|side|sell|
-|timeInForce|GTC|
-|timeInForce|IOC|
-|timeInForce|FOK|
+|SELL|Taker is selling the asset|
+|BUY|Taker is buying the asset|
+
+### Time in Force
+
+|Value|Description|
+|---|---|
+|GTC|Good 'til Cancelled order|
+|IOC|Immediate or Cancel Order|
+|FOK|Fill or Kill Order|
 
 > Successful Sample Response
 
@@ -51,4 +58,4 @@ Places an order on the exchange.
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|*anonymous*|Integer (i32)|true|ID of an order on an exchange|
+|-|Integer (i32)|True|ID of an order on an exchange|

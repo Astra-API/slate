@@ -16,7 +16,10 @@ Trades are returned in increasing order of their timestamp.
 ```json
 {
   "exchange": "BINANCE",
-  "baseAsset": "BTC",
+  "baseAsset": {
+    "type": "SPOT",
+    "asset": "BTC"
+  },
   "quoteAsset": "USDT"
 }
 ```
@@ -28,11 +31,11 @@ Support for specifiying <code>startTime</code>, <code>endTime</code>,<code>pageS
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
-|exchange|[[Exchange](#exchange)]]|True|Exchange to fetch data from.|
+|exchange|[Exchange](#exchange)|True|Exchange to fetch data from.|
 |baseAsset|String|True|Base asset of market|
 |quoteAsset|String|True|Quote asset of market|
-|startTime|Float (f64)|null|Start time for fetching data (unix timestamp)|
-|endTime|Float (f64)|null|End time for fetching data (unix timestamp)|
+|startTime|Float (f64)|False|Start time for fetching data (unix timestamp)|
+|endTime|Float (f64)|False|End time for fetching data (unix timestamp)|
 |pageSize|Integer (i32)|50|Page size for paginated responses|
 |pageNumber|Integer (i32)|0|Page number for paginated responses|
 

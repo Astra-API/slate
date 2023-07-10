@@ -9,8 +9,11 @@ Returns the current BBO of the specified market on the specified exchange.
 
 ```json
 {
-  "exchange": "BINANCE",
-  "baseAsset": "BTC",
+  "exchange": "OKX",
+  "baseAsset": {
+      "type": "SPOT",
+      "asset": "SOL"
+  },
   "quoteAsset": "USDT",
 }
 ```
@@ -19,7 +22,7 @@ Returns the current BBO of the specified market on the specified exchange.
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
-|exchange|[[Exchange](#exchange)]|True|Exchange to fetch data from|
+|exchange|[Exchange](#exchange)|True|Exchange to fetch data from|
 |baseAsset|String|True|Base asset of market|
 |quoteAsset|String|True|Quote asset of market|
 
@@ -28,11 +31,11 @@ Returns the current BBO of the specified market on the specified exchange.
 ```json
 {
   "bid": {
-    "price": 27879.5,
+    "price": 20.19,
     "quantity": 1.5,
   },
   "ask": {
-    "price": 27879.5,
+    "price": 20.15,
     "quantity": 1.5,
   }
 }
