@@ -1,0 +1,33 @@
+<h1 id='introduction'>Introduction</h1>
+<blockquote>
+<p>Scroll down for example requests and responses.</p>
+</blockquote>
+
+<p>Welcome to the Astra API documentation for traders and developers. Astra eliminates the often complex, unpredictable, and unstable behavior of communciating with cryptocurrency exchanges.</p>
+
+<p>Astra provides fast reliable connections to several exchanges to users.</p>
+
+<!-- Astra distills a myriad of different exchange specific data packets into Astra's unified data formats, designed to swiftly integrate with developers' trading systems. -->
+
+<p>Users leverage Astra by forwarding unified data formats (JSON&#39;s) containing exchange and market specific requests to the API which Astra transform into exchange compatible messages, speedily returning useful data.</p>
+
+<p>The API is separated into three categories: Public HTTP API, Private HTTP API, and Websockets API. </p>
+
+<ul>
+<li><p>Private HTTP API requests require authentication and enable those users to place orders and view user sepcific data.</p></li>
+<li><p>Public HTTP and Websockets API&#39;s are both public, accessible to all users.</p></li>
+</ul>
+<h3 id='general-information'>General Information</h3>
+<ul>
+<li>REST Endpoint: <code>https://prod.astra-api.dev</code></li>
+<li>WEBSOCKET Endpoint: <code>wss://prod.astra-api.dev/ws</code></li>
+</ul>
+
+<p>Features are continously in development, and this API documentation will routinely update as features are rolled out.</p>
+
+<p>If you have suggestions, please reach out to contact@astra-api.dev.</p>
+<h3 id='supported-exchanges-and-asset-types'>Supported Exchanges and Asset Types</h3>
+<ul>
+<li><p>We currently support (select features) on BINANCE, COINBASE, KUCOIN, HUOBI, and OKX.</p></li>
+<li><p>We currently support asset types: SPOT and PERPETUALS.</p></li>
+</ul>
