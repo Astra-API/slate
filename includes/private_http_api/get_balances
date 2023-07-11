@@ -1,0 +1,56 @@
+<h2 id='get-balances'>Get Balances</h2>
+<p><code>GET /balances</code></p>
+
+<aside class="warning">
+Support for Get Balances is a work in progress.
+</aside>
+
+<p>Fetches the user&#39;s balances of all assets on the exchange. This includes deposits, collateral and open positions.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td><a href="#exchange">Exchange</a></td>
+<td>True</td>
+<td>Exchange to fetch data from</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.21</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ETH"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.67</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"SOL"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.11</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset symbol</td>
+<td>Float (f64)</td>
+<td>False</td>
+<td>List of assets and corresponding amounts linked to user.</td>
+</tr>
+</tbody></table>

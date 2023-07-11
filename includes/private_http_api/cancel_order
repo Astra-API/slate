@@ -1,0 +1,31 @@
+<h2 id='cancel-order'>Cancel Order</h2>
+<p><code>DELETE /orders</code></p>
+
+<aside class="warning">
+Support for Cancel Order is a work in progress.
+</aside>
+
+<p>Cancels an order on the exchange.</p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td><a href="#exchange">Exchange</a></td>
+<td>True</td>
+<td>Exchange to fetch data for</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>String</td>
+<td>True</td>
+<td>ID of an order on an exchange</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>

@@ -1,0 +1,15 @@
+<h1 id='authentication'>Authentication</h1>
+<p>TODO</p>
+
+<ul>
+<li><p>API Key (ExchangeApiKeyAuth)</p>
+
+<ul>
+<li>Parameter Name: <strong>X-EXCHANGE-API-KEY</strong>, in: header. </li>
+</ul></li>
+<li><p>API Key (DexPrivateKeyAuth)</p>
+
+<ul>
+<li>Parameter Name: <strong>X-DEX-PRIVATE-KEY</strong>, in: header. </li>
+</ul></li>
+</ul>

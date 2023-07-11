@@ -1,0 +1,138 @@
+<h2 id='get-trades'>Get Trades</h2>
+<p><code>GET /trades</code></p>
+
+<p>Returns trades for the specified market within the specified time window. </p>
+
+<p>The default pageSize is 50, and the default pageNumber is 0 (pages are 0-indexed).</p>
+
+<p>If neither startTime or endTime is specified, the server will return the first page of the most recent trades. The client may choose to specify just a startTime, just an endTime, or both.</p>
+
+<p>Trades are returned in increasing order of their timestamp.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<aside class="notice">
+Support for specifiying <code>startTime</code>, <code>endTime</code>,<code>pageSize</code>,and <code>pageNumber</code> are currently a work in progress. 
+</aside>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td><a href="#exchange">Exchange</a></td>
+<td>True</td>
+<td>Exchange to fetch data from.</td>
+</tr>
+<tr>
+<td>baseAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Base asset of market</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td>String</td>
+<td>True</td>
+<td>Quote asset of market</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>Float (f64)</td>
+<td>False</td>
+<td>Start time for fetching data (unix timestamp)</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>Float (f64)</td>
+<td>False</td>
+<td>End time for fetching data (unix timestamp)</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>Integer (i32)</td>
+<td>50</td>
+<td>Page size for paginated responses</td>
+</tr>
+<tr>
+<td>pageNumber</td>
+<td>Integer (i32)</td>
+<td>0</td>
+<td>Page number for paginated responses</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchangeMarket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30199.49</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0032</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sell"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-</td>
+<td>[<a href="#trade">Trade</a>]</td>
+<td>True</td>
+<td>List of Trade objects. See Schema.</td>
+</tr>
+</tbody></table>
+
+<!-- |Name|Type|Required|Description|
+|---|---|---|---|---|
+|exchange_market|[Exchange Market(#trade)]|True|Contains exchange and market which was traded|
+|price|Float (f64)|True|Price of trade units of quote asset|
+|quantity| Float (f64)|True|Quantity of trade in units of base asset|
+|side|String|True|Direction of taker| -->
+
+<!-- ### Trade
+
+|Name|Type|Required|Description|
+|---|---|---|---|---|
+|baseAsset|String|True|Base asset of market|
+|quoteAsset|String|True|Quote asset of market|
+|price|number|True|Price of the trade (in units of quoteAsset)|
+|quantity|number|True|Quantity of the trade (in units of baseAsset)|
+|side|[Side](#side)|True|Whether the taker bought or sold the baseAsset|
+|timestamp|integer(int32)|True|Exchange timestamp for when the trade took place|
+
+### Side
+
+|Value|Description|
+|---|---|
+|» buy|Represents a buy order or trade|
+|» sell|Represents a sell order or trade| -->
