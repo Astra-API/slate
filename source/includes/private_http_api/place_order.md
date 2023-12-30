@@ -2,10 +2,6 @@
 
 `POST /orders`
 
-<aside class="warning">
-Support for Place Order is a work in progress.
-</aside>
-
 > Sample Request
 
 ```json

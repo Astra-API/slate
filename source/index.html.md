@@ -8,18 +8,19 @@ language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of
 
 toc_footers:
   # - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  # - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 # Order of files determines outline of website
 includes:
   - intro
+  - getting_started
 
   - auth/intro
   
   - public_http_api/intro
   - public_http_api/get_markets
-  - public_http_api/get_price
-  - public_http_api/get_bbo
+  # - public_http_api/get_price
+  # - public_http_api/get_bbo
   - public_http_api/get_orderbook
   - public_http_api/get_trades
 
@@ -35,7 +36,7 @@ includes:
   - websockets/trade_updates
 
   - schema/intro
-  - schema/format_of_parameters
+  # - schema/format_of_parameters
   - schema/bid
   - schema/ask
   - schema/exchange

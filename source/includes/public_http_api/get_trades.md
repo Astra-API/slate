@@ -23,9 +23,6 @@ Trades are returned in increasing order of their timestamp.
   "quoteAsset": "USDT"
 }
 ```
-<aside class="notice">
-Support for specifiying <code>startTime</code>, <code>endTime</code>,<code>pageSize</code>,and <code>pageNumber</code> are currently a work in progress. 
-</aside>
 
 ### Request
 

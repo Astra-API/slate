@@ -49,15 +49,7 @@ A perpetual is derivative financial instrument that tracks the price of an under
 |type|String|True|Type of asset: PERPETUAL|
 |underlying|[[Abstract Spot Asset](#abstract-spot-asset)]|True|Name of asset|
 
-<aside class="notice">
-PERPETUAL assets supported for Binance only. Rollout of PERPETUAL for other exchanges (OKX, COINBASE, HUOBI) to arrive within a couple days.
-</aside>
-
 ### DATED FUTURE Asset
-
-<aside class="notice">
-Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
-</aside>
 
 A dated future is a derivative financial contract, specifying the purchase or sale of an asset at a predetermined price, with settlement occurring on a specific future date. Astra represents dated futures through `DATED_FUTURE`.
 
@@ -78,11 +70,6 @@ A dated future is a derivative financial contract, specifying the purchase or sa
 |expiry|TBD|True|When the contract expires|
 
 ### OPTION Asset
-
-<aside class="notice">
-Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
-</aside>
-
 
 > Sample OPTION
 
@@ -114,16 +101,23 @@ Possible values for <code>duration_type</code> are Daily, Weekly, Monthly, Quart
 
 ## Abstract Spot Asset
 
-> Sample data
+Represents an abstract spot asset such as BTC, ETH, USD, USDT, etc.
+The assets are "abstract" in the sense that they doesn't necessarily
+correspond to a single fungible token - there is variation with regard to
+network, custody, etc.
 
-```json
-{
-    "quoteAsset": "USDT"
-}
-```
+For example, USDC could refer to USDC on any network: Ethereum, Solana, etc.
+These are all technically distinct assets, which we think of as equivalent
+due to the creation/redemption mechanism maintained by Circle across all
+networks.
 
-An abstract SPOT asset is a currency, centralized or decentralized. Astra represents these through `Abstract Spot Asset`.
+Similarly, BTC could refer to Bitcoin custodied on Binance,
+Coinbase, self-custody, etc. When you custody an asset on a centralized
+exchange, what you actually own is just a "deposit", which is an IOU from
+the exchange that you can redeem for the underlying asset. These are subject
+to different counterparty risks depending on the exchange, and are arguably
+not the same asset.
 
-Example 1: 
+So for simplicity, we use AbstractSpotAsset to represent what most users and
+exchanges think of as a single spot asset.
 
-The `quoteAsset` within a `Market` is the units of price for which the baseAsset is quoted for. It is represented by `Abstract Spot Asset`.

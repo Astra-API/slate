@@ -4,10 +4,6 @@
 
 Fetches the user's open orders for the specified market.
 
-<aside class="warning">
-Support for Get Orders is a work in progress.
-</aside>
-
 > Sample Request
 
 ```json

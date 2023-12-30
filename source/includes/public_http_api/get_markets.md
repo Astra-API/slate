@@ -45,13 +45,3 @@ Returns all markets listed by the specified exchange.
 |Name|Type|Required|Description|
 |---|---|---|---|---|
 |-|[[Market](#market)]|True|List of all supported asset pairs|
-
-<aside class="notice">
-Currently supports SPOT assets only.
-</aside>
-<!-- ### Market
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|baseAsset|String|True|Base asset of the market|
-|quoteAsset|String|True|Quote asset of the market| -->

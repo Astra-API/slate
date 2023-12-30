@@ -2,10 +2,6 @@
 
 `GET /balances`
 
-<aside class="warning">
-Support for Get Balances is a work in progress.
-</aside>
-
 Fetches the user's balances of all assets on the exchange. This includes deposits, collateral and open positions.
 
 > Sample Request

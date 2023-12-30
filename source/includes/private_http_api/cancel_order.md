@@ -2,10 +2,6 @@
 
 `DELETE /orders`
 
-<aside class="warning">
-Support for Cancel Order is a work in progress.
-</aside>
-
 Cancels an order on the exchange.
 
 ### Request
