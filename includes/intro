@@ -1,33 +1,70 @@
-<h1 id='introduction'>Introduction</h1>
+<h1 id='introduction'>Introduction</h1><h2 id='astra-api'>Astra API</h2>
 <blockquote>
 <p>Scroll down for example requests and responses.</p>
 </blockquote>
 
-<p>Welcome to the Astra API documentation for traders and developers. Astra eliminates the often complex, unpredictable, and unstable behavior of communciating with cryptocurrency exchanges.</p>
-
-<p>Astra provides fast reliable connections to several exchanges to users.</p>
-
-<!-- Astra distills a myriad of different exchange specific data packets into Astra's unified data formats, designed to swiftly integrate with developers' trading systems. -->
-
-<p>Users leverage Astra by forwarding unified data formats (JSON&#39;s) containing exchange and market specific requests to the API which Astra transform into exchange compatible messages, speedily returning useful data.</p>
-
-<p>The API is separated into three categories: Public HTTP API, Private HTTP API, and Websockets API. </p>
+<p>Astra API is a unified API for crypto trading. We provide direct market access (DMA) to multiple trading venues, including crypto exchanges, DEXes, and OTC desks. Our features include:</p>
 
 <ul>
-<li><p>Private HTTP API requests require authentication and enable those users to place orders and view user sepcific data.</p></li>
-<li><p>Public HTTP and Websockets API&#39;s are both public, accessible to all users.</p></li>
-</ul>
-<h3 id='general-information'>General Information</h3>
-<ul>
-<li>REST Endpoint: <code>https://prod.astra-api.dev</code></li>
-<li>WEBSOCKET Endpoint: <code>wss://prod.astra-api.dev/ws</code></li>
+<li>real-time L2 market data via REST and WebSockets</li>
+<li>order placement, cancellation, and smart order routing</li>
+<li>fetching user data like fills, orders, positions, balances, and margin info</li>
+<li>multi-asset support, including spot, perpetuals, expiring futures and options markets</li>
+<li>normalization of data for all endpoints</li>
+<li>ultra low latency</li>
+<li>colocation with exchanges</li>
+<li>(coming soon!) historical market data</li>
+<li>(coming soon!) transfers endpoints</li>
+<li>(coming soon!) support for leveraged tokens, spot margin, and more</li>
 </ul>
 
-<p>Features are continously in development, and this API documentation will routinely update as features are rolled out.</p>
+<p>Astra API is perfect for trading firms, OTC desks, fintechs, brokerages, neobanks, and other businesses who want a performant, robust, and easy-to-use DMA product.</p>
+<h3 id='supported-exchanges'>Supported Exchanges</h3>
+<p>We currently support:</p>
 
-<p>If you have suggestions, please reach out to contact@astra-api.dev.</p>
-<h3 id='supported-exchanges-and-asset-types'>Supported Exchanges and Asset Types</h3>
 <ul>
-<li><p>We currently support (select features) on BINANCE, COINBASE, KUCOIN, HUOBI, and OKX.</p></li>
-<li><p>We currently support asset types: SPOT and PERPETUALS.</p></li>
+<li>Binance</li>
+<li>Coinbase</li>
+<li>OKX</li>
+<li>HTX (Huobi)</li>
+<li>Kraken</li>
+<li>KuCoin</li>
+<li>dYdX V4</li>
 </ul>
+
+<p>The list is growing quickly, and we plan to add support for several more exchanges and DEXes in the coming months. If there&#39;s a specific trading venue that you&#39;d like us to prioritize, please <a href="mailto:contact@astra-api.dev">contact us</a>.</p>
+
+<p>If you&#39;re an exchange or other trading venue, and you want us to integrate with your platform, please <a href="mailto:contact@astra-api.dev">contact us</a>.</p>
+
+<aside class="notice">
+<b>NOTE:</b> Astra API is in beta, so you may observe some occasional unexpected behaviour for edge cases. If you see something that looks off, please notify us at contact@astra-api.dev and we will look into it ASAP.
+<br/>
+<br/>
+Additionally, the API surface is still in flux, and may change as we get closer to a stable release. If you need a stable API for your use-case, please contact us.
+</aside>
+
+<!-- ## OTC
+
+We've also used our expertise in exchange connectivity to build a best-in-class OTC desk serving transactions of all sizes.
+
+Our OTC service provides access to deep liquidity across all assets, chains, and  
+
+, access deep liquidity 
+
+
+Our OTC service is 
+
+
+
+In addition to Astra
+
+market access to crypto markets, while also accessing the full spectrum of liquidity and never compromising on pr
+
+seamless access to crypto markets without the hassle of dealing
+
+
+The API is separated into three categories: Public HTTP API, Private HTTP API, and Websockets API. 
+
+- Private HTTP API requests require authentication and enable those users to place orders and view user sepcific data.
+
+- Public HTTP and Websockets API's are both public, accessible to all users. -->

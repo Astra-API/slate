@@ -20,11 +20,7 @@
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<aside class="notice">
-Support for specifiying <code>startTime</code>, <code>endTime</code>,<code>pageSize</code>,and <code>pageNumber</code> are currently a work in progress. 
-</aside>
-<h3 id='request'>Request</h3>
+</span></code></pre></div><h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>

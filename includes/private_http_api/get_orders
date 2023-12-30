@@ -3,10 +3,6 @@
 
 <p>Fetches the user&#39;s open orders for the specified market.</p>
 
-<aside class="warning">
-Support for Get Orders is a work in progress.
-</aside>
-
 <blockquote>
 <p>Sample Request</p>
 </blockquote>

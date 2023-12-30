@@ -1,0 +1,27 @@
+<h1 id='getting-started'>Getting Started</h1>
+<p>Astra API is available in two modes: managed and self-hosted</p>
+
+<p>With managed hosting, we run all the infrastructure behind the scenes to give you robust, ultra-low-latency market access.</p>
+
+<p>With self-hosting, we provide you with a lightweight proxy agent that you run on your own servers. Your business software can then interact directly with each exchange via our proxy.</p>
+
+<p>To get started, create an account with us and create and Astra API key. If you are using our API only to access public market data, then this is all you need.</p>
+
+<p>If you are placing/cancelling orders or fetching your private user data, you will need to bring your own exchange accounts and API keys. Once you have set up accounts on an exchange, you can export your API keys and use that with the Astra API.</p>
+<h3 id='endpoints'>Endpoints</h3>
+<p>You can use the following endpoints to access our hosted API:</p>
+
+<ul>
+<li>REST Endpoint: <code>https://prod.astra-api.dev</code></li>
+<li>WEBSOCKET Endpoint: <code>wss://prod.astra-api.dev/ws</code></li>
+</ul>
+
+<p>Instructions for self-hosting are coming soon.</p>
+<h3 id='authentication'>Authentication</h3>
+<p>Headers:
+* <strong>X-EXCHANGE-API-KEY</strong>: For specifying your Astra API key 
+* <strong>X-EXCHANGE-API-KEY</strong>: For specifying your exchange API keys when using private endpoints. This header is not required for public endpoints</p>
+<h3 id='data-privacy'>Data Privacy</h3>
+<p>For users of managed hosting, your data is encrypted in transit via HTTPS, and we never read any credentials that you transmit via our API. We have a strict no-logging policy for sensitive user data, which means that any credentials get destroyed as soon as they are used, and are never written to disk.</p>
+
+<p>For users of self-hosting, you fully own your data. Your data, keys, and other credentials never leave your servers. Astra&#39;s proxy agent is self-contained, and only communicates with our servers to authenticate you and make sure you have a valid Astra API key.</p>

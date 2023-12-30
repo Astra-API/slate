@@ -74,15 +74,7 @@ Developers uses `SPOT`, a type of `Asset`, to specify the type of base asset wit
 <td>Name of asset</td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-PERPETUAL assets supported for Binance only. Rollout of PERPETUAL for other exchanges (OKX, COINBASE, HUOBI) to arrive within a couple days.
-</aside>
 <h3 id='dated-future-asset'>DATED FUTURE Asset</h3>
-<aside class="notice">
-Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
-</aside>
-
 <p>A dated future is a derivative financial contract, specifying the purchase or sale of an asset at a predetermined price, with settlement occurring on a specific future date. Astra represents dated futures through <code>DATED_FUTURE</code>.</p>
 
 <blockquote>
@@ -122,10 +114,6 @@ Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES an
 </tr>
 </tbody></table>
 <h3 id='option-asset'>OPTION Asset</h3>
-<aside class="notice">
-Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
-</aside>
-
 <blockquote>
 <p>Sample OPTION</p>
 </blockquote>
@@ -183,15 +171,22 @@ Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES an
 Possible values for <code>duration_type</code> are Daily, Weekly, Monthly, Quarterly.
 </aside>
 <h2 id='abstract-spot-asset'>Abstract Spot Asset</h2>
-<blockquote>
-<p>Sample data</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>An abstract SPOT asset is a currency, centralized or decentralized. Astra represents these through <code>Abstract Spot Asset</code>.</p>
+<p>Represents an abstract spot asset such as BTC, ETH, USD, USDT, etc.
+The assets are &quot;abstract&quot; in the sense that they doesn&#39;t necessarily
+correspond to a single fungible token - there is variation with regard to
+network, custody, etc.</p>
 
-<p>Example 1: </p>
+<p>For example, USDC could refer to USDC on any network: Ethereum, Solana, etc.
+These are all technically distinct assets, which we think of as equivalent
+due to the creation/redemption mechanism maintained by Circle across all
+networks.</p>
 
-<p>The <code>quoteAsset</code> within a <code>Market</code> is the units of price for which the baseAsset is quoted for. It is represented by <code>Abstract Spot Asset</code>.</p>
+<p>Similarly, BTC could refer to Bitcoin custodied on Binance,
+Coinbase, self-custody, etc. When you custody an asset on a centralized
+exchange, what you actually own is just a &quot;deposit&quot;, which is an IOU from
+the exchange that you can redeem for the underlying asset. These are subject
+to different counterparty risks depending on the exchange, and are arguably
+not the same asset.</p>
+
+<p>So for simplicity, we use AbstractSpotAsset to represent what most users and
+exchanges think of as a single spot asset.</p>

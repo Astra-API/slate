@@ -286,7 +286,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-9c19b03a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-e20a569a.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-b12a2749.js"></script>
 
@@ -313,10 +313,21 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#general-information" class="toc-h2 toc-link" data-title="General Information">General Information</a>
+                    <a href="#astra-api" class="toc-h2 toc-link" data-title="Astra API">Astra API</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
                   </li>
                   <li>
-                    <a href="#supported-exchanges-and-asset-types" class="toc-h2 toc-link" data-title="Supported Exchanges and Asset Types">Supported Exchanges and Asset Types</a>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#data-privacy" class="toc-h2 toc-link" data-title="Data Privacy">Data Privacy</a>
                   </li>
               </ul>
           </li>
@@ -328,12 +339,6 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-markets" class="toc-h2 toc-link" data-title="Get Markets">Get Markets</a>
-                  </li>
-                  <li>
-                    <a href="#get-price" class="toc-h2 toc-link" data-title="Get Price">Get Price</a>
-                  </li>
-                  <li>
-                    <a href="#get-best-bid-offer" class="toc-h2 toc-link" data-title="Get Best Bid/Offer">Get Best Bid/Offer</a>
                   </li>
                   <li>
                     <a href="#get-orderbook" class="toc-h2 toc-link" data-title="Get Orderbook">Get Orderbook</a>
@@ -378,9 +383,6 @@
             <a href="#schema" class="toc-h1 toc-link" data-title="Schema">Schema</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#format-of-parameters" class="toc-h2 toc-link" data-title="Format of Parameters">Format of Parameters</a>
-                  </li>
-                  <li>
                     <a href="#bid" class="toc-h2 toc-link" data-title="Bid">Bid</a>
                   </li>
                   <li>
@@ -410,46 +412,107 @@
               </ul>
           </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
+        <h1 id='introduction'>Introduction</h1><h2 id='astra-api'>Astra API</h2>
 <blockquote>
 <p>Scroll down for example requests and responses.</p>
 </blockquote>
 
-<p>Welcome to the Astra API documentation for traders and developers. Astra eliminates the often complex, unpredictable, and unstable behavior of communciating with cryptocurrency exchanges.</p>
-
-<p>Astra provides fast reliable connections to several exchanges to users.</p>
-
-<!-- Astra distills a myriad of different exchange specific data packets into Astra's unified data formats, designed to swiftly integrate with developers' trading systems. -->
-
-<p>Users leverage Astra by forwarding unified data formats (JSON&#39;s) containing exchange and market specific requests to the API which Astra transform into exchange compatible messages, speedily returning useful data.</p>
-
-<p>The API is separated into three categories: Public HTTP API, Private HTTP API, and Websockets API. </p>
+<p>Astra API is a unified API for crypto trading. We provide direct market access (DMA) to multiple trading venues, including crypto exchanges, DEXes, and OTC desks. Our features include:</p>
 
 <ul>
-<li><p>Private HTTP API requests require authentication and enable those users to place orders and view user sepcific data.</p></li>
-<li><p>Public HTTP and Websockets API&#39;s are both public, accessible to all users.</p></li>
+<li>real-time L2 market data via REST and WebSockets</li>
+<li>order placement, cancellation, and smart order routing</li>
+<li>fetching user data like fills, orders, positions, balances, and margin info</li>
+<li>multi-asset support, including spot, perpetuals, expiring futures and options markets</li>
+<li>normalization of data for all endpoints</li>
+<li>ultra low latency</li>
+<li>colocation with exchanges</li>
+<li>(coming soon!) historical market data</li>
+<li>(coming soon!) transfers endpoints</li>
+<li>(coming soon!) support for leveraged tokens, spot margin, and more</li>
 </ul>
-<h3 id='general-information'>General Information</h3>
+
+<p>Astra API is perfect for trading firms, OTC desks, fintechs, brokerages, neobanks, and other businesses who want a performant, robust, and easy-to-use DMA product.</p>
+<h3 id='supported-exchanges'>Supported Exchanges</h3>
+<p>We currently support:</p>
+
+<ul>
+<li>Binance</li>
+<li>Coinbase</li>
+<li>OKX</li>
+<li>HTX (Huobi)</li>
+<li>Kraken</li>
+<li>KuCoin</li>
+<li>dYdX V4</li>
+</ul>
+
+<p>The list is growing quickly, and we plan to add support for several more exchanges and DEXes in the coming months. If there&#39;s a specific trading venue that you&#39;d like us to prioritize, please <a href="mailto:contact@astra-api.dev">contact us</a>.</p>
+
+<p>If you&#39;re an exchange or other trading venue, and you want us to integrate with your platform, please <a href="mailto:contact@astra-api.dev">contact us</a>.</p>
+
+<aside class="notice">
+<b>NOTE:</b> Astra API is in beta, so you may observe some occasional unexpected behaviour for edge cases. If you see something that looks off, please notify us at contact@astra-api.dev and we will look into it ASAP.
+<br/>
+<br/>
+Additionally, the API surface is still in flux, and may change as we get closer to a stable release. If you need a stable API for your use-case, please contact us.
+</aside>
+
+<!-- ## OTC
+
+We've also used our expertise in exchange connectivity to build a best-in-class OTC desk serving transactions of all sizes.
+
+Our OTC service provides access to deep liquidity across all assets, chains, and  
+
+, access deep liquidity 
+
+
+Our OTC service is 
+
+
+
+In addition to Astra
+
+market access to crypto markets, while also accessing the full spectrum of liquidity and never compromising on pr
+
+seamless access to crypto markets without the hassle of dealing
+
+
+The API is separated into three categories: Public HTTP API, Private HTTP API, and Websockets API. 
+
+- Private HTTP API requests require authentication and enable those users to place orders and view user sepcific data.
+
+- Public HTTP and Websockets API's are both public, accessible to all users. -->
+<h1 id='getting-started'>Getting Started</h1>
+<p>Astra API is available in two modes: managed and self-hosted</p>
+
+<p>With managed hosting, we run all the infrastructure behind the scenes to give you robust, ultra-low-latency market access.</p>
+
+<p>With self-hosting, we provide you with a lightweight proxy agent that you run on your own servers. Your business software can then interact directly with each exchange via our proxy.</p>
+
+<p>To get started, create an account with us and create and Astra API key. If you are using our API only to access public market data, then this is all you need.</p>
+
+<p>If you are placing/cancelling orders or fetching your private user data, you will need to bring your own exchange accounts and API keys. Once you have set up accounts on an exchange, you can export your API keys and use that with the Astra API.</p>
+<h3 id='endpoints'>Endpoints</h3>
+<p>You can use the following endpoints to access our hosted API:</p>
+
 <ul>
 <li>REST Endpoint: <code>https://prod.astra-api.dev</code></li>
 <li>WEBSOCKET Endpoint: <code>wss://prod.astra-api.dev/ws</code></li>
 </ul>
 
-<p>Features are continously in development, and this API documentation will routinely update as features are rolled out.</p>
+<p>Instructions for self-hosting are coming soon.</p>
+<h3 id='authentication'>Authentication</h3>
+<p>Headers:
+* <strong>X-EXCHANGE-API-KEY</strong>: For specifying your Astra API key 
+* <strong>X-EXCHANGE-API-KEY</strong>: For specifying your exchange API keys when using private endpoints. This header is not required for public endpoints</p>
+<h3 id='data-privacy'>Data Privacy</h3>
+<p>For users of managed hosting, your data is encrypted in transit via HTTPS, and we never read any credentials that you transmit via our API. We have a strict no-logging policy for sensitive user data, which means that any credentials get destroyed as soon as they are used, and are never written to disk.</p>
 
-<p>If you have suggestions, please reach out to contact@astra-api.dev.</p>
-<h3 id='supported-exchanges-and-asset-types'>Supported Exchanges and Asset Types</h3>
-<ul>
-<li><p>We currently support (select features) on BINANCE, COINBASE, KUCOIN, HUOBI, and OKX.</p></li>
-<li><p>We currently support asset types: SPOT and PERPETUALS.</p></li>
-</ul>
+<p>For users of self-hosting, you fully own your data. Your data, keys, and other credentials never leave your servers. Astra&#39;s proxy agent is self-contained, and only communicates with our servers to authenticate you and make sure you have a valid Astra API key.</p>
 <h1 id='authentication'>Authentication</h1>
 <p>TODO</p>
 
@@ -526,162 +589,6 @@
 <td>[<a href="#market">Market</a>]</td>
 <td>True</td>
 <td>List of all supported asset pairs</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-Currently supports SPOT assets only.
-</aside>
-
-<!-- ### Market
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|baseAsset|String|True|Base asset of the market|
-|quoteAsset|String|True|Quote asset of the market| -->
-<h2 id='get-price'>Get Price</h2>
-<p><code>GET /price</code></p>
-
-<p>Returns the current price of the specified market.</p>
-
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-  </span><span class="p">},</span><span class="w"> 
-  </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request'>Request</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>exchange</td>
-<td><a href="#exchange">Exchange</a></td>
-<td>True</td>
-<td>Exchange to fetch data from</td>
-</tr>
-<tr>
-<td>baseAsset</td>
-<td>String</td>
-<td>True</td>
-<td>Base asset of market</td>
-</tr>
-<tr>
-<td>quoteAsset</td>
-<td>String</td>
-<td>True</td>
-<td>Quote asset of market</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Successful Sample Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="mf">27879.5</span><span class="w">
-</span></code></pre></div><h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>-</td>
-<td>Float (f64)</td>
-<td>True</td>
-<td>Price of the asset in units of quote asset</td>
-</tr>
-</tbody></table>
-<h2 id='get-best-bid-offer'>Get Best Bid/Offer</h2>
-<p><code>GET /bbo</code></p>
-
-<p>Returns the current BBO of the specified market on the specified exchange.</p>
-
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OKX"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOL"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request'>Request</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>exchange</td>
-<td><a href="#exchange">Exchange</a></td>
-<td>True</td>
-<td>Exchange to fetch data from</td>
-</tr>
-<tr>
-<td>baseAsset</td>
-<td>String</td>
-<td>True</td>
-<td>Base asset of market</td>
-</tr>
-<tr>
-<td>quoteAsset</td>
-<td>String</td>
-<td>True</td>
-<td>Quote asset of market</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Successful Sample Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.19</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.15</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>bid</td>
-<td><a href="#bid">Bid</a></td>
-<td>True</td>
-<td>Current best bid of the market</td>
-</tr>
-<tr>
-<td>ask</td>
-<td><a href="#ask">Ask</a></td>
-<td>True</td>
-<td>Current best ask of the market</td>
 </tr>
 </tbody></table>
 <h2 id='get-orderbook'>Get Orderbook</h2>
@@ -799,11 +706,7 @@ Currently supports SPOT assets only.
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<aside class="notice">
-Support for specifiying <code>startTime</code>, <code>endTime</code>,<code>pageSize</code>,and <code>pageNumber</code> are currently a work in progress. 
-</aside>
-<h3 id='request'>Request</h3>
+</span></code></pre></div><h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -915,18 +818,10 @@ Support for specifiying <code>startTime</code>, <code>endTime</code>,<code>pageS
 |---|---|
 |» buy|Represents a buy order or trade|
 |» sell|Represents a sell order or trade| -->
-<h1 id='private-http-api'>Private HTTP API</h1>
-<aside class="warning">
-Support for Private HTTP API is a work in progress.
-</aside>
-<h2 id='get-orders'>Get Orders</h2>
+<h1 id='private-http-api'>Private HTTP API</h1><h2 id='get-orders'>Get Orders</h2>
 <p><code>GET /orders</code></p>
 
 <p>Fetches the user&#39;s open orders for the specified market.</p>
-
-<aside class="warning">
-Support for Get Orders is a work in progress.
-</aside>
 
 <blockquote>
 <p>Sample Request</p>
@@ -1014,10 +909,6 @@ Support for Get Orders is a work in progress.
 <h2 id='get-balances'>Get Balances</h2>
 <p><code>GET /balances</code></p>
 
-<aside class="warning">
-Support for Get Balances is a work in progress.
-</aside>
-
 <p>Fetches the user&#39;s balances of all assets on the exchange. This includes deposits, collateral and open positions.</p>
 
 <blockquote>
@@ -1069,10 +960,6 @@ Support for Get Balances is a work in progress.
 </tbody></table>
 <h2 id='place-order'>Place Order</h2>
 <p><code>POST /orders</code></p>
-
-<aside class="warning">
-Support for Place Order is a work in progress.
-</aside>
 
 <blockquote>
 <p>Sample Request</p>
@@ -1204,10 +1091,6 @@ Support for Place Order is a work in progress.
 </tbody></table>
 <h2 id='cancel-order'>Cancel Order</h2>
 <p><code>DELETE /orders</code></p>
-
-<aside class="warning">
-Support for Cancel Order is a work in progress.
-</aside>
 
 <p>Cancels an order on the exchange.</p>
 <h3 id='request'>Request</h3>
@@ -1523,13 +1406,7 @@ Support for Cancel Order is a work in progress.
 <td>List of trades that have occurred since last message</td>
 </tr>
 </tbody></table>
-<h1 id='schema'>Schema</h1>
-<p>Astra&#39;s strength is consolidating data from many exchanges into a collection of unified data formats. Below are rigorous defintiions of these formats which help developers integrate Astra&#39;s API into their systems. </p>
-<h2 id='format-of-parameters'>Format of Parameters</h2>
-<p>All <code>String</code> type parameters fowarded to Astra are <code>UPPERCASE</code> only, unless specified otherwise in an information tag.</p>
-
-<p>All field names forwarded and recieved from Astra are <code>camelCase</code> unless specified otherwsie in an information tag.</p>
-<h2 id='bid'>Bid</h2>
+<h1 id='schema'>Schema</h1><h2 id='bid'>Bid</h2>
 <blockquote>
 <p>Sample Data</p>
 </blockquote>
@@ -1605,28 +1482,22 @@ Support for Cancel Order is a work in progress.
 <table><thead>
 <tr>
 <th>Value</th>
-<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>BINANCE</td>
-<td>Binance exchange</td>
 </tr>
 <tr>
 <td>COINBASE</td>
-<td>Coinbase exchange</td>
 </tr>
 <tr>
 <td>OKX</td>
-<td>OKX exchange</td>
 </tr>
 <tr>
 <td>KUCOIN</td>
-<td>KUCOIN exchange</td>
 </tr>
 <tr>
 <td>HUOBI</td>
-<td>HUOBI exchange</td>
 </tr>
 </tbody></table>
 <h2 id='asset'>Asset</h2>
@@ -1705,15 +1576,7 @@ Developers uses `SPOT`, a type of `Asset`, to specify the type of base asset wit
 <td>Name of asset</td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-PERPETUAL assets supported for Binance only. Rollout of PERPETUAL for other exchanges (OKX, COINBASE, HUOBI) to arrive within a couple days.
-</aside>
 <h3 id='dated-future-asset'>DATED FUTURE Asset</h3>
-<aside class="notice">
-Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
-</aside>
-
 <p>A dated future is a derivative financial contract, specifying the purchase or sale of an asset at a predetermined price, with settlement occurring on a specific future date. Astra represents dated futures through <code>DATED_FUTURE</code>.</p>
 
 <blockquote>
@@ -1753,10 +1616,6 @@ Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES an
 </tr>
 </tbody></table>
 <h3 id='option-asset'>OPTION Asset</h3>
-<aside class="notice">
-Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES and OPTIONS is currently a work in progress.
-</aside>
-
 <blockquote>
 <p>Sample OPTION</p>
 </blockquote>
@@ -1814,18 +1673,25 @@ Astra currently supports SPOT and PERPETUAL assets. Support for DATED FUTURES an
 Possible values for <code>duration_type</code> are Daily, Weekly, Monthly, Quarterly.
 </aside>
 <h2 id='abstract-spot-asset'>Abstract Spot Asset</h2>
-<blockquote>
-<p>Sample data</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>An abstract SPOT asset is a currency, centralized or decentralized. Astra represents these through <code>Abstract Spot Asset</code>.</p>
+<p>Represents an abstract spot asset such as BTC, ETH, USD, USDT, etc.
+The assets are &quot;abstract&quot; in the sense that they doesn&#39;t necessarily
+correspond to a single fungible token - there is variation with regard to
+network, custody, etc.</p>
 
-<p>Example 1: </p>
+<p>For example, USDC could refer to USDC on any network: Ethereum, Solana, etc.
+These are all technically distinct assets, which we think of as equivalent
+due to the creation/redemption mechanism maintained by Circle across all
+networks.</p>
 
-<p>The <code>quoteAsset</code> within a <code>Market</code> is the units of price for which the baseAsset is quoted for. It is represented by <code>Abstract Spot Asset</code>.</p>
+<p>Similarly, BTC could refer to Bitcoin custodied on Binance,
+Coinbase, self-custody, etc. When you custody an asset on a centralized
+exchange, what you actually own is just a &quot;deposit&quot;, which is an IOU from
+the exchange that you can redeem for the underlying asset. These are subject
+to different counterparty risks depending on the exchange, and are arguably
+not the same asset.</p>
+
+<p>So for simplicity, we use AbstractSpotAsset to represent what most users and
+exchanges think of as a single spot asset.</p>
 <h2 id='market'>Market</h2>
 <blockquote>
 <p>Sample Data</p>

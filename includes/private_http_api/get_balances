@@ -1,10 +1,6 @@
 <h2 id='get-balances'>Get Balances</h2>
 <p><code>GET /balances</code></p>
 
-<aside class="warning">
-Support for Get Balances is a work in progress.
-</aside>
-
 <p>Fetches the user&#39;s balances of all assets on the exchange. This includes deposits, collateral and open positions.</p>
 
 <blockquote>

@@ -61,14 +61,3 @@
 <td>List of all supported asset pairs</td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-Currently supports SPOT assets only.
-</aside>
-
-<!-- ### Market
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|baseAsset|String|True|Base asset of the market|
-|quoteAsset|String|True|Quote asset of the market| -->

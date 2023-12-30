@@ -4,27 +4,21 @@
 <table><thead>
 <tr>
 <th>Value</th>
-<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>BINANCE</td>
-<td>Binance exchange</td>
 </tr>
 <tr>
 <td>COINBASE</td>
-<td>Coinbase exchange</td>
 </tr>
 <tr>
 <td>OKX</td>
-<td>OKX exchange</td>
 </tr>
 <tr>
 <td>KUCOIN</td>
-<td>KUCOIN exchange</td>
 </tr>
 <tr>
 <td>HUOBI</td>
-<td>HUOBI exchange</td>
 </tr>
 </tbody></table>

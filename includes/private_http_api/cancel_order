@@ -1,10 +1,6 @@
 <h2 id='cancel-order'>Cancel Order</h2>
 <p><code>DELETE /orders</code></p>
 
-<aside class="warning">
-Support for Cancel Order is a work in progress.
-</aside>
-
 <p>Cancels an order on the exchange.</p>
 <h3 id='request'>Request</h3>
 <table><thead>
