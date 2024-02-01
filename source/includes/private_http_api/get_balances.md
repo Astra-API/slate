@@ -4,7 +4,11 @@
 
 Fetches the user's balances of all assets on the exchange. This includes deposits, collateral and open positions.
 
-> Sample Request
+<aside class="notice">
+Coming soon!
+</aside>
+
+<!-- > Sample Request
 
 ```json
 {
@@ -32,4 +36,4 @@ Fetches the user's balances of all assets on the exchange. This includes deposit
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|asset symbol|Float (f64)|False|List of assets and corresponding amounts linked to user.|
+|asset symbol|Float (f64)|False|List of assets and corresponding amounts linked to user.| -->

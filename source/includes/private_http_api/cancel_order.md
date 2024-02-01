@@ -2,9 +2,13 @@
 
 `DELETE /orders`
 
-Cancels an order on the exchange.
+Cancels the specified order.
 
-### Request
+<aside class="notice">
+Coming soon!
+</aside>
+
+<!-- ### Request
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
@@ -12,4 +16,4 @@ Cancels an order on the exchange.
 |orderId|String|True|ID of an order on an exchange|
 
 ### Response
-
+ -->

@@ -26,7 +26,9 @@ includes:
 
   - private_http_api/intro
   - private_http_api/get_orders
+  - private_http_api/get_fills
   - private_http_api/get_balances
+  - private_http_api/get_positions
   - private_http_api/place_order
   - private_http_api/cancel_order
 
