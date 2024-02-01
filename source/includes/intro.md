@@ -4,7 +4,7 @@
 
 > Scroll down for example requests and responses.
 
-Astra API is a unified API for crypto trading. We provide direct market access (DMA) to multiple trading venues, including crypto exchanges, DEXes, and OTC desks. Our features include:
+Astra API is a unified API for crypto trading. It provides direct market access (DMA) to multiple trading venues, including crypto exchanges, DEXes, and OTC desks. Features include:
 
 - real-time L2 market data via REST and WebSockets
 - order placement, cancellation, and smart order routing
@@ -29,14 +29,14 @@ We currently support:
 - HTX (Huobi)
 - Kraken
 - KuCoin
-- dYdX V4
+<!-- - dYdX V4 -->
 
 The list is growing quickly, and we plan to add support for several more exchanges and DEXes in the coming months. If there's a specific trading venue that you'd like us to prioritize, please [contact us](mailto:contact@astra-api.dev).
 
 If you're an exchange or other trading venue, and you want us to integrate with your platform, please [contact us](mailto:contact@astra-api.dev).
 
 <aside class="notice">
-<b>NOTE:</b> Astra API is in beta, so you may observe some occasional unexpected behaviour for edge cases. If you see something that looks off, please notify us at contact@astra-api.dev and we will look into it ASAP.
+<b>NOTE:</b> Astra API is still in its alpha release, so you may observe some occasional unexpected behaviour for edge cases. If you see something that looks off, please notify us at contact@astra-api.dev and we will look into it ASAP.
 <br/>
 <br/>
 Additionally, the API surface is still in flux, and may change as we get closer to a stable release. If you need a stable API for your use-case, please contact us.

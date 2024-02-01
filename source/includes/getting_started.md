@@ -1,15 +1,20 @@
 # Getting Started
 
-Astra API is available in two modes: managed and self-hosted
+## 1. Create an account
 
-With managed hosting, we run all the infrastructure behind the scenes to give you robust, ultra-low-latency market access.
+First, create an account with us here: <https://terminal.astra-api.dev/>. You can use your Astra account to access all of our products and services.
 
-With self-hosting, we provide you with a lightweight proxy agent that you run on your own servers. Your business software can then interact directly with each exchange via our proxy.
+![Astra Terminal login page](astra-terminal-login-page.png)
 
-To get started, create an account with us and create and Astra API key. If you are using our API only to access public market data, then this is all you need.
 
-If you are placing/cancelling orders or fetching your private user data, you will need to bring your own exchange accounts and API keys. Once you have set up accounts on an exchange, you can export your API keys and use that with the Astra API.
+## 2. Create an API key
 
+Navigate to <https://terminal.astra-api.dev/settings> and create an API key. The key will only be displayed once upon creation, so make sure you save it.
+
+![Astra Terminal API keys page](astra-terminal-api-keys-page.png)
+
+
+## 3. Send your first request
 
 ### Endpoints
 
@@ -18,8 +23,6 @@ You can use the following endpoints to access our hosted API:
 - REST Endpoint: `https://prod.astra-api.dev`
 - WEBSOCKET Endpoint: `wss://prod.astra-api.dev/ws`
 
-Instructions for self-hosting are coming soon.
-
 
 ### Authentication
 
@@ -27,6 +30,20 @@ Headers:
 * **X-EXCHANGE-API-KEY**: For specifying your Astra API key 
 * **X-EXCHANGE-API-KEY**: For specifying your exchange API keys when using private endpoints. This header is not required for public endpoints
 
+
+## 4. Self hosting
+
+Astra API is available in two modes: managed and self-hosted.
+
+With managed hosting, we run all the infrastructure behind the scenes to give you fast, robust market access.
+
+With self-hosting, we provide you with a lightweight proxy agent that you run on your own servers. Your business software can then interact directly with each exchange via our proxy.
+
+To get started, create an account with us and create and Astra API key. If you are using our API only to access public market data, then this is all you need.
+
+If you are placing/cancelling orders or fetching your private user data, you will need to bring your own exchange accounts and API keys. Once you have set up accounts on an exchange, you can export your API keys and use that with the Astra API.
+
+Instructions for self-hosting are coming soon.
 
 ### Data Privacy
 
