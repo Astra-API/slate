@@ -1,0 +1,69 @@
+<h2 id='subscribing'>Subscribing</h2>
+<p>You can subscribe to multiple different exchange&#39;s specific Trade or Orderbook Updates channel concurrently by forwarding an list of <code>Subscription</code> messages through the websocket connection. </p>
+
+<p>To understand more about how Astra handles the subscribing of exchanges, please see the <code>Subcription</code> data type in the Schema tab.</p>
+
+<blockquote>
+<p>Sample message</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSCRIBE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"dataType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERBOOK"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='message'>Message</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>action</td>
+<td><a href="#action">Action</a></td>
+<td>True</td>
+<td>Action to perform</td>
+</tr>
+<tr>
+<td>payload</td>
+<td><a href="#subscription">Subscription</a></td>
+<td>True</td>
+<td>A subscription object defining specifics of the to be subscribed channel</td>
+</tr>
+</tbody></table>
+<h3 id='action'>Action</h3>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SUBSCRIBE</td>
+<td>Subscribe to a channel</td>
+</tr>
+<tr>
+<td>UNSUBSCRIBE</td>
+<td>Unsubscribe from a channel</td>
+</tr>
+</tbody></table>
+
+<!-- 
+### Subscription
+
+|Parameter|Type|Default|Description|
+|---|---|---|---|
+|exchange|string|*required*|Action to perform|
+|market|string|*required*|Exchange to subscribe/unsubscribe|
+|dataType|[DataType](#datatype)|*required*|ID of an order on an exchange| -->

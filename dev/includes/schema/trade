@@ -1,0 +1,93 @@
+<h2 id='trade'>Trade</h2>
+<blockquote>
+<p>Sample Data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchangeMarket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30199.49</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0032</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents a trade through <code>Trade</code> on a specific market on an exchange.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchangeMarket</td>
+<td><a href="#exchange-market">Exchange Market</a></td>
+<td>True</td>
+<td>Contains exchange and market which was traded</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Float (f64)</td>
+<td>True</td>
+<td>Price of trade units of quote asset</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Float (f64)</td>
+<td>True</td>
+<td>Quantity of trade in units of base asset</td>
+</tr>
+<tr>
+<td>side</td>
+<td>[Side](</td>
+<td>True</td>
+<td>Direction of trade</td>
+</tr>
+</tbody></table>
+<h3 id='exchange-market'>Exchange Market</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td><a href="#exchange">Exchange</a></td>
+<td>True</td>
+<td>Exchange to fetch data from.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Float (f64)</td>
+<td>True</td>
+<td>Price of trade units of quote asset</td>
+</tr>
+</tbody></table>
+<h3 id='side'>Side</h3>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SELL</td>
+<td>Taker is selling the asset</td>
+</tr>
+<tr>
+<td>BUY</td>
+<td>Taker is buying the asset</td>
+</tr>
+</tbody></table>
