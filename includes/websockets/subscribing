@@ -1,5 +1,5 @@
 <h2 id='subscribing'>Subscribing</h2>
-<p>You can subscribe to multiple different exchange&#39;s specific Trade or Orderbook Updates channel concurrently by forwarding an list of <code>Subscription</code> messages through the websocket connection. </p>
+<p>You can subscribe to multiple different exchange&#39;s specific Trade or Orderbook Updates channel concurrently by forwarding an list of <code>Subscription</code> messages through the WebSocket connection. </p>
 
 <p>To understand more about how Astra handles the subscribing of exchanges, please see the <code>Subcription</code> data type in the Schema tab.</p>
 

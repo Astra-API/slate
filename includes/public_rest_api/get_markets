@@ -1,0 +1,63 @@
+<h2 id='get-markets'>Get Markets</h2>
+<p><code>GET /markets</code></p>
+
+<p>Returns all markets listed by the specified exchange.</p>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>exchange</td>
+<td><a href="#exchange">Exchange</a></td>
+<td>True</td>
+<td>Exchange to fetch data from</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-</td>
+<td>[<a href="#market">Market</a>]</td>
+<td>True</td>
+<td>List of all supported asset pairs</td>
+</tr>
+</tbody></table>

@@ -1,6 +1,6 @@
-<h1 id='websockets-api'>Websockets API</h1>
+<h1 id='websocket-api'>WebSocket API</h1>
 <!-- Default `content-Type`: `application/json` -->
 
-<p>The Websocket endpoint is available without authentication. Once the socket is connected, you can subscribe to a channel by sending a <code>Subscription</code> message, detailed in Schema.</p>
+<p>The WebSocket endpoint is available without authentication. Once the socket is connected, you can subscribe to a channel by sending a <code>Subscription</code> message, detailed in Schema.</p>
 
 <!-- Endpoint: `wss://prod.astra-api.dev/ws` -->

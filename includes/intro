@@ -3,23 +3,23 @@
 <p>Scroll down for example requests and responses.</p>
 </blockquote>
 
-<p>Astra API is a unified API for crypto trading. We provide direct market access (DMA) to multiple trading venues, including crypto exchanges, DEXes, and OTC desks. Our features include:</p>
+<p>Astra API is a unified API for crypto trading. It provides direct market access (DMA) to multiple trading venues, including crypto exchanges, DEXes, and OTC desks. Features include:</p>
 
 <ul>
-<li>real-time L2 market data via REST and WebSockets</li>
-<li>order placement, cancellation, and smart order routing</li>
-<li>fetching user data like fills, orders, positions, balances, and margin info</li>
-<li>multi-asset support, including spot, perpetuals, expiring futures and options markets</li>
-<li>normalization of data for all endpoints</li>
-<li>ultra low latency</li>
-<li>colocation with exchanges</li>
-<li>(coming soon!) historical market data</li>
-<li>(coming soon!) transfers endpoints</li>
-<li>(coming soon!) support for leveraged tokens, spot margin, and more</li>
+<li>Real-time L2 market data via REST and WebSocket</li>
+<li>Multi-asset support, including spot, perpetuals, expiring futures and options markets</li>
+<li>Normalization of data for all endpoints</li>
+<li>Low latency</li>
+<li>(coming soon!) Order placement, cancellation, and smart order routing</li>
+<li>(coming soon!) Fetching user data like fills, orders, positions, balances, and margin info</li>
+<li>(coming soon!) Colocation with exchanges</li>
+<li>(coming soon!) Historical market data</li>
+<li>(coming soon!) Transfers endpoints</li>
+<li>(coming soon!) Support for leveraged tokens, spot margin, and more</li>
 </ul>
 
 <p>Astra API is perfect for trading firms, OTC desks, fintechs, brokerages, neobanks, and other businesses who want a performant, robust, and easy-to-use DMA product.</p>
-<h3 id='supported-exchanges'>Supported Exchanges</h3>
+<h3 id='supported-exchanges'>Supported exchanges</h3>
 <p>We currently support:</p>
 
 <ul>
@@ -29,20 +29,29 @@
 <li>HTX (Huobi)</li>
 <li>Kraken</li>
 <li>KuCoin</li>
-<li>dYdX V4</li>
 </ul>
+
+<!-- - dYdX V4 -->
 
 <p>The list is growing quickly, and we plan to add support for several more exchanges and DEXes in the coming months. If there&#39;s a specific trading venue that you&#39;d like us to prioritize, please <a href="mailto:contact@astra-api.dev">contact us</a>.</p>
 
 <p>If you&#39;re an exchange or other trading venue, and you want us to integrate with your platform, please <a href="mailto:contact@astra-api.dev">contact us</a>.</p>
+<h3 id='supported-endpoints'>Supported endpoints</h3>
+<p>See below for a detailed list of the endpoints we support:</p>
+
+<ul>
+<li><a href="#websockets-api">Public market data via WebSocket</a></li>
+<li><a href="#public-rest-api">Public market data via REST</a></li>
+<li><a href="#private-rest-api">Private trading data via REST</a></li>
+</ul>
 
 <aside class="notice">
-<b>NOTE:</b> Astra API is in beta, so you may observe some occasional unexpected behaviour for edge cases. If you see something that looks off, please notify us at contact@astra-api.dev and we will look into it ASAP.
+<b>NOTE:</b> Astra API is still in its alpha release, so you may observe some occasional unexpected behaviour for edge cases. If you see something that looks off, please notify us at <a href="mailto:contact@astra-api.dev">contact@astra-api.dev</a> and we will look into it ASAP.
 <br/>
 <br/>
 Additionally, the API surface is still in flux, and may change as we get closer to a stable release. If you need a stable API for your use-case, please contact us.
 </aside>
-
+<h2 id='how-does-it-work'>How does it work?</h2>
 <!-- ## OTC
 
 We've also used our expertise in exchange connectivity to build a best-in-class OTC desk serving transactions of all sizes.
@@ -67,4 +76,4 @@ The API is separated into three categories: Public HTTP API, Private HTTP API, a
 
 - Private HTTP API requests require authentication and enable those users to place orders and view user sepcific data.
 
-- Public HTTP and Websockets API's are both public, accessible to all users. -->
+- Public HTTP and Websocket API's are both public, accessible to all users. -->
