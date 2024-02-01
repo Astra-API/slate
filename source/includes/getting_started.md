@@ -20,33 +20,27 @@ Navigate to <https://terminal.astra-api.dev/settings> and create an API key. The
 
 You can use the following endpoints to access our hosted API:
 
-- REST Endpoint: `https://prod.astra-api.dev`
-- WEBSOCKET Endpoint: `wss://prod.astra-api.dev/ws`
+- REST endpoint: `https://prod.astra-api.dev`
+- WebSocket endpoint: `wss://prod.astra-api.dev/ws`
 
 
 ### Authentication
 
-Headers:
-* **X-EXCHANGE-API-KEY**: For specifying your Astra API key 
-* **X-EXCHANGE-API-KEY**: For specifying your exchange API keys when using private endpoints. This header is not required for public endpoints
+All requests to Astra API need to be authenticated
+
+You can authenticate by specifying a header named `x-astra-api-key` with the value `Bearer {KEY}`, where you replace "KEY" with the value of your API key. For example, if the API key you created in the previous step was `kadjfasfl.KjUBAhdIafaDFSCsajfaIowSADxkaw`, you would include the following header:
+
+```
+{
+    "x-astra-api-key": "Bearer kadjfasfl.KjUBAhdIafaDFSCsajfaIowSADxkaw"
+}
+```
+
+Requests to the public market data endpoints do not require any additional authentication beyond your Astra API key. Private endpoints also you to authenticate.
 
 
-## 4. Self hosting
 
-Astra API is available in two modes: managed and self-hosted.
+### More Info
 
-With managed hosting, we run all the infrastructure behind the scenes to give you fast, robust market access.
+- For information on self-hosting the Astra API on your own servers, [see below](#self-hosting).
 
-With self-hosting, we provide you with a lightweight proxy agent that you run on your own servers. Your business software can then interact directly with each exchange via our proxy.
-
-To get started, create an account with us and create and Astra API key. If you are using our API only to access public market data, then this is all you need.
-
-If you are placing/cancelling orders or fetching your private user data, you will need to bring your own exchange accounts and API keys. Once you have set up accounts on an exchange, you can export your API keys and use that with the Astra API.
-
-Instructions for self-hosting are coming soon.
-
-### Data Privacy
-
-For users of managed hosting, your data is encrypted in transit via HTTPS, and we never read any credentials that you transmit via our API. We have a strict no-logging policy for sensitive user data, which means that any credentials get destroyed as soon as they are used, and are never written to disk.
-
-For users of self-hosting, you fully own your data. Your data, keys, and other credentials never leave your servers. Astra's proxy agent is self-contained, and only communicates with our servers to authenticate you and make sure you have a valid Astra API key.
