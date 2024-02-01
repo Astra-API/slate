@@ -5,7 +5,11 @@
 
 Returns trades for the specified market within the specified time window. 
 
-The default pageSize is 50, and the default pageNumber is 0 (pages are 0-indexed).
+<aside class="notice">
+Coming soon!
+</aside>
+
+<!-- The default pageSize is 50, and the default pageNumber is 0 (pages are 0-indexed).
 
 If neither startTime or endTime is specified, the server will return the first page of the most recent trades. The client may choose to specify just a startTime, just an endTime, or both.
 
@@ -60,7 +64,8 @@ Trades are returned in increasing order of their timestamp.
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|-|[[Trade](#trade)]|True|List of Trade objects. See Schema.|
+|-|[[Trade](#trade)]|True|List of Trade objects. See Schema.| -->
+
 
 <!-- |Name|Type|Required|Description|
 |---|---|---|---|---|

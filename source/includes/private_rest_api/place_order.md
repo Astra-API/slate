@@ -2,7 +2,13 @@
 
 `POST /orders`
 
-> Sample Request
+Place and order on the specified exchange and market.
+
+<aside class="notice">
+Coming soon!
+</aside>
+
+<!-- > Sample Request
 
 ```json
 {
@@ -54,4 +60,4 @@
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|-|Integer (i32)|True|ID of an order on an exchange|
+|-|Integer (i32)|True|ID of an order on an exchange| -->

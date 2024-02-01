@@ -1,6 +1,6 @@
 ## Subscribing
 
-You can subscribe to multiple different exchange's specific Trade or Orderbook Updates channel concurrently by forwarding an list of `Subscription` messages through the websocket connection. 
+You can subscribe to multiple different exchange's specific Trade or Orderbook Updates channel concurrently by forwarding an list of `Subscription` messages through the WebSocket connection. 
 
 To understand more about how Astra handles the subscribing of exchanges, please see the `Subcription` data type in the Schema tab.
 

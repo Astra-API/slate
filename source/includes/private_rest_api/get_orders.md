@@ -4,7 +4,11 @@
 
 Fetches the user's open orders for the specified market.
 
-> Sample Request
+<aside class="notice">
+Coming soon!
+</aside>
+
+<!-- > Sample Request
 
 ```json
 {
@@ -58,4 +62,4 @@ Fetches the user's open orders for the specified market.
 
 |Name|Type|Required|Description|
 |---|---|---|---|---|
-|-|[[Order]](#order)|True|List of open orders|
+|-|[[Order]](#order)|True|List of open orders| -->
