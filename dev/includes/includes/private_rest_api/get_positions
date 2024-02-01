@@ -1,0 +1,8 @@
+<h2 id='get-positions'>Get Positions</h2>
+<p><code>GET /positions</code></p>
+
+<p>Fetches the user&#39;s positions on the specified exchange.</p>
+
+<aside class="notice">
+Coming soon!
+</aside>

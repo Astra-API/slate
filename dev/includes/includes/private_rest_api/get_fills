@@ -1,0 +1,8 @@
+<h2 id='get-fills'>Get Fills</h2>
+<p><code>GET /fills</code></p>
+
+<p>Fetches the user&#39;s fills for the specified market.</p>
+
+<aside class="notice">
+Coming soon!
+</aside>

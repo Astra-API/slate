@@ -1,0 +1,18 @@
+<h2 id='cancel-order'>Cancel Order</h2>
+<p><code>DELETE /orders</code></p>
+
+<p>Cancels the specified order.</p>
+
+<aside class="notice">
+Coming soon!
+</aside>
+
+<!-- ### Request
+
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|exchange|[Exchange](#exchange)|True|Exchange to fetch data for|
+|orderId|String|True|ID of an order on an exchange|
+
+### Response
+ -->
