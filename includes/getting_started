@@ -1,28 +1,34 @@
-<h1 id='getting-started'>Getting Started</h1><h2 id='1-create-an-account'>1. Create an account</h2>
+<h1 id='getting-started'>Getting Started</h1><h3 id='1-create-an-account'>1. Create an account</h3>
 <p>First, create an account with us here: <a href="https://terminal.astra-api.dev/">https://terminal.astra-api.dev/</a>. You can use your Astra account to access all of our products and services.</p>
 
 <p><img src="/images/astra-terminal-login-page-1150e7d0.png" alt="Astra Terminal login page" /></p>
-<h2 id='2-create-an-api-key'>2. Create an API key</h2>
+<h3 id='2-create-an-api-key'>2. Create an API key</h3>
 <p>Navigate to <a href="https://terminal.astra-api.dev/settings">https://terminal.astra-api.dev/settings</a> and create an API key. The key will only be displayed once upon creation, so make sure you save it.</p>
 
 <p><img src="/images/astra-terminal-api-keys-page-8a93f835.png" alt="Astra Terminal API keys page" /></p>
-<h2 id='3-send-your-first-request'>3. Send your first request</h2><h3 id='endpoints'>Endpoints</h3>
+<h3 id='3-send-your-first-request'>3. Send your first request</h3>
+<p><strong>Endpoints</strong></p>
+
 <p>You can use the following endpoints to access our hosted API:</p>
 
 <ul>
 <li>REST endpoint: <code>https://prod.astra-api.dev</code></li>
 <li>WebSocket endpoint: <code>wss://prod.astra-api.dev/ws</code></li>
 </ul>
-<h3 id='authentication'>Authentication</h3>
-<p>All requests to Astra API need to be authenticated</p>
 
-<p>You can authenticate by specifying a header named <code>x-astra-api-key</code> with the value <code>Bearer {KEY}</code>, where you replace &quot;KEY&quot; with the value of your API key. For example, if the API key you created in the previous step was <code>kadjfasfl.KjUBAhdIafaDFSCsajfaIowSADxkaw</code>, you would include the following header:</p>
+<p><strong>Authentication</strong></p>
+
+<p>All requests to Astra API need to be authenticated</p>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "x-astra-api-key": "Bearer kadjfasfl.KjUBAhdIafaDFSCsajfaIowSADxkaw"
 }
 </code></pre></div>
-<p>Requests to the public market data endpoints do not require any additional authentication beyond your Astra API key. Private endpoints also you to authenticate.</p>
-<h3 id='more-info'>More Info</h3>
-<ul>
-<li>For information on self-hosting the Astra API on your own servers, <a href="#self-hosting">see below</a>.</li>
-</ul>
+<p>You can authenticate by specifying a header named <code>x-astra-api-key</code> with the value <code>Bearer {KEY}</code>, where you replace &quot;KEY&quot; with the value of your API key. For example, if the API key you created in the previous step was <code>kadjfasfl.KjUBAhdIafaDFSCsajfaIowSADxkaw</code>, you would include the header displayed to the right.</p>
+
+<p>Requests to the public market data endpoints do not require any additional authentication beyond your Astra API key. Private endpoints also require you to provide your exchange API keys for the specific exchange(s) you are trading on. More info on how to do this will be released once we enable support for private endpoints (currently in development).</p>
+
+<p><strong>Send a request</strong></p>
+
+<p>Use your favorite HTTP client to send a market data request. Here&#39;s an example curl command you can use:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>TODO
+</code></pre></div>

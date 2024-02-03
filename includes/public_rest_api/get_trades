@@ -38,7 +38,7 @@ Trades are returned in increasing order of their timestamp.
 |pageSize|Integer (i32)|50|Page size for paginated responses|
 |pageNumber|Integer (i32)|0|Page number for paginated responses|
 
-> Successful Sample Response
+> Sample Response
 
 ```json
 {

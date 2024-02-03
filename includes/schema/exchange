@@ -1,5 +1,5 @@
 <h2 id='exchange'>Exchange</h2>
-<p>An exchange refers to a marketplace or platform where developers trade Crypto Assets. Astra defines the list of exchanges its supports here.</p>
+<p>Represents a trading venue supported by Astra. The full list of currently supported exchanges is:</p>
 
 <table><thead>
 <tr>
@@ -16,9 +16,12 @@
 <td>OKX</td>
 </tr>
 <tr>
+<td>HUOBI</td>
+</tr>
+<tr>
 <td>KUCOIN</td>
 </tr>
 <tr>
-<td>HUOBI</td>
+<td>KRAKEN</td>
 </tr>
 </tbody></table>

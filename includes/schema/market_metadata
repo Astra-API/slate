@@ -1,0 +1,59 @@
+<h2 id='marketmetadata'>MarketMetadata</h2>
+<blockquote>
+<p>Sample Data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE-PERP-BTC-USD-COINM"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"assetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERP"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marginAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre></div>
+<p>Metadata associated with a particular market.</p>
+
+<aside class="notice">
+Note: Currently, the only metadata we return is <i>baseAsset</i>, <i>quoteAsset</i>, and <i>marginAsset</i>, along with the market symbol and asset type. These assets are returned in a format that is normalized across exchanges (see <a href="#abstract-spot-asset">AbstractSpotAsset</a> in our schema for more info)
+
+We will gradually be adding much more normalized metadata to this response, including margin requirements, lot size, expiry, strike price, and more.
+</aside>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td><a href="#market">Market</a></td>
+<td>True</td>
+<td>The market symbol, formatted as mentioned <a href="#market">above</a>, which uniquely identifies the market</td>
+</tr>
+<tr>
+<td>assetType</td>
+<td><a href="#assettype">AssetType</a></td>
+<td>True</td>
+<td>The type of asset this market is for</td>
+</tr>
+<tr>
+<td>baseAsset</td>
+<td><a href="#abstract-spot-asset">AbstractSpotAsset</a></td>
+<td>True</td>
+<td>For derivatives, this is the underlying asset of the instrument being bought and sold. For spot markets, this is itself the instrument being bought and sold</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td><a href="#abstract-spot-asset">AbstractSpotAsset</a></td>
+<td>True</td>
+<td>Prices for this market are expressed in units of quoteAsset</td>
+</tr>
+<tr>
+<td>marginAsset</td>
+<td><a href="#abstract-spot-asset">AbstractSpotAsset</a></td>
+<td>False</td>
+<td>The asset which is used as collateral for this market. Only exists for markets that allow margin trading</td>
+</tr>
+</tbody></table>

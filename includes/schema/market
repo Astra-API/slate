@@ -2,44 +2,57 @@
 <blockquote>
 <p>Sample Data</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Definition: </p>
 
-<p>Astra represent asset pairs across every exchange through a <code>Market</code>. This represents an exchange agnostic tradeable market consisting of a base asset and quote asset.</p>
+<p>Represents a particular market on a particular trading venue.</p>
+<div class="highlight"><pre class="highlight shell"><code><span class="c"># Format for spot and perpetual futures markets:</span>
+<span class="o">{</span>EXCHANGE<span class="o">}</span>-<span class="o">{</span>ASSET_TYPE<span class="o">}</span>-<span class="o">{</span>BASE_ASSET<span class="o">}</span>-<span class="o">{</span>QUOTE_ASSET<span class="o">}</span>-?<span class="o">{</span>DISAMBIGUATOR<span class="o">}</span>
 
-<p>Example 1: </p>
+<span class="c"># Format for expiring futures markets:</span>
+<span class="o">{</span>EXCHANGE<span class="o">}</span>-<span class="o">{</span>ASSET_TYPE<span class="o">}</span>-<span class="o">{</span>BASE_ASSET<span class="o">}</span>-<span class="o">{</span>QUOTE_ASSET<span class="o">}</span>-<span class="o">{</span>EXPIRY_SYMBOL<span class="o">}</span>-?<span class="o">{</span>DISAMBIGUATOR<span class="o">}</span>
 
-<p>Developers use <code>Market</code> to define what asset pairs they&#39;d like to receive updates for in <code>Subscription</code> messages.</p>
+<span class="c"># Format for options markets:</span>
+<span class="o">{</span>EXCHANGE<span class="o">}</span>-<span class="o">{</span>ASSET_TYPE<span class="o">}</span>-<span class="o">{</span>BASE_ASSET<span class="o">}</span>-<span class="o">{</span>QUOTE_ASSET<span class="o">}</span>-<span class="o">{</span>EXPIRY_SYMBOL<span class="o">}</span>-<span class="o">{</span>STRIKE_SYMBOL<span class="o">}</span>-?<span class="o">{</span>DISAMBIGUATOR<span class="o">}</span>
+</code></pre></div>
+<p>Astra has developed a custom naming scheme to represent crypto markets across many diverse trading venues. Every tradeable market is assigned a &quot;market symbol&quot;, which is a string that serves as the globally unique identifier for that market. The market symbol is also human-readable, and contains information about the exchange, base asset, quote asset, and metadata of that market.</p>
 
-<p>Example 2:</p>
+<p>On the right, you can see the format of market symbols for four popular asset types: spot, perpetual futures, expiring futures, and options.</p>
 
-<p>Astra uses <code>Market</code> when returning the complete list of supported markets using the <code>/markets</code> REST endpoint. For examples, refer to &#39;Public HTTP API&#39; &gt; &#39;Get Markets&#39;.</p>
+<p>&quot;Disambiguator&quot; is an optional parameter which is used to differentiate markets that are the same on all other parameters. For example, many exchanges have two types of futures contracts which differ in their margin behavior: those margined in USD or stablecoins (usually called &quot;USD-margined&quot; or &quot;USD-M&quot;), and those margined in the underlying base asset of the market (usually called &quot;coin-margined&quot; or &quot;Coin-M&quot;). To differentiate these, we use the &quot;-COINM&quot; disambiguator for coin-margined markets, and no disambiguator for USD-margined markets, which are more popular.</p>
+
+<p>Here are some examples of various market symbols, along with descriptions of the markets they map to:</p>
 
 <table><thead>
 <tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
+<th>Market Symbol Example</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>baseAsset</td>
-<td>[<a href="#asset">Asset</a>]</td>
-<td>True</td>
-<td>Describes the type and name of asset</td>
+<td>BINANCE-SPOT-BTC-USDT</td>
+<td>Binance BTC/USDT spot market</td>
 </tr>
 <tr>
-<td>quoteAsset</td>
-<td>[<a href="#abstract-spot-asset">Abstract Spot Asset</a>]</td>
-<td>True</td>
-<td>Asset which price is in units of.</td>
+<td>BINANCE-PERP-BTC-USDT</td>
+<td>Binance USD-margined BTC/USDT perpetual futures</td>
+</tr>
+<tr>
+<td>BINANCE-PERP-BTC-USD-COINM</td>
+<td>Binance coin-margined BTC/USD perpetual futures</td>
+</tr>
+<tr>
+<td>COINBASE-SPOT-BTC-USD</td>
+<td>Coinbase BTC/USD spot market</td>
+</tr>
+<tr>
+<td>OKX-FUT-BTC-USDT-210625</td>
+<td>OKX BTC/USDT futures, expiring on 2021-06-25</td>
+</tr>
+<tr>
+<td>BINANCE-OPT-BTC-USDT-210625-50000-C</td>
+<td>Binance BTC/USDT options, strike price 50000, expiring on 2021-06-25</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
 </tr>
 </tbody></table>

@@ -44,7 +44,7 @@
 </tbody></table>
 
 <blockquote>
-<p>Successful Sample Response</p>
+<p>Sample Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">

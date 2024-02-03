@@ -21,7 +21,7 @@ Coming soon!
 |---|---|---|---|
 |exchange|[Exchange](#exchange)|True|Exchange to fetch data from|
 
-> Successful Sample Response
+> Sample Response
 
 ```json
 {

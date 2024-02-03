@@ -1,54 +1,15 @@
 <h2 id='get-orderbook'>Get Orderbook</h2>
-<p><code>GET /orderbook</code></p>
-
-<p>Returns a snapshot of the current L2 orderbook for the specified market. Bids are sorted in descending order, and asks are sorted in ascending order. Because it is an L2 snapshot, bids and asks are aggregated by price level.</p>
-
 <blockquote>
 <p>Sample Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HUOBI"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request'>Request</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>exchange</td>
-<td><a href="#exchange">Exchange</a></td>
-<td>True</td>
-<td>Exchange to fetch data from</td>
-</tr>
-<tr>
-<td>baseAsset</td>
-<td>String</td>
-<td>True</td>
-<td>Base asset of market</td>
-</tr>
-<tr>
-<td>quoteAsset</td>
-<td>String</td>
-<td>True</td>
-<td>Quote asset of market</td>
-</tr>
-</tbody></table>
-
+<div class="highlight"><pre class="highlight shell"><code>GET /orderbook?market<span class="o">=</span>BINANCE-SPOT-ETH-USDT
+</code></pre></div>
 <blockquote>
-<p>Successful Sample Response</p>
+<p>Sample Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">                       </span><span class="err">//</span><span class="w">  </span><span class="err">Bid</span><span class="w"> </span><span class="err">Data</span><span class="w"> </span><span class="err">Type</span><span class="w">
+    </span><span class="p">{</span><span class="w">
       </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1798.00</span><span class="p">,</span><span class="w">
       </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -58,7 +19,7 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">                       </span><span class="err">//</span><span class="w">  </span><span class="err">Ask</span><span class="w"> </span><span class="err">Data</span><span class="w"> </span><span class="err">Type</span><span class="w">
+    </span><span class="p">{</span><span class="w">
       </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1798.00</span><span class="p">,</span><span class="w">
       </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -68,8 +29,27 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><code>GET /orderbook</code></p>
 
-</span></code></pre></div><h3 id='response'>Response</h3>
+<p>Returns a snapshot of the current L2 orderbook for the specified market. Bids are sorted in descending order of price, and asks are sorted in ascending order. The quantity at each price level corresponds to the aggregate of all open orders at that price.</p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td><a href="#market">Market</a></td>
+<td>True</td>
+<td>Market to fetch data for</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -80,14 +60,14 @@
 </thead><tbody>
 <tr>
 <td>bids</td>
-<td>[<a href="#bid">Bid</a>]</td>
+<td>Array&lt;<a href="#bid">Bid</a>&gt;</td>
 <td>True</td>
-<td>List of buy orders — Bid data type. See Schema.</td>
+<td>List of aggregated buy orders</td>
 </tr>
 <tr>
 <td>asks</td>
-<td>[<a href="#ask">Ask</a>]</td>
+<td>Array&lt;<a href="#ask">Ask</a>&gt;</td>
 <td>True</td>
-<td>List of sell orders — Ask data type. See Schema.</td>
+<td>List of aggregated sell orders</td>
 </tr>
 </tbody></table>

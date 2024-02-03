@@ -2,16 +2,12 @@
 <blockquote>
 <p>Sample Data</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">//</span><span class="w">  </span><span class="err">This</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">sample</span><span class="w"> </span><span class="err">Bid</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">relation</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> 
-</span><span class="err">//</span><span class="w">  </span><span class="err">BTC</span><span class="w"> </span><span class="err">USDT</span><span class="w"> </span><span class="err">Market</span><span class="w"> </span><span class="err">example</span><span class="w"> </span><span class="err">above.</span><span class="w">
-</span><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">27879.5</span><span class="p">,</span><span class="w">
     </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>A bid represents the price at which a buyer is willing to purchase a financial instrument or asset in a trading market. Astra represents a bid through a <code>Bid</code> across all exchanges.</p>
-
-<p>For usage, refer to &#39;Public HTTP API&#39; &gt; &#39;Get BBO&#39;. </p>
+<p>Represents the aggregate of all buy orders on a particular market for a given price level.</p>
 
 <table><thead>
 <tr>
@@ -23,14 +19,14 @@
 </thead><tbody>
 <tr>
 <td>price</td>
-<td>Float (f64)</td>
+<td>f64</td>
 <td>True</td>
-<td>Price of the bid (in units of quoteAsset)</td>
+<td>Price of the buy orders (in units of quoteAsset)</td>
 </tr>
 <tr>
 <td>quantity</td>
-<td>Float (f64)</td>
+<td>f64</td>
 <td>True</td>
-<td>Quantity of the bid (in units of baseAsset)</td>
+<td>Aggregated quantity of the buy orders (in units of baseAsset)</td>
 </tr>
 </tbody></table>

@@ -1,15 +1,53 @@
 <h2 id='get-markets'>Get Markets</h2>
-<p><code>GET /markets</code></p>
-
-<p>Returns all markets listed by the specified exchange.</p>
-
 <blockquote>
 <p>Sample Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request'>Request</h3>
+<div class="highlight"><pre class="highlight shell"><code>GET /markets?exchange<span class="o">=</span>BINANCE
+</code></pre></div>
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE-SPOT-ETH-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"assetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE-PERP-BTC-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"assetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marginAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE-PERP-BTC-USD-COINM"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"assetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marginAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE-FUT-BTC-USDT-210625"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marginAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p><code>GET /markets</code></p>
+
+<p>Returns all markets on the specified exchange that are supported by Astra, along with their associated metadata.</p>
+
+<p>You can see the list of asset types we currently support <a href="#asset-type">here</a>. We&#39;re working on expanding our coverage to all tradeable markets.</p>
+
+<aside class="notice">
+Note: Currently, the only metadata we return is <i>baseAsset</i>, <i>quoteAsset</i>, and <i>marginAsset</i>, along with the market symbol and asset type. These assets are returned in a format that is normalized across exchanges (see <a href="#abstract-spot-asset">AbstractSpotAsset</a> in our schema for more info)
+
+We will gradually be adding much more normalized metadata to this response, including margin requirements, lot size, expiry, strike price, and more.
+</aside>
+<h3 id='request'>Request</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -25,39 +63,17 @@
 <td>Exchange to fetch data from</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Successful Sample Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='response'>Response</h3>
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
-<th>Name</th>
 <th>Type</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>-</td>
-<td>[<a href="#market">Market</a>]</td>
+<td>Array&lt;<a href="#marketmetadata">MarketMetadata</a>&gt;</td>
 <td>True</td>
-<td>List of all supported asset pairs</td>
+<td>List of markets and their associated metadata</td>
 </tr>
 </tbody></table>
