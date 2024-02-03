@@ -38,3 +38,10 @@ You can authenticate by specifying a header named `x-astra-api-key` with the val
 
 Requests to the public market data endpoints do not require any additional authentication beyond your Astra API key. Private endpoints also require you to provide your exchange API keys for the specific exchange(s) you are trading on. More info on how to do this will be released once we enable support for private endpoints (currently in development).
 
+**Send a request**
+
+Use your favorite HTTP client to send a market data request. Here's an example curl command you can use:
+
+```
+TODO
+```

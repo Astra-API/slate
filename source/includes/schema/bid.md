@@ -9,9 +9,9 @@
 }
 ```
 
-Represents a buy order on a particular market.
+Represents the aggregate of all buy orders on a particular market for a given price level.
 
 | Name     | Type | Required | Description                                   |
 |----------|------|----------|-----------------------------------------------|
-| price    | f64  | True     | Price of the bid (in units of quoteAsset)     |
-| quantity | f64  | True     | Quantity of the bid (in units of baseAsset)   |
+| price    | f64  | True     | Price of the buy orders (in units of quoteAsset)     |
+| quantity | f64  | True     | Aggregated quantity of the buy orders (in units of baseAsset)   |

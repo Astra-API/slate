@@ -4,7 +4,7 @@
 
 ### What is it?
 
-Astra API is a unified API for crypto markets. It provides direct market access (DMA), which means that it gives you fine-grained read and write access to the underlying orderbook on many different trading venues, including centralized exchanges, DEXes, and OTC desks.
+Astra API is a unified API for crypto markets. The API provides direct market access (DMA), i.e. it gives you fine-grained read and write access to the underlying orderbook on many different trading venues - including centralized exchanges, DEXes, and OTC desks.
 
 Astra API takes care of data normalization, so you don't have to implement 10 different integrations for 10 different trading venues. Instead, you can just build one integration using Astra's unified data format, and use it for every trading venue.
 
@@ -13,7 +13,7 @@ Astra API takes care of data normalization, so you don't have to implement 10 di
 
 Astra API is perfect for any business that needs to build performant, robust, and easy-to-use connections to crypto markets. This includes: trading firms, individual traders, OTC desks, institutional investors, fintech companies, brokerages, neobanks, and exchanges.
 
-Integrating with our API is easy. Any developer can get started with Astra API in minutes, by reading the documentation on this page.
+Integrating with our API is easy. Any developer can get started with Astra API in minutes, using the documentation on this page.
 
 
 ### Supported exchanges
@@ -69,7 +69,9 @@ In order to use Astra API for order management, execution, or position managemen
 4. Get approved for each asset type you want to trade
   - Many exchanges will ask you to go through a quiz or signup process on their website in order to trade futures, options, and other margin products
 
-You will then export your API keys from each exchange to use them with Astra API. See below for a walkthrough of how to export your API keys from Binance.
+You will then export your API keys from each exchange to use them with Astra API. More details on how to do this coming soon, once we add support for private exchange endpoints.
+
+<!-- See below for a walkthrough of how to export your API keys from Binance. -->
 
 <b>If you would like to self-host Astra API on your own servers, see [below](#self-hosting).</b>
 

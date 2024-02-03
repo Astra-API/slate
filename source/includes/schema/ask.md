@@ -9,9 +9,9 @@
 }
 ```
 
-Represents a sell order on a particular market.
+Represents the aggregate of all sell orders on a particular market for a given price level.
 
 | Name     | Type        | Required | Description                                   |
 |----------|-------------|----------|-----------------------------------------------|
-| price    | Float (f64) | True     | Price of the ask (in units of quoteAsset)     |
-| quantity | Float (f64) | True     | Quantity of the ask (in units of baseAsset)   |
+| price    | f64 | True     | Price of the sell orders (in units of quoteAsset)     |
+| quantity | f64 | True     | Aggregated quantity of the sell orders (in units of baseAsset)   |
