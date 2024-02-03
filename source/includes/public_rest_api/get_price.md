@@ -26,7 +26,7 @@ Returns the current price of the specified market.
 |baseAsset|String|True|Base asset of market|
 |quoteAsset|String|True|Quote asset of market|
 
-> Successful Sample Response
+> Sample Response
 
 ```json
 27879.5

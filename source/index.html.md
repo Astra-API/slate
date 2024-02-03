@@ -27,7 +27,7 @@ includes:
   # - public_rest_api/get_price
   # - public_rest_api/get_bbo
   - public_rest_api/get_orderbook
-  - public_rest_api/get_trades
+  # - public_rest_api/get_trades
 
   - private_rest_api/intro
   - private_rest_api/get_orders
@@ -39,14 +39,16 @@ includes:
 
   - schema/intro
   # - schema/format_of_parameters
+  - schema/exchange
+  - schema/market
+  - schema/market_metadata
+  - schema/asset_type
   - schema/bid
   - schema/ask
-  - schema/exchange
-  - schema/asset
-  - schema/market
-  - schema/subscription
   - schema/trade
+  - schema/asset
   - schema/order
+  - schema/subscription
 
   - self_hosting
 search: true

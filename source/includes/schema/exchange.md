@@ -1,11 +1,12 @@
 ## Exchange
 
-An exchange refers to a marketplace or platform where developers trade Crypto Assets. Astra defines the list of exchanges its supports here.
+Represents a trading venue supported by Astra. The full list of currently supported exchanges is:
 
 |Value|
 |---|
 |BINANCE|
 |COINBASE|
 |OKX|
-|KUCOIN|
 |HUOBI|
+|KUCOIN|
+|KRAKEN|

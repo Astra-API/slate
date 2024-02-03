@@ -26,7 +26,7 @@ Returns the current BBO of the specified market on the specified exchange.
 |baseAsset|String|True|Base asset of market|
 |quoteAsset|String|True|Quote asset of market|
 
-> Successful Sample Response
+> Sample Response
 
 ```json
 {

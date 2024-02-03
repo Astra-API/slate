@@ -48,7 +48,7 @@ Coming soon!
 |IOC|Immediate or Cancel Order|
 |FOK|Fill or Kill Order|
 
-> Successful Sample Response
+> Sample Response
 
 ```json
 [

@@ -1,37 +1,18 @@
 
 ## Get Orderbook
 
-`GET /orderbook`
-
-Returns a snapshot of the current L2 orderbook for the specified market. Bids are sorted in descending order, and asks are sorted in ascending order. Because it is an L2 snapshot, bids and asks are aggregated by price level.
-
 > Sample Request
 
-```json
-{
-	"exchange": "HUOBI",
-	"baseAsset": {
-      "type": "SPOT",
-      "asset": "ETH"
-  },
-	"quoteAsset": "USDT"
-}
+```bash
+GET /orderbook?market=BINANCE-SPOT-ETH-USDT
 ```
 
-### Request
-
-|Parameter|Type|Required|Description|
-|---|---|---|---|
-|exchange|[Exchange](#exchange)|True|Exchange to fetch data from|
-|baseAsset|String|True|Base asset of market|
-|quoteAsset|String|True|Quote asset of market|
-
-> Successful Sample Response
+> Sample Response
 
 ```json
 {
   "bids": [
-    {                       //  Bid Data Type
+    {
       "price": 1798.00,
       "quantity": 1.5,
     },
@@ -41,7 +22,7 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
     }
   ],
   "asks": [
-    {                       //  Ask Data Type
+    {
       "price": 1798.00,
       "quantity": 1,
     },
@@ -51,12 +32,21 @@ Returns a snapshot of the current L2 orderbook for the specified market. Bids ar
     }
   ]
 }
-
 ```
+
+`GET /orderbook`
+
+Returns a snapshot of the current L2 orderbook for the specified market. Bids are sorted in descending order of price, and asks are sorted in ascending order. The quantity at each price level corresponds to the aggregate of all open orders at that price.
+
+### Request
+
+| Parameter | Type               | Required | Description                                   |
+|-----------|--------------------|----------|-----------------------------------------------|
+| market    | [Market](#market)  | True     | Market to fetch data for                      |
 
 ### Response
 
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|bids|[[Bid](#bid)]|True|List of buy orders — Bid data type. See Schema.|
-|asks|[[Ask](#ask)]|True|List of sell orders — Ask data type. See Schema.|
+| Name | Type               | Required | Description                                   |
+|------|--------------------|----------|-----------------------------------------------|
+| bids | Array<[Bid](#bid)> | True     | List of aggregated buy orders  |
+| asks | Array<[Ask](#ask)> | True     | List of aggregated sell orders |
