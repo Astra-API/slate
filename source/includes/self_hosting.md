@@ -12,10 +12,6 @@ To get started, create an account with us and create and Astra API key. If you a
 
 If you are placing/cancelling orders or fetching your private user data, you will need to bring your own exchange accounts and API keys. Once you have set up accounts on an exchange, you can export your API keys and use that with the Astra API.
 
-### How can I self-host?
-
-Instructions for self-hosting are coming soon.
-
 ### Data Privacy
 
 For users of managed hosting, your data is encrypted in transit via HTTPS, and we never read any credentials that you transmit via our API. We have a strict no-logging policy for sensitive user data, which means that any credentials get destroyed as soon as they are used, and are never written to disk.
