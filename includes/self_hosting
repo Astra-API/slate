@@ -21,7 +21,7 @@ Ensure Docker is installed on your server. If not, visit <a href="https://docs.d
 <li><p><strong>Run Astra API Gatway:</strong>
 Execute the following command in your terminal:</p></li>
 </ol>
-<div class="highlight"><pre class="highlight shell"><code>   docker <span class="nt">-d</span> run <span class="nt">--platform</span> linux/amd64 <span class="nt">-p</span> 8080:8080 <span class="nt">-p</span> 9090:9090 <span class="nt">--env</span> <span class="nv">ASTRA_API_KEY</span><span class="o">=</span><span class="nv">$ASTRA_API_KEY</span> <span class="nt">--name</span> gateway <span class="nt">-t</span> docker.io/astraimages/gateway:v0.0.1-alpha
+<div class="highlight"><pre class="highlight shell"><code>   docker run <span class="nt">-d</span> <span class="nt">--platform</span> linux/amd64 <span class="nt">-p</span> 8080:8080 <span class="nt">-p</span> 9090:9090 <span class="nt">--env</span> <span class="nv">ASTRA_API_KEY</span><span class="o">=</span><span class="nv">$ASTRA_API_KEY</span> <span class="nt">--name</span> gateway <span class="nt">-t</span> docker.io/astraimages/gateway:v0.0.1-alpha
 
 </code></pre></div>
 <ul>
