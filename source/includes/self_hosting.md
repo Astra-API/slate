@@ -21,3 +21,7 @@ Instructions for self-hosting are coming soon.
 For users of managed hosting, your data is encrypted in transit via HTTPS, and we never read any credentials that you transmit via our API. We have a strict no-logging policy for sensitive user data, which means that any credentials get destroyed as soon as they are used, and are never written to disk.
 
 For users of self-hosting, you fully own your data. Your data, keys, and other credentials never leave your servers. Astra's proxy agent is self-contained, and only communicates with our servers to authenticate you and make sure you have a valid Astra API key.
+
+### Use with docker
+
+Use the following command to self-host with server
