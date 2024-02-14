@@ -8,7 +8,7 @@
     </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"marginAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Metadata associated with a particular market.</p>
 

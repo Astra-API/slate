@@ -351,6 +351,9 @@
             <a href="#public-rest-api" class="toc-h1 toc-link" data-title="Public REST API">Public REST API</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
                     <a href="#get-markets" class="toc-h2 toc-link" data-title="Get Markets">Get Markets</a>
                   </li>
                   <li>
@@ -628,7 +631,11 @@ The API is separated into three categories: Public HTTP API, Private HTTP API, a
 <p>Use your favorite HTTP client to send a market data request. Here&#39;s an example curl command you can use:</p>
 
 <p>Replace <code>{ASTRA_API_KEY}</code> with the API key that you just generated. You should receive a response with a current snapshot of the orderbook for that market!</p>
-<h1 id='public-rest-api'>Public REST API</h1><h2 id='get-markets'>Get Markets</h2>
+<h1 id='public-rest-api'>Public REST API</h1>
+<p><strong>Endpoint: <code>https://prod.astra-api.dev</code></strong></p>
+<h3 id='authentication'>Authentication</h3>
+<p>Remember to specify an authentication header with your API key, as described <a href="#3-send-your-first-request">above</a>. Otherwise, your requests will fail.</p>
+<h2 id='get-markets'>Get Markets</h2>
 <blockquote>
 <p>Sample Request</p>
 </blockquote>
@@ -1325,7 +1332,7 @@ Coming soon!
     </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"marginAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Metadata associated with a particular market.</p>
 
@@ -1664,7 +1671,7 @@ exchanges think of as a single spot asset. -->
 <li><strong>Install Docker:</strong>
 Ensure Docker is installed on your server. If not, visit <a href="https://docs.docker.com/get-docker/">Docker&#39;s official website</a> for instructions.</li>
 </ol>
-<div class="highlight"><pre class="highlight shell"><code>docker run <span class="nt">-d</span> <span class="nt">--platform</span> linux/amd64 <span class="nt">-p</span> 8080:8080 <span class="nt">-p</span> 9090:9090 <span class="nt">--env</span> <span class="nv">ASTRA_API_KEY</span><span class="o">=</span><span class="nv">$ASTRA_API_KEY</span> <span class="nt">--name</span> gateway <span class="nt">-t</span> docker.io/astraimages/gateway:v0.0.1-alpha
+<div class="highlight"><pre class="highlight shell"><code>docker run <span class="nt">-d</span> <span class="nt">--platform</span> linux/amd64 <span class="nt">-p</span> 8080:8080 <span class="nt">-p</span> 9090:9090 <span class="nt">--env</span> <span class="nv">ASTRA_API_KEY</span><span class="o">=</span><span class="nv">$ASTRA_API_KEY</span> <span class="nt">--name</span> astra-gateway <span class="nt">-t</span> docker.io/astraimages/gateway:v0.0.1-alpha
 </code></pre></div>
 <ol>
 <li><p><strong>Obtain your API key</strong>
