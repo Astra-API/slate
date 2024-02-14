@@ -9,7 +9,7 @@
     "baseAsset": "BTC",
     "quoteAsset": "USD",
     "marginAsset": "BTC"
-},
+}
 ```
 
 Metadata associated with a particular market.

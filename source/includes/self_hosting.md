@@ -20,7 +20,7 @@ For self-hosting, follow these steps:
    Ensure Docker is installed on your server. If not, visit [Docker's official website](https://docs.docker.com/get-docker/) for instructions.
 
 ```bash
-docker run -d --platform linux/amd64 -p 8080:8080 -p 9090:9090 --env ASTRA_API_KEY=$ASTRA_API_KEY --name gateway -t docker.io/astraimages/gateway:v0.0.1-alpha
+docker run -d --platform linux/amd64 -p 8080:8080 -p 9090:9090 --env ASTRA_API_KEY=$ASTRA_API_KEY --name astra-gateway -t docker.io/astraimages/gateway:v0.0.1-alpha
 ```
 
 2. **Obtain your API key**
