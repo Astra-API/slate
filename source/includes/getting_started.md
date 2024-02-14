@@ -2,14 +2,14 @@
 
 ### 1. Create an account
 
-First, create an account with us here: <https://terminal.astra-api.dev/>. You can use your Astra account to access all of our products and services.
+First, create an account with us here: <https://terminal.astra-api.dev/settings/apikeys>. You can use your Astra account to access all of our products and services.
 
 ![Astra Terminal login page](astra-terminal-login-page.png)
 
 
 ### 2. Create an API key
 
-Navigate to <https://terminal.astra-api.dev/settings> and create an API key. The key will only be displayed once upon creation, so make sure you save it.
+Navigate to <https://terminal.astra-api.dev/settings/apikeys> and create an API key. The key will only be displayed once upon creation, so make sure you save it.
 
 ![Astra Terminal API keys page](astra-terminal-api-keys-page.png)
 
@@ -40,8 +40,30 @@ Requests to the public market data endpoints do not require any additional authe
 
 **Send a request**
 
+> Sample Request
+
+```bash
+curl --location 'http://prod.astra-api.dev/orderbook?market=BINANCE-SPOT-BTC-USDT' \
+--header 'x-astra-api-key: Bearer {ASTRA_API_KEY}'
+```
+
+> Sample Response
+
+```json
+{
+    "bids": [
+        {"price": 51485.41, "quantity": 4.10646},
+        {"price": 51485.39, "quantity": 0.00975},
+        {"price": 51485.38, "quantity": 0.00975},
+    ],
+    "asks": [
+        {"price": 51485.42, "quantity": 2.21005},
+        {"price": 51485.59, "quantity": 0.77624},
+        {"price": 51485.89, "quantity": 0.38811},
+    ]
+}
+```
+
 Use your favorite HTTP client to send a market data request. Here's an example curl command you can use:
 
-```
-TODO
-```
+Replace `{ASTRA_API_KEY}` with the API key that you just generated. You should receive a response with a current snapshot of the orderbook for that market!

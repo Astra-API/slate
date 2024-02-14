@@ -12,12 +12,6 @@ To get started, create an account with us and create and Astra API key. If you a
 
 If you are placing/cancelling orders or fetching your private user data, you will need to bring your own exchange accounts and API keys. Once you have set up accounts on an exchange, you can export your API keys and use that with the Astra API.
 
-### Data Privacy
-
-For users of managed hosting, your data is encrypted in transit via HTTPS, and we never read any credentials that you transmit via our API. We have a strict no-logging policy for sensitive user data, which means that any credentials get destroyed as soon as they are used, and are never written to disk.
-
-For users of self-hosting, you fully own your data. Your data, keys, and other credentials never leave your servers. Astra's proxy agent is self-contained, and only communicates with our servers to authenticate you and make sure you have a valid Astra API key.
-
 ### How to Self-Host?
 
 For self-hosting, follow these steps:
@@ -25,16 +19,19 @@ For self-hosting, follow these steps:
 1. **Install Docker:**
    Ensure Docker is installed on your server. If not, visit [Docker's official website](https://docs.docker.com/get-docker/) for instructions.
 
-2. **Run Astra API Gatway:**
-   Execute the following command in your terminal:
+```bash
+docker run -d --platform linux/amd64 -p 8080:8080 -p 9090:9090 --env ASTRA_API_KEY=$ASTRA_API_KEY --name gateway -t docker.io/astraimages/gateway:v0.0.1-alpha
+```
 
-   ```bash
-   docker run -d --platform linux/amd64 -p 8080:8080 -p 9090:9090 --env ASTRA_API_KEY=$ASTRA_API_KEY --name gateway -t docker.io/astraimages/gateway:v0.0.1-alpha
+2. **Obtain your API key**
+    Refer [above](#getting-started) for how to create an account and an Astra API key. Your API key is crucial for authentication and ensuring secure communication with the Astra API.
 
-   ```
+2. **Run the astra-gateway proxy**
+   Execute the following command in a shell on your server. Replace `$ASTRA_API_KEY` in the command with your actual Astra API key.
 
-- Replace `$ASTRA_API_KEY` in the command with your actual Astra API key.
 
-## Obtaining Your API Key
+### Data Privacy
 
-Refer the [documentation](#getting-started) to create an account and the Astra API key. Your API key is crucial for authentication and ensuring secure communication with the Astra API.
+For users of managed hosting, your data is encrypted in transit via HTTPS, and we never read any credentials that you transmit via our API. We have a strict no-logging policy for sensitive user data, which means that any credentials get destroyed as soon as they are used, and are never written to disk.
+
+For users of self-hosting, you fully own your data. Your data, keys, and other credentials never leave your servers. Astra's proxy agent is self-contained, and only communicates with our servers to authenticate you and make sure you have a valid Astra API key.

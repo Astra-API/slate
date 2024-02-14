@@ -16,11 +16,6 @@ includes:
   - getting_started
 
   # - auth/intro
-  
-  - websockets/intro
-  - websockets/subscribing
-  - websockets/orderbook_updates
-  - websockets/trade_updates
 
   - public_rest_api/intro
   - public_rest_api/get_markets
@@ -28,6 +23,12 @@ includes:
   # - public_rest_api/get_bbo
   - public_rest_api/get_orderbook
   # - public_rest_api/get_trades
+
+  
+  - websockets/intro
+  - websockets/subscribing
+  - websockets/orderbook_updates
+  - websockets/trade_updates
 
   - private_rest_api/intro
   - private_rest_api/get_orders
@@ -43,12 +44,14 @@ includes:
   - schema/market
   - schema/market_metadata
   - schema/asset_type
+  # - schema/asset
+  - schema/abstract_token
+  - schema/data_type
   - schema/bid
   - schema/ask
   - schema/trade
-  - schema/asset
-  - schema/order
-  - schema/subscription
+  # - schema/order
+  # - schema/subscription
 
   - self_hosting
 search: true

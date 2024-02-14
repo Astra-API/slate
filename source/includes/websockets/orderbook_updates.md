@@ -1,39 +1,16 @@
-## Orderbook Updates Channel
+## Orderbook Channel
 
-Subscribe to any exchanges orderbook updates. This makes use of the `Subscription` data type to record which type (ORDERBOOK) and the specific asset pair the developer is interested in.
+> Sample Request
 
-> Sample Message
-
-```json
-{
-    "action": "SUBSCRIBE",
-    "payload": {
-        "exchange": "BINANCE",
-        "market": {
-            "baseAsset": {
-                "type": "SPOT",
-                "asset": "ETH"
-            },
-            "quoteAsset": "USDT"
-        },
-        "dataType": "ORDERBOOK"
-    }
-}
+```
+wss://prod.astra-api.dev/ws?market=BINANCE-PERP-BTC-USDT&dataType=ORDERBOOK
 ```
 
-> Sample Push Data
+> Sample Data Message
 
 ```json
 {
     "updateId": 37828320367,
-    "exchange": "BINANCE",
-    "market": {
-        "baseAsset": {
-            "type": "SPOT",
-            "asset": "BTC"
-        },
-        "quoteAsset": "USDT"
-    },
     "bids": [
         {
             "price": 30708.01,
@@ -57,26 +34,45 @@ Subscribe to any exchanges orderbook updates. This makes use of the `Subscriptio
 }
 ```
 
-### Request
+Streams L2 orderbook updates from the specified market.
 
-|Parameter|Type|Required|Description|
-|---|---|---|---|
-|action|[Action](#action)|True|Interaction with a specific channel|
-|payload|[Subscription](#subscription)|True|Subscription data type describing orderbook update specifics|
+For each exchange, we've used whichever endpoint returns the most fine-grained orderbook updates with the lowest latency. For some exchanges, this is one update per tick, and for some exchanges, batched updates are the best that is available. [Contact us](mailto:contact@astra-api.dev) for more information about how this is implemented under the hood.
 
-### Action
-
-|Value|Description|
-|---|---|
-|SUBSCRIBE|Subscribe to a channel|
-|UNSUBSCRIBE|Unsubscribe from a channel|
 
 ### Message
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
-|bids|[[Bids]](#bid)|True|List of updates to bids|
-|asks|[[Asks]](#ask)|True|List of updates to asks|
+|updateId|u64|True|Sequence ID for the orderbook update. <br/><br/> The exact format of this parameter may differ depending on the exchange, but it can be used to sequence updates. For any given market, updates with larger sequence IDs occurred later in time|
+|bids|Array<[Bid](#bid)>|True|List of updates to bids. <br/><br/> An update with parameters `updateId`,`price` and `quantity` means that the aggregated bid at price `price` was updated from its old quantity to `quantity` at the time indicated by the sequence number `updateId`|
+|asks|Array<[Ask](#ask)>|True|List of updates to asks|
+
+
+<!-- ### Action
+
+|Value|Description|
+|---|---|
+|SUBSCRIBE|Subscribe to a channel|
+|UNSUBSCRIBE|Unsubscribe from a channel| -->
+
+
+<!-- ```json
+{
+    "action": "SUBSCRIBE",
+    "payload": {
+        "exchange": "BINANCE",
+        "market": {
+            "baseAsset": {
+                "type": "SPOT",
+                "asset": "ETH"
+            },
+            "quoteAsset": "USDT"
+        },
+        "dataType": "ORDERBOOK"
+    }
+}
+``` -->
+
 
 <!-- ### OrderbookUpdate
 |Parameter|Type|Required|Description|

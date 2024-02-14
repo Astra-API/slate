@@ -47,7 +47,7 @@ Returns all markets on the specified exchange that are supported by Astra, along
 You can see the list of asset types we currently support [here](#asset-type). We're working on expanding our coverage to all tradeable markets.
 
 <aside class="notice">
-Note: Currently, the only metadata we return is <i>baseAsset</i>, <i>quoteAsset</i>, and <i>marginAsset</i>, along with the market symbol and asset type. These assets are returned in a format that is normalized across exchanges (see <a href="#abstract-spot-asset">AbstractSpotAsset</a> in our schema for more info)
+Note: Currently, the only metadata we return is <i>baseAsset</i>, <i>quoteAsset</i>, and <i>marginAsset</i>, along with the market symbol and asset type. These assets are returned in a format that is normalized across exchanges (see <a href="#abstracttoken">AbstractToken</a> in our schema for more info)
 
 We will gradually be adding much more normalized metadata to this response, including margin requirements, lot size, expiry, strike price, and more.
 </aside>

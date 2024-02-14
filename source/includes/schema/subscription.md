@@ -31,11 +31,3 @@ Developers use `Subcription` to specify which update channels they'd like to sub
 |exchange|[[Exchange](#exchange)]|True|Exchange to fetch data from.|
 |market|[[Market](#market)]|True|Market details. See Schema > #Market.|
 |dataType|[[Data Type](#data-type)]|True|Type of market updates.|
-
-
-### Data Type
-
-|Value|Description|
-|---|---|
-|ORDERBOOK|Orderbook updates|
-|TRADE|Trade updates|

@@ -97,27 +97,3 @@ Astra represents PERPETUAL through a `baseAsset` implementation holding `type`, 
 <aside class="notice">
 Possible values for <code>duration_type</code> are Daily, Weekly, Monthly, Quarterly.
 </aside>
-
-
-## Abstract Spot Asset
-
-Represents an abstract spot asset such as BTC, ETH, USD, USDT, etc.
-The assets are "abstract" in the sense that they doesn't necessarily
-correspond to a single fungible token - there is variation with regard to
-network, custody, etc.
-
-For example, USDC could refer to USDC on any network: Ethereum, Solana, etc.
-These are all technically distinct assets, which we think of as equivalent
-due to the creation/redemption mechanism maintained by Circle across all
-networks.
-
-Similarly, BTC could refer to Bitcoin custodied on Binance,
-Coinbase, self-custody, etc. When you custody an asset on a centralized
-exchange, what you actually own is just a "deposit", which is an IOU from
-the exchange that you can redeem for the underlying asset. These are subject
-to different counterparty risks depending on the exchange, and are arguably
-not the same asset.
-
-So for simplicity, we use AbstractSpotAsset to represent what most users and
-exchanges think of as a single spot asset.
-
