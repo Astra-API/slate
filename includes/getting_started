@@ -1,9 +1,9 @@
 <h1 id='getting-started'>Getting Started</h1><h3 id='1-create-an-account'>1. Create an account</h3>
-<p>First, create an account with us here: <a href="https://terminal.astra-api.dev/">https://terminal.astra-api.dev/</a>. You can use your Astra account to access all of our products and services.</p>
+<p>First, create an account with us here: <a href="https://terminal.astra-api.dev/settings/apikeys">https://terminal.astra-api.dev/settings/apikeys</a>. You can use your Astra account to access all of our products and services.</p>
 
 <p><img src="/images/astra-terminal-login-page-1150e7d0.png" alt="Astra Terminal login page" /></p>
 <h3 id='2-create-an-api-key'>2. Create an API key</h3>
-<p>Navigate to <a href="https://terminal.astra-api.dev/settings">https://terminal.astra-api.dev/settings</a> and create an API key. The key will only be displayed once upon creation, so make sure you save it.</p>
+<p>Navigate to <a href="https://terminal.astra-api.dev/settings/apikeys">https://terminal.astra-api.dev/settings/apikeys</a> and create an API key. The key will only be displayed once upon creation, so make sure you save it.</p>
 
 <p><img src="/images/astra-terminal-api-keys-page-8a93f835.png" alt="Astra Terminal API keys page" /></p>
 <h3 id='3-send-your-first-request'>3. Send your first request</h3>
@@ -29,6 +29,28 @@
 
 <p><strong>Send a request</strong></p>
 
-<p>Use your favorite HTTP client to send a market data request. Here&#39;s an example curl command you can use:</p>
-<div class="highlight"><pre class="highlight plaintext"><code>TODO
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">--location</span> <span class="s1">'http://prod.astra-api.dev/orderbook?market=BINANCE-SPOT-BTC-USDT'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-astra-api-key: Bearer {ASTRA_API_KEY}'</span>
 </code></pre></div>
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.41</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.10646</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.39</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00975</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.38</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00975</span><span class="p">},</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.42</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.21005</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.59</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.77624</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.89</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.38811</span><span class="p">},</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use your favorite HTTP client to send a market data request. Here&#39;s an example curl command you can use:</p>
+
+<p>Replace <code>{ASTRA_API_KEY}</code> with the API key that you just generated. You should receive a response with a current snapshot of the orderbook for that market!</p>

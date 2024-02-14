@@ -50,19 +50,3 @@
 <td>Type of market updates.</td>
 </tr>
 </tbody></table>
-<h3 id='data-type'>Data Type</h3>
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ORDERBOOK</td>
-<td>Orderbook updates</td>
-</tr>
-<tr>
-<td>TRADE</td>
-<td>Trade updates</td>
-</tr>
-</tbody></table>

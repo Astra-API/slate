@@ -348,20 +348,6 @@
               </ul>
           </li>
           <li>
-            <a href="#websocket-api" class="toc-h1 toc-link" data-title="WebSocket API">WebSocket API</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#subscribing" class="toc-h2 toc-link" data-title="Subscribing">Subscribing</a>
-                  </li>
-                  <li>
-                    <a href="#orderbook-updates-channel" class="toc-h2 toc-link" data-title="Orderbook Updates Channel">Orderbook Updates Channel</a>
-                  </li>
-                  <li>
-                    <a href="#trades-channel" class="toc-h2 toc-link" data-title="Trades Channel">Trades Channel</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#public-rest-api" class="toc-h1 toc-link" data-title="Public REST API">Public REST API</a>
               <ul class="toc-list-h2">
                   <li>
@@ -369,6 +355,23 @@
                   </li>
                   <li>
                     <a href="#get-orderbook" class="toc-h2 toc-link" data-title="Get Orderbook">Get Orderbook</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#websocket-api" class="toc-h1 toc-link" data-title="WebSocket API">WebSocket API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#subscribing" class="toc-h2 toc-link" data-title="Subscribing">Subscribing</a>
+                  </li>
+                  <li>
+                    <a href="#orderbook-channel" class="toc-h2 toc-link" data-title="Orderbook Channel">Orderbook Channel</a>
+                  </li>
+                  <li>
+                    <a href="#trades-channel" class="toc-h2 toc-link" data-title="Trades Channel">Trades Channel</a>
                   </li>
               </ul>
           </li>
@@ -411,6 +414,12 @@
                     <a href="#assettype" class="toc-h2 toc-link" data-title="AssetType">AssetType</a>
                   </li>
                   <li>
+                    <a href="#abstracttoken" class="toc-h2 toc-link" data-title="AbstractToken">AbstractToken</a>
+                  </li>
+                  <li>
+                    <a href="#data-type" class="toc-h2 toc-link" data-title="Data Type">Data Type</a>
+                  </li>
+                  <li>
                     <a href="#bid" class="toc-h2 toc-link" data-title="Bid">Bid</a>
                   </li>
                   <li>
@@ -418,18 +427,6 @@
                   </li>
                   <li>
                     <a href="#trade" class="toc-h2 toc-link" data-title="Trade">Trade</a>
-                  </li>
-                  <li>
-                    <a href="#asset" class="toc-h2 toc-link" data-title="Asset">Asset</a>
-                  </li>
-                  <li>
-                    <a href="#abstract-spot-asset" class="toc-h2 toc-link" data-title="Abstract Spot Asset">Abstract Spot Asset</a>
-                  </li>
-                  <li>
-                    <a href="#order" class="toc-h2 toc-link" data-title="Order">Order</a>
-                  </li>
-                  <li>
-                    <a href="#subscription" class="toc-h2 toc-link" data-title="Subscription">Subscription</a>
                   </li>
               </ul>
           </li>
@@ -440,13 +437,10 @@
                     <a href="#what-is-it" class="toc-h2 toc-link" data-title="What is it?">What is it?</a>
                   </li>
                   <li>
-                    <a href="#data-privacy" class="toc-h2 toc-link" data-title="Data Privacy">Data Privacy</a>
-                  </li>
-                  <li>
                     <a href="#how-to-self-host" class="toc-h2 toc-link" data-title="How to Self-Host?">How to Self-Host?</a>
                   </li>
                   <li>
-                    <a href="#obtaining-your-api-key" class="toc-h2 toc-link" data-title="Obtaining Your API Key">Obtaining Your API Key</a>
+                    <a href="#data-privacy" class="toc-h2 toc-link" data-title="Data Privacy">Data Privacy</a>
                   </li>
               </ul>
           </li>
@@ -579,11 +573,11 @@ The API is separated into three categories: Public HTTP API, Private HTTP API, a
 
 - Public HTTP and Websocket API's are both public, accessible to all users. -->
 <h1 id='getting-started'>Getting Started</h1><h3 id='1-create-an-account'>1. Create an account</h3>
-<p>First, create an account with us here: <a href="https://terminal.astra-api.dev/">https://terminal.astra-api.dev/</a>. You can use your Astra account to access all of our products and services.</p>
+<p>First, create an account with us here: <a href="https://terminal.astra-api.dev/settings/apikeys">https://terminal.astra-api.dev/settings/apikeys</a>. You can use your Astra account to access all of our products and services.</p>
 
 <p><img src="images/astra-terminal-login-page-1150e7d0.png" alt="Astra Terminal login page" /></p>
 <h3 id='2-create-an-api-key'>2. Create an API key</h3>
-<p>Navigate to <a href="https://terminal.astra-api.dev/settings">https://terminal.astra-api.dev/settings</a> and create an API key. The key will only be displayed once upon creation, so make sure you save it.</p>
+<p>Navigate to <a href="https://terminal.astra-api.dev/settings/apikeys">https://terminal.astra-api.dev/settings/apikeys</a> and create an API key. The key will only be displayed once upon creation, so make sure you save it.</p>
 
 <p><img src="images/astra-terminal-api-keys-page-8a93f835.png" alt="Astra Terminal API keys page" /></p>
 <h3 id='3-send-your-first-request'>3. Send your first request</h3>
@@ -609,299 +603,31 @@ The API is separated into three categories: Public HTTP API, Private HTTP API, a
 
 <p><strong>Send a request</strong></p>
 
-<p>Use your favorite HTTP client to send a market data request. Here&#39;s an example curl command you can use:</p>
-<div class="highlight"><pre class="highlight plaintext"><code>TODO
-</code></pre></div><h1 id='websocket-api'>WebSocket API</h1>
-<!-- Default `content-Type`: `application/json` -->
-
-<p>The WebSocket endpoint is available without authentication. Once the socket is connected, you can subscribe to a channel by sending a <code>Subscription</code> message, detailed in Schema.</p>
-
-<!-- Endpoint: `wss://prod.astra-api.dev/ws` -->
-<h2 id='subscribing'>Subscribing</h2>
-<p>You can subscribe to multiple different exchange&#39;s specific Trade or Orderbook Updates channel concurrently by forwarding an list of <code>Subscription</code> messages through the WebSocket connection. </p>
-
-<p>To understand more about how Astra handles the subscribing of exchanges, please see the <code>Subcription</code> data type in the Schema tab.</p>
-
 <blockquote>
-<p>Sample message</p>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">--location</span> <span class="s1">'http://prod.astra-api.dev/orderbook?market=BINANCE-SPOT-BTC-USDT'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-astra-api-key: Bearer {ASTRA_API_KEY}'</span>
+</code></pre></div>
+<blockquote>
+<p>Sample Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSCRIBE"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"dataType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERBOOK"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='message'>Message</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>action</td>
-<td><a href="#action">Action</a></td>
-<td>True</td>
-<td>Action to perform</td>
-</tr>
-<tr>
-<td>payload</td>
-<td><a href="#subscription">Subscription</a></td>
-<td>True</td>
-<td>A subscription object defining specifics of the to be subscribed channel</td>
-</tr>
-</tbody></table>
-<h3 id='action'>Action</h3>
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>SUBSCRIBE</td>
-<td>Subscribe to a channel</td>
-</tr>
-<tr>
-<td>UNSUBSCRIBE</td>
-<td>Unsubscribe from a channel</td>
-</tr>
-</tbody></table>
-
-<!-- 
-### Subscription
-
-|Parameter|Type|Default|Description|
-|---|---|---|---|
-|exchange|string|*required*|Action to perform|
-|market|string|*required*|Exchange to subscribe/unsubscribe|
-|dataType|[DataType](#datatype)|*required*|ID of an order on an exchange| -->
-<h2 id='orderbook-updates-channel'>Orderbook Updates Channel</h2>
-<p>Subscribe to any exchanges orderbook updates. This makes use of the <code>Subscription</code> data type to record which type (ORDERBOOK) and the specific asset pair the developer is interested in.</p>
-
-<blockquote>
-<p>Sample Message</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSCRIBE"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"dataType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERBOOK"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Sample Push Data</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"updateId"</span><span class="p">:</span><span class="w"> </span><span class="mi">37828320367</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30708.01</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.26141</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30707.97</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00571</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.41</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.10646</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.39</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00975</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.38</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00975</span><span class="p">},</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30708.02</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.005</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30708.1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.08388</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.42</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.21005</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.59</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.77624</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.89</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.38811</span><span class="p">},</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request'>Request</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>action</td>
-<td><a href="#action">Action</a></td>
-<td>True</td>
-<td>Interaction with a specific channel</td>
-</tr>
-<tr>
-<td>payload</td>
-<td><a href="#subscription">Subscription</a></td>
-<td>True</td>
-<td>Subscription data type describing orderbook update specifics</td>
-</tr>
-</tbody></table>
-<h3 id='action'>Action</h3>
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>SUBSCRIBE</td>
-<td>Subscribe to a channel</td>
-</tr>
-<tr>
-<td>UNSUBSCRIBE</td>
-<td>Unsubscribe from a channel</td>
-</tr>
-</tbody></table>
-<h3 id='message'>Message</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>bids</td>
-<td><a href="#bid">[Bids]</a></td>
-<td>True</td>
-<td>List of updates to bids</td>
-</tr>
-<tr>
-<td>asks</td>
-<td><a href="#ask">[Asks]</a></td>
-<td>True</td>
-<td>List of updates to asks</td>
-</tr>
-</tbody></table>
-
-<!-- ### OrderbookUpdate
-|Parameter|Type|Required|Description|
-|---|---|---|---|
-|side|string|True|Side for the update|
-|price|number|True|Price level for the update|
-|quantity|number|True|New quantity for bid at this price level|
-|sequenceNumber|number|True|Sequence number for update| -->
-<h2 id='trades-channel'>Trades Channel</h2>
-<p>Subscribe to any exchange&#39;s latest trade updates. There is one <code>Trade</code> update per message sent.</p>
-
-<blockquote>
-<p>Sample Message</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSCRIBE"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"dataType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADE"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<blockquote>
-<p>Sample Push Data</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"exchangeMarket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COINBASE"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30157.8</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01048</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request'>Request</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>action</td>
-<td><a href="#action">Action</a></td>
-<td>True</td>
-<td>Interaction with a specific channel</td>
-</tr>
-<tr>
-<td>payload</td>
-<td><a href="#subscription">Subscription</a></td>
-<td>True</td>
-<td>Subscription data type describing trade update specifics</td>
-</tr>
-</tbody></table>
-<h3 id='action'>Action</h3>
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>SUBSCRIBE</td>
-<td>Subscribe to a channel</td>
-</tr>
-<tr>
-<td>UNSUBSCRIBE</td>
-<td>Unsubscribe from a channel</td>
-</tr>
-</tbody></table>
-<h3 id='message'>Message</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>-</td>
-<td><a href="#trade">[Trade]</a></td>
-<td>True</td>
-<td>List of trades that have occurred since last message</td>
-</tr>
-</tbody></table>
+<p>Use your favorite HTTP client to send a market data request. Here&#39;s an example curl command you can use:</p>
+
+<p>Replace <code>{ASTRA_API_KEY}</code> with the API key that you just generated. You should receive a response with a current snapshot of the orderbook for that market!</p>
 <h1 id='public-rest-api'>Public REST API</h1><h2 id='get-markets'>Get Markets</h2>
 <blockquote>
 <p>Sample Request</p>
@@ -947,7 +673,7 @@ The API is separated into three categories: Public HTTP API, Private HTTP API, a
 <p>You can see the list of asset types we currently support <a href="#asset-type">here</a>. We&#39;re working on expanding our coverage to all tradeable markets.</p>
 
 <aside class="notice">
-Note: Currently, the only metadata we return is <i>baseAsset</i>, <i>quoteAsset</i>, and <i>marginAsset</i>, along with the market symbol and asset type. These assets are returned in a format that is normalized across exchanges (see <a href="#abstract-spot-asset">AbstractSpotAsset</a> in our schema for more info)
+Note: Currently, the only metadata we return is <i>baseAsset</i>, <i>quoteAsset</i>, and <i>marginAsset</i>, along with the market symbol and asset type. These assets are returned in a format that is normalized across exchanges (see <a href="#abstracttoken">AbstractToken</a> in our schema for more info)
 
 We will gradually be adding much more normalized metadata to this response, including margin requirements, lot size, expiry, strike price, and more.
 </aside>
@@ -1054,6 +780,258 @@ We will gradually be adding much more normalized metadata to this response, incl
 <td>List of aggregated sell orders</td>
 </tr>
 </tbody></table>
+<h1 id='websocket-api'>WebSocket API</h1>
+<!-- Default `content-Type`: `application/json` -->
+
+<!-- The WebSocket endpoint is available without authentication. Once the socket is connected, you can subscribe to a channel by sending a `Subscription` message, detailed in Schema. -->
+
+<p>You can use the WebSocket API to stream real-time market data.</p>
+
+<p><strong>Endpoint: <code>wss://prod.astra-api.dev/ws</code></strong></p>
+<h3 id='authentication'>Authentication</h3>
+<p>Remember to specify an authentication header with your API key, as described <a href="#3-send-your-first-request">above</a>. Otherwise, your requests will fail.</p>
+<h2 id='subscribing'>Subscribing</h2>
+<p>You can have one active market data subscription per WebSocket connection. A &quot;subscription&quot; consists of a combination of a market and the data type you are subscribing to.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>wss://prod.astra-api.dev/ws?market=BINANCE-PERP-BTC-USDT&amp;dataType=ORDERBOOK
+</code></pre></div>
+<p>These are specified as query parameters in the initial connection request, as shown:</p>
+
+<aside class="notice">
+We will soon be adding support for switching the active subscription for a WebSocket connection that is already open.
+</aside>
+
+<!-- You can subscribe to multiple different exchange's specific Trade or Orderbook Updates channel concurrently by forwarding an list of `Subscription` messages through the WebSocket connection.  -->
+
+<!-- To understand more about how Astra handles the subscribing of exchanges, please see the `Subcription` data type in the Schema tab. -->
+
+<!-- > Sample message
+
+```json
+{
+  "action": "SUBSCRIBE",
+  "payload": {
+      "exchange": "BINANCE",
+      "market": {
+        "baseAsset": {
+          "type": "SPOT",
+          "asset": "BTC"
+        },
+        "quoteAsset": "USDT"
+      },
+      "dataType": "ORDERBOOK"
+    }
+}
+``` -->
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td><a href="#market">Market</a></td>
+<td>True</td>
+<td>The market which you are requesting data for</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td><a href="#data-type">DataType</a></td>
+<td>True</td>
+<td>The type of market data you want to stream</td>
+</tr>
+</tbody></table>
+
+<!-- ### Message
+
+|Value|Description|
+|---|---|
+|SUBSCRIBE|Subscribe to a channel|
+|UNSUBSCRIBE|Unsubscribe from a channel| -->
+
+<!-- 
+### Subscription
+
+|Parameter|Type|Default|Description|
+|---|---|---|---|
+|exchange|string|*required*|Action to perform|
+|market|string|*required*|Exchange to subscribe/unsubscribe|
+|dataType|[DataType](#datatype)|*required*|ID of an order on an exchange| -->
+<h2 id='orderbook-channel'>Orderbook Channel</h2>
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>wss://prod.astra-api.dev/ws?market=BINANCE-PERP-BTC-USDT&amp;dataType=ORDERBOOK
+</code></pre></div>
+<blockquote>
+<p>Sample Data Message</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateId"</span><span class="p">:</span><span class="w"> </span><span class="mi">37828320367</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30708.01</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.26141</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30707.97</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00571</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30708.02</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.005</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30708.1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.08388</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Streams L2 orderbook updates from the specified market.</p>
+
+<p>For each exchange, we&#39;ve used whichever endpoint returns the most fine-grained orderbook updates with the lowest latency. For some exchanges, this is one update per tick, and for some exchanges, batched updates are the best that is available. <a href="mailto:contact@astra-api.dev">Contact us</a> for more information about how this is implemented under the hood.</p>
+<h3 id='message'>Message</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>updateId</td>
+<td>u64</td>
+<td>True</td>
+<td>Sequence ID for the orderbook update. <br/><br/> The exact format of this parameter may differ depending on the exchange, but it can be used to sequence updates. For any given market, updates with larger sequence IDs occurred later in time</td>
+</tr>
+<tr>
+<td>bids</td>
+<td>Array&lt;<a href="#bid">Bid</a>&gt;</td>
+<td>True</td>
+<td>List of updates to bids. <br/><br/> An update with parameters <code>updateId</code>,<code>price</code> and <code>quantity</code> means that the aggregated bid at price <code>price</code> was updated from its old quantity to <code>quantity</code> at the time indicated by the sequence number <code>updateId</code></td>
+</tr>
+<tr>
+<td>asks</td>
+<td>Array&lt;<a href="#ask">Ask</a>&gt;</td>
+<td>True</td>
+<td>List of updates to asks</td>
+</tr>
+</tbody></table>
+
+<!-- ### Action
+
+|Value|Description|
+|---|---|
+|SUBSCRIBE|Subscribe to a channel|
+|UNSUBSCRIBE|Unsubscribe from a channel| -->
+
+<!-- ```json
+{
+    "action": "SUBSCRIBE",
+    "payload": {
+        "exchange": "BINANCE",
+        "market": {
+            "baseAsset": {
+                "type": "SPOT",
+                "asset": "ETH"
+            },
+            "quoteAsset": "USDT"
+        },
+        "dataType": "ORDERBOOK"
+    }
+}
+``` -->
+
+<!-- ### OrderbookUpdate
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|side|string|True|Side for the update|
+|price|number|True|Price level for the update|
+|quantity|number|True|New quantity for bid at this price level|
+|sequenceNumber|number|True|Sequence number for update| -->
+<h2 id='trades-channel'>Trades Channel</h2>
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>wss://prod.astra-api.dev/ws?market=BINANCE-PERP-BTC-USDT&amp;dataType=TRADE
+</code></pre></div>
+<blockquote>
+<p>Sample Data Message</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"trades"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">47104.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.003</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1707527023484</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">47100.1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0015</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1707527025010</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Streams trade updates from the specified market.</p>
+
+<p>For each exchange, we&#39;ve used whichever endpoint returns the most fine-grained trade updates with the lowest latency. For some exchanges, this is one update per trade, and for some exchanges, batched updates are the best that is available. <a href="mailto:contact@astra-api.dev">Contact us</a> for more information about how this is implemented under the hood.</p>
+<h3 id='message'>Message</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trades</td>
+<td>Array&lt;<a href="#trade">Trade</a>&gt;</td>
+<td>True</td>
+<td>List of trades that have occurred since last message</td>
+</tr>
+</tbody></table>
+
+<!-- ### Request
+
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|action|[Action](#action)|True|Interaction with a specific channel|
+|payload|[Subscription](#subscription)|True|Subscription data type describing trade update specifics|
+
+### Action
+
+|Value|Description|
+|---|---|
+|SUBSCRIBE|Subscribe to a channel|
+|UNSUBSCRIBE|Unsubscribe from a channel|
+
+```json
+{
+    "action": "SUBSCRIBE",
+    "payload": {
+        "exchange": "BINANCE",
+        "market": {
+            "baseAsset": {
+                "type": "SPOT",
+                "asset": "ETH"
+            },
+            "quoteAsset": "USDT"
+        },
+        "dataType": "TRADE"
+    }
+}
+``` -->
 <h1 id='private-rest-api'>Private REST API</h1><h2 id='get-orders'>Get Orders</h2>
 <p><code>GET /orders</code></p>
 
@@ -1352,7 +1330,7 @@ Coming soon!
 <p>Metadata associated with a particular market.</p>
 
 <aside class="notice">
-Note: Currently, the only metadata we return is <i>baseAsset</i>, <i>quoteAsset</i>, and <i>marginAsset</i>, along with the market symbol and asset type. These assets are returned in a format that is normalized across exchanges (see <a href="#abstract-spot-asset">AbstractSpotAsset</a> in our schema for more info)
+Note: Currently, the only metadata we return is <i>baseAsset</i>, <i>quoteAsset</i>, and <i>marginAsset</i>, along with the market symbol and asset type. These assets are returned in a format that is normalized across exchanges (see <a href="#abstracttoken">AbstractToken</a> in our schema for more info)
 
 We will gradually be adding much more normalized metadata to this response, including margin requirements, lot size, expiry, strike price, and more.
 </aside>
@@ -1379,24 +1357,140 @@ We will gradually be adding much more normalized metadata to this response, incl
 </tr>
 <tr>
 <td>baseAsset</td>
-<td><a href="#abstract-spot-asset">AbstractSpotAsset</a></td>
+<td><a href="#abstracttoken">AbstractToken</a></td>
 <td>True</td>
 <td>For derivatives, this is the underlying asset of the instrument being bought and sold. For spot markets, this is itself the instrument being bought and sold</td>
 </tr>
 <tr>
 <td>quoteAsset</td>
-<td><a href="#abstract-spot-asset">AbstractSpotAsset</a></td>
+<td><a href="#abstracttoken">AbstractToken</a></td>
 <td>True</td>
 <td>Prices for this market are expressed in units of quoteAsset</td>
 </tr>
 <tr>
 <td>marginAsset</td>
-<td><a href="#abstract-spot-asset">AbstractSpotAsset</a></td>
+<td><a href="#abstracttoken">AbstractToken</a></td>
 <td>False</td>
 <td>The asset which is used as collateral for this market. Only exists for markets that allow margin trading</td>
 </tr>
 </tbody></table>
-<h2 id='assettype'>AssetType</h2><h2 id='bid'>Bid</h2>
+<h2 id='assettype'>AssetType</h2>
+<p>Represents the type of asset that a particular market is for. We currently support the following asset types:</p>
+
+<table><thead>
+<tr>
+<th>AssetType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SPOT</td>
+<td>A spot market</td>
+</tr>
+<tr>
+<td>PERP</td>
+<td>A perpetual futures contract</td>
+</tr>
+<tr>
+<td>FUT</td>
+<td>An expiring (non-perpetual) futures contract</td>
+</tr>
+<tr>
+<td>OPT</td>
+<td>An option contract</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Support for leveraged tokens, exotic derivatives, and other asset types coming soon!
+</aside>
+<h2 id='abstracttoken'>AbstractToken</h2>
+<p>Represents an abstract &quot;token&quot; such as BTC, ETH, USD, USDT, etc. This will usually refer to a
+fungible blockchain token, but could potentially refer to other token-like assets such as equities,
+etc.</p>
+
+<p>This representation is agnostic to implementation details such as the network and token standard,
+such as ERC-20 or TRC-20 or SPL. </p>
+
+<p>It is also agnostic to any particular exchange&#39;s symbology. For example, Bitcoin from both Binance
+and BitMEX will map to an <code>AbstractToken</code> of <code>BTC</code>, even though Binance refers to Bitcoin as &#39;BTC&#39;
+and BitMEX refers to Bitcoin as &#39;XBT&#39;.</p>
+
+<p><em>NOTE:</em> We do incorporate the exchange&#39;s symbology into our market symbols! So our symbol for the
+BTC/USDT spot market on Binance is <code>BINANCE_SPOT_BTC_USDT</code>, while our symbol for the same market on
+BitMEX (once we enable support for BitMEX) will be <code>BITMEX_SPOT_XBT_USD</code> - because BitMEX uses &#39;XBT&#39;
+to refer to Bitcoin and uses &#39;USD&#39; rather than &#39;USDT&#39; as the quote asset for this market. However,
+when you fetch the <code>MarketMetadata</code> for both these markets using our <code>/markets</code> endpoint, they will
+both have a <code>baseAsset</code> of <code>BTC</code>.</p>
+
+<table><thead>
+<tr>
+<th>AbstractToken</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BTC</td>
+<td>Bitcoin</td>
+</tr>
+<tr>
+<td>ETH</td>
+<td>Ether</td>
+</tr>
+<tr>
+<td>SOL</td>
+<td>Solana</td>
+</tr>
+<tr>
+<td>XRP</td>
+<td>Ripple</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+We are in the process of adding an endpoint that will return all the `AbstractToken`s in our
+symbology, along with their descriptions.
+</aside>
+
+<!-- The assets are "abstract" in the sense that they doesn't necessarily
+correspond to a single fungible token - there is variation with regard to
+network, custody, etc.
+
+For example, USDC could refer to USDC on any network: Ethereum, Solana, etc.
+These are all technically distinct assets, which we think of as equivalent
+due to the creation/redemption mechanism maintained by Circle across all
+networks.
+
+Similarly, BTC could refer to Bitcoin custodied on Binance,
+Coinbase, self-custody, etc. When you custody an asset on a centralized
+exchange, what you actually own is just a "deposit", which is an IOU from
+the exchange that you can redeem for the underlying asset. These are subject
+to different counterparty risks depending on the exchange, and are arguably
+not the same asset.
+
+So for simplicity, we use AbstractSpotAsset to represent what most users and
+exchanges think of as a single spot asset. -->
+<h2 id='data-type'>Data Type</h2>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ORDERBOOK</td>
+<td>Orderbook updates</td>
+</tr>
+<tr>
+<td>TRADE</td>
+<td>Trade updates</td>
+</tr>
+</tbody></table>
+<h2 id='bid'>Bid</h2>
 <blockquote>
 <p>Sample Data</p>
 </blockquote>
@@ -1553,349 +1647,6 @@ We will gradually be adding much more normalized metadata to this response, incl
 <td>Taker is buying the asset</td>
 </tr>
 </tbody></table>
-<h2 id='asset'>Asset</h2>
-<p>An asset represents a financial instrument that holds value and can be bought, sold, or exchanged. Astra represents assets with an <code>Asset</code>. There are four <code>Asset</code> types: SPOT, PERPETUAL, DATED FUTURE, OPTION.</p>
-
-<!-- Currently, Astra provides support for SPOT and PERPETUALS. -->
-
-<p>Example 1: </p>
-
-<p>Developers uses <code>Asset</code> to specify the type of base asset within a <code>Market</code>. For examples, refer to <code>Market</code> and <code>Subscription</code> messages. </p>
-<h3 id='spot-asset'>SPOT Asset</h3>
-<blockquote>
-<p>Sample SPOT</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>A SPOT asset is an asset bought and sold for immediate delivery and settlement. Astra represents these through <code>SPOT</code>. </p>
-
-<!-- Example 1:
-
-Developers uses `SPOT`, a type of `Asset`, to specify the type of base asset within a `Market`. For examples, refer to `Market` and `Subscription` messages.  -->
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>String</td>
-<td>True</td>
-<td>Type of asset: SPOT</td>
-</tr>
-<tr>
-<td>asset</td>
-<td>[<a href="#abstract-spot-asset">Abstract Spot Asset</a>]</td>
-<td>True</td>
-<td>Name of asset</td>
-</tr>
-</tbody></table>
-<h3 id='perpetual-asset'>PERPETUAL Asset</h3>
-<blockquote>
-<p>Sample PERPETUAL</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERPETUAL"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>A perpetual is derivative financial instrument that tracks the price of an underlying asset, allowing traders to speculate on its value without an expiration date or the need for physical delivery. Astra represents perpetuals through <code>PERPETUAL</code>.</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>String</td>
-<td>True</td>
-<td>Type of asset: PERPETUAL</td>
-</tr>
-<tr>
-<td>underlying</td>
-<td>[<a href="#abstract-spot-asset">Abstract Spot Asset</a>]</td>
-<td>True</td>
-<td>Name of asset</td>
-</tr>
-</tbody></table>
-<h3 id='dated-future-asset'>DATED FUTURE Asset</h3>
-<p>A dated future is a derivative financial contract, specifying the purchase or sale of an asset at a predetermined price, with settlement occurring on a specific future date. Astra represents dated futures through <code>DATED_FUTURE</code>.</p>
-
-<blockquote>
-<p>Sample DATED FUTURE</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATED_FUTURE"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">format</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">date</span><span class="w"> </span><span class="err">TBD</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>String</td>
-<td>True</td>
-<td>Type of asset: PERPETUAL</td>
-</tr>
-<tr>
-<td>underlying</td>
-<td>[<a href="#abstract-spot-asset">Abstract Spot Asset</a>]</td>
-<td>True</td>
-<td>Name of asset</td>
-</tr>
-<tr>
-<td>expiry</td>
-<td>TBD</td>
-<td>True</td>
-<td>When the contract expires</td>
-</tr>
-</tbody></table>
-<h3 id='option-asset'>OPTION Asset</h3>
-<blockquote>
-<p>Sample OPTION</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPTION"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"strike"</span><span class="p">:</span><span class="w"> </span><span class="mi">350000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATE"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">format</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">date</span><span class="w"> </span><span class="err">TBD</span><span class="w">
-    </span><span class="nl">"durationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MONTHLY"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">format</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">date</span><span class="w"> </span><span class="err">TBD</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Astra represents PERPETUAL through a <code>baseAsset</code> implementation holding <code>type</code>, <code>underlying</code>, <code>strike</code>, <code>expiry</code>, and <code>duration_type</code>.</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>String</td>
-<td>True</td>
-<td>Type of asset: PERPETUAL</td>
-</tr>
-<tr>
-<td>underlying</td>
-<td>[<a href="#abstract-spot-asset">Abstract Spot Asset</a>]</td>
-<td>True</td>
-<td>Name of asset</td>
-</tr>
-<tr>
-<td>strike</td>
-<td>Unisigned Integer (u32)</td>
-<td>True</td>
-<td>Strike price of the option</td>
-</tr>
-<tr>
-<td>expiry</td>
-<td>TBD</td>
-<td>True</td>
-<td>When the contract expires</td>
-</tr>
-<tr>
-<td>duration_type</td>
-<td>String</td>
-<td>True</td>
-<td>Duration type of the option</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-Possible values for <code>duration_type</code> are Daily, Weekly, Monthly, Quarterly.
-</aside>
-<h2 id='abstract-spot-asset'>Abstract Spot Asset</h2>
-<p>Represents an abstract spot asset such as BTC, ETH, USD, USDT, etc.
-The assets are &quot;abstract&quot; in the sense that they doesn&#39;t necessarily
-correspond to a single fungible token - there is variation with regard to
-network, custody, etc.</p>
-
-<p>For example, USDC could refer to USDC on any network: Ethereum, Solana, etc.
-These are all technically distinct assets, which we think of as equivalent
-due to the creation/redemption mechanism maintained by Circle across all
-networks.</p>
-
-<p>Similarly, BTC could refer to Bitcoin custodied on Binance,
-Coinbase, self-custody, etc. When you custody an asset on a centralized
-exchange, what you actually own is just a &quot;deposit&quot;, which is an IOU from
-the exchange that you can redeem for the underlying asset. These are subject
-to different counterparty risks depending on the exchange, and are arguably
-not the same asset.</p>
-
-<p>So for simplicity, we use AbstractSpotAsset to represent what most users and
-exchanges think of as a single spot asset.</p>
-<h2 id='order'>Order</h2>
-<blockquote>
-<p>Sample Data</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> 
-    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20000.00</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Astra represents all orders you&#39;ve initiated in this <code>Order</code> similar to a <code>Trade</code> object, in addition to including the specific order <code>id</code> tied to the order.</p>
-
-<aside class="success">
-Similarity in order and trade objects is intuitive! <code>Trade</code> updates returned from Astra are <code>Order</code> messages from other traders.
-</aside>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>True</td>
-<td>ID of the order on the exchange</td>
-</tr>
-<tr>
-<td>baseAsset</td>
-<td><a href="#asset">Asset</a></td>
-<td>True</td>
-<td>Base asset of market</td>
-</tr>
-<tr>
-<td>quoteAsset</td>
-<td><a href="#abstract-spot-asset">Abstract Spot Asset</a></td>
-<td>True</td>
-<td>Quote asset of market</td>
-</tr>
-<tr>
-<td>price</td>
-<td>Float (f64)</td>
-<td>True</td>
-<td>Price of the order (in units of quoteAsset)</td>
-</tr>
-<tr>
-<td>quantity</td>
-<td>Float (f64)</td>
-<td>True</td>
-<td>Quantity of the order (in units of baseAsset)</td>
-</tr>
-<tr>
-<td>side</td>
-<td><a href="#side">Side</a></td>
-<td>True</td>
-<td>Buy or sell order</td>
-</tr>
-</tbody></table>
-<h3 id='side'>Side</h3>
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>SELL</td>
-<td>Taker is selling the asset</td>
-</tr>
-<tr>
-<td>BUY</td>
-<td>Taker is buying the asset</td>
-</tr>
-</tbody></table>
-<h2 id='subscription'>Subscription</h2>
-<blockquote>
-<p>Sample Data</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSCRIBE"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BINANCE"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"market"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"dataType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERBOOK"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><code>Subscription</code> messages are the single unified data format Astra will convert into the specifc formatting, syntax, and related details an exchange requires to retrieve information.</p>
-
-<p>Example 1:</p>
-
-<p>Developers use <code>Subcription</code> to specify which update channels they&#39;d like to subscribe to. Information about different types of channels are found in &#39;Websocket API&#39;. </p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>exchange</td>
-<td>[<a href="#exchange">Exchange</a>]</td>
-<td>True</td>
-<td>Exchange to fetch data from.</td>
-</tr>
-<tr>
-<td>market</td>
-<td>[<a href="#market">Market</a>]</td>
-<td>True</td>
-<td>Market details. See Schema &gt; #Market.</td>
-</tr>
-<tr>
-<td>dataType</td>
-<td>[<a href="#data-type">Data Type</a>]</td>
-<td>True</td>
-<td>Type of market updates.</td>
-</tr>
-</tbody></table>
-<h3 id='data-type'>Data Type</h3>
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ORDERBOOK</td>
-<td>Orderbook updates</td>
-</tr>
-<tr>
-<td>TRADE</td>
-<td>Trade updates</td>
-</tr>
-</tbody></table>
 <h1 id='self-hosting'>Self hosting</h1><h3 id='what-is-it'>What is it?</h3>
 <p>Astra API is available in two modes: managed and self-hosted.</p>
 
@@ -1906,27 +1657,25 @@ Similarity in order and trade objects is intuitive! <code>Trade</code> updates r
 <p>To get started, create an account with us and create and Astra API key. If you are using our API only to access public market data, then this is all you need.</p>
 
 <p>If you are placing/cancelling orders or fetching your private user data, you will need to bring your own exchange accounts and API keys. Once you have set up accounts on an exchange, you can export your API keys and use that with the Astra API.</p>
-<h3 id='data-privacy'>Data Privacy</h3>
-<p>For users of managed hosting, your data is encrypted in transit via HTTPS, and we never read any credentials that you transmit via our API. We have a strict no-logging policy for sensitive user data, which means that any credentials get destroyed as soon as they are used, and are never written to disk.</p>
-
-<p>For users of self-hosting, you fully own your data. Your data, keys, and other credentials never leave your servers. Astra&#39;s proxy agent is self-contained, and only communicates with our servers to authenticate you and make sure you have a valid Astra API key.</p>
 <h3 id='how-to-self-host'>How to Self-Host?</h3>
 <p>For self-hosting, follow these steps:</p>
 
 <ol>
-<li><p><strong>Install Docker:</strong>
-Ensure Docker is installed on your server. If not, visit <a href="https://docs.docker.com/get-docker/">Docker&#39;s official website</a> for instructions.</p></li>
-<li><p><strong>Run Astra API Gatway:</strong>
-Execute the following command in your terminal:</p></li>
+<li><strong>Install Docker:</strong>
+Ensure Docker is installed on your server. If not, visit <a href="https://docs.docker.com/get-docker/">Docker&#39;s official website</a> for instructions.</li>
 </ol>
-<div class="highlight"><pre class="highlight shell"><code>   docker run <span class="nt">-d</span> <span class="nt">--platform</span> linux/amd64 <span class="nt">-p</span> 8080:8080 <span class="nt">-p</span> 9090:9090 <span class="nt">--env</span> <span class="nv">ASTRA_API_KEY</span><span class="o">=</span><span class="nv">$ASTRA_API_KEY</span> <span class="nt">--name</span> gateway <span class="nt">-t</span> docker.io/astraimages/gateway:v0.0.1-alpha
-
+<div class="highlight"><pre class="highlight shell"><code>docker run <span class="nt">-d</span> <span class="nt">--platform</span> linux/amd64 <span class="nt">-p</span> 8080:8080 <span class="nt">-p</span> 9090:9090 <span class="nt">--env</span> <span class="nv">ASTRA_API_KEY</span><span class="o">=</span><span class="nv">$ASTRA_API_KEY</span> <span class="nt">--name</span> gateway <span class="nt">-t</span> docker.io/astraimages/gateway:v0.0.1-alpha
 </code></pre></div>
-<ul>
-<li>Replace <code>$ASTRA_API_KEY</code> in the command with your actual Astra API key.</li>
-</ul>
-<h2 id='obtaining-your-api-key'>Obtaining Your API Key</h2>
-<p>Refer the <a href="#getting-started">documentation</a> to create an account and the Astra API key. Your API key is crucial for authentication and ensuring secure communication with the Astra API.</p>
+<ol>
+<li><p><strong>Obtain your API key</strong>
+Refer <a href="#getting-started">above</a> for how to create an account and an Astra API key. Your API key is crucial for authentication and ensuring secure communication with the Astra API.</p></li>
+<li><p><strong>Run the astra-gateway proxy</strong>
+Execute the following command in a shell on your server. Replace <code>$ASTRA_API_KEY</code> in the command with your actual Astra API key.</p></li>
+</ol>
+<h3 id='data-privacy'>Data Privacy</h3>
+<p>For users of managed hosting, your data is encrypted in transit via HTTPS, and we never read any credentials that you transmit via our API. We have a strict no-logging policy for sensitive user data, which means that any credentials get destroyed as soon as they are used, and are never written to disk.</p>
+
+<p>For users of self-hosting, you fully own your data. Your data, keys, and other credentials never leave your servers. Astra&#39;s proxy agent is self-contained, and only communicates with our servers to authenticate you and make sure you have a valid Astra API key.</p>
 
       </div>
       <div class="dark-box">

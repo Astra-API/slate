@@ -1,1 +1,30 @@
 <h2 id='assettype'>AssetType</h2>
+<p>Represents the type of asset that a particular market is for. We currently support the following asset types:</p>
+
+<table><thead>
+<tr>
+<th>AssetType</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SPOT</td>
+<td>A spot market</td>
+</tr>
+<tr>
+<td>PERP</td>
+<td>A perpetual futures contract</td>
+</tr>
+<tr>
+<td>FUT</td>
+<td>An expiring (non-perpetual) futures contract</td>
+</tr>
+<tr>
+<td>OPT</td>
+<td>An option contract</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Support for leveraged tokens, exotic derivatives, and other asset types coming soon!
+</aside>

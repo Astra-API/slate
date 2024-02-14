@@ -1,6 +1,10 @@
 <h1 id='websocket-api'>WebSocket API</h1>
 <!-- Default `content-Type`: `application/json` -->
 
-<p>The WebSocket endpoint is available without authentication. Once the socket is connected, you can subscribe to a channel by sending a <code>Subscription</code> message, detailed in Schema.</p>
+<!-- The WebSocket endpoint is available without authentication. Once the socket is connected, you can subscribe to a channel by sending a `Subscription` message, detailed in Schema. -->
 
-<!-- Endpoint: `wss://prod.astra-api.dev/ws` -->
+<p>You can use the WebSocket API to stream real-time market data.</p>
+
+<p><strong>Endpoint: <code>wss://prod.astra-api.dev/ws</code></strong></p>
+<h3 id='authentication'>Authentication</h3>
+<p>Remember to specify an authentication header with your API key, as described <a href="#3-send-your-first-request">above</a>. Otherwise, your requests will fail.</p>
