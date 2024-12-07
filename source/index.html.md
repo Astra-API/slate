@@ -54,6 +54,8 @@ includes:
   # - schema/subscription
 
   - self_hosting
+  - otc
+
 search: true
 
 code_clipboard: true
