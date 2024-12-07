@@ -1,0 +1,186 @@
+<h1 id='otc'>OTC</h1><h2 id='request-quote'>Request quote</h2>
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell"><code>POST /request-quote
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Body</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0743434-66c8-49b7-aca2-46c910a54cf1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fromAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"toAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fromAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.25</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0743434-66c8-49b7-aca2-46c910a54cf1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fromAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"toAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fromAssetQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"toAssetQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">81436.0875</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"expiryTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1733561867046245</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6932874cf486617239c7d27100e911903ccbee05c8b07fe3f4299e047f46553a"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><code>GET /request-quote</code></p>
+
+<p>Generates an OTC trade quote for the specific asset pair and amount. Exactly one of <code>fromAmount</code> or <code>toAmount</code> must be specified in the request. &#39;fromAmount&#39; is in units of the &#39;fromAsset&#39; and &#39;toAmount&#39; is in units of the &#39;toAsset&#39;.</p>
+
+<p>The response will include the expiry time of the quote, as well as a signature that will need to be sent while accepting a quote in order to successfully complete the trade.</p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>string</td>
+<td>True</td>
+<td>Account ID to generate quote for</td>
+</tr>
+<tr>
+<td>fromAsset</td>
+<td>string</td>
+<td>True</td>
+<td>Asset to buy</td>
+</tr>
+<tr>
+<td>toAsset</td>
+<td>string</td>
+<td>True</td>
+<td>Asset to sell</td>
+</tr>
+<tr>
+<td>fromAmount</td>
+<td>number</td>
+<td>False</td>
+<td>Amount of &#39;fromAsset&#39; to buy</td>
+</tr>
+<tr>
+<td>toAmount</td>
+<td>number</td>
+<td>False</td>
+<td>Amount of &#39;toAsset&#39; to sell</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quote</td>
+<td><a href="#quote">Quote</a></td>
+<td>True</td>
+<td>Quote for the trade</td>
+</tr>
+</tbody></table>
+<h3 id='quote'>Quote</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>string</td>
+<td>True</td>
+<td>Account ID the quote was generated for</td>
+</tr>
+<tr>
+<td>fromAsset</td>
+<td>string</td>
+<td>True</td>
+<td>Asset to buy</td>
+</tr>
+<tr>
+<td>toAsset</td>
+<td>string</td>
+<td>True</td>
+<td>Asset to sell</td>
+</tr>
+<tr>
+<td>fromAssetQuantity</td>
+<td>number</td>
+<td>True</td>
+<td>Amount of fromAsset to buy</td>
+</tr>
+<tr>
+<td>toAssetQuantity</td>
+<td>number</td>
+<td>True</td>
+<td>Amount of toAsset to sell</td>
+</tr>
+<tr>
+<td>expiryTime</td>
+<td>number</td>
+<td>True</td>
+<td>Unix timestamp in microseconds when quote expires</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>string</td>
+<td>True</td>
+<td>Signature required to execute trade with this quote</td>
+</tr>
+</tbody></table>
+<h2 id='accept-quote'>Accept quote</h2>
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell"><code>POST /accept-quote
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Body</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"quote"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0743434-66c8-49b7-aca2-46c910a54cf1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fromAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"toAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fromAssetQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"toAssetQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">81436.0875</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"expiryTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1733561867046245</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6932874cf486617239c7d27100e911903ccbee05c8b07fe3f4299e047f46553a"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre></div>
+<p><code>POST /accept-quote</code></p>
+
+<p>Accepts an OTC trade quote and completes the trade.</p>
+<h3 id='request-2'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quote</td>
+<td><a href="#quote">Quote</a></td>
+<td>True</td>
+<td>Quote to accept for the trade</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<p>If successful, returns a 200 response with an empty JSON in the response body. 
+Otherwise, returns an error message.</p>
