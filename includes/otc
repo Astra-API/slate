@@ -1,4 +1,6 @@
-<h1 id='otc'>OTC</h1><h2 id='stream-quotes'>Stream quotes</h2>
+<h1 id='otc'>OTC</h1><h2 id='authentication'>Authentication</h2>
+<p>Set the header <code>x-astra-api-key</code> to the value of your API key.</p>
+<h2 id='stream-quotes'>Stream quotes</h2>
 <blockquote>
 <p>Sample Request</p>
 </blockquote>

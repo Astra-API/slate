@@ -451,6 +451,9 @@
             <a href="#otc" class="toc-h1 toc-link" data-title="OTC">OTC</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
                     <a href="#stream-quotes" class="toc-h2 toc-link" data-title="Stream quotes">Stream quotes</a>
                   </li>
                   <li>
@@ -1694,7 +1697,9 @@ Execute the following command in a shell on your server. Replace <code>$ASTRA_AP
 <p>For users of managed hosting, your data is encrypted in transit via HTTPS, and we never read any credentials that you transmit via our API. We have a strict no-logging policy for sensitive user data, which means that any credentials get destroyed as soon as they are used, and are never written to disk.</p>
 
 <p>For users of self-hosting, you fully own your data. Your data, keys, and other credentials never leave your servers. Astra&#39;s proxy agent is self-contained, and only communicates with our servers to authenticate you and make sure you have a valid Astra API key.</p>
-<h1 id='otc'>OTC</h1><h2 id='stream-quotes'>Stream quotes</h2>
+<h1 id='otc'>OTC</h1><h2 id='authentication'>Authentication</h2>
+<p>Set the header <code>x-astra-api-key</code> to the value of your API key.</p>
+<h2 id='stream-quotes'>Stream quotes</h2>
 <blockquote>
 <p>Sample Request</p>
 </blockquote>
