@@ -1,5 +1,9 @@
 # OTC
 
+## Authentication
+
+Set the header `x-astra-api-key` to the value of your API key.
+
 ## Stream quotes
 
 > Sample Request
