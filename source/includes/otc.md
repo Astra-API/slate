@@ -1,20 +1,20 @@
 # OTC
 
-## Request quote
+## Stream quotes
 
 > Sample Request
 
 ```bash
-POST /request-quote
+/ws
 ```
 
 ```json
 # Body
 {
-    "accountId": "a0743434-66c8-49b7-aca2-46c910a54cf1",
+    "method": "StreamQuotes",
     "fromAsset": "BTC",
     "toAsset": "USD",
-    "fromAmount": 1.25
+    "fromAssetQuantity": 1.25
 }
 ```
 
@@ -34,21 +34,23 @@ POST /request-quote
 }
 ```
 
-`GET /request-quote`
+`/ws`
 
-Generates an OTC trade quote for the specific asset pair and amount. Exactly one of `fromAmount` or `toAmount` must be specified in the request. 'fromAmount' is in units of the 'fromAsset' and 'toAmount' is in units of the 'toAsset'.
+This is a WebSocket endpoints that continuously streams quotes to the client at a periodic interval.
 
-The response will include the expiry time of the quote, as well as a signature that will need to be sent while accepting a quote in order to successfully complete the trade.
+Each generated quote is for the specific asset pair and amount. Exactly one of `fromAssetQuantity` or `toAssetQuantity` must be specified in the request. 'fromAssetQuantity' is in units of the 'fromAsset' and 'toAssetQuantity' is in units of the 'toAsset'.
+
+Each quote sent will include the expiry time of the quote, as well as a signature that will need to be sent while accepting a quote in order to successfully complete the trade.
 
 ### Request
 
 | Parameter | Type               | Required | Description                                   |
 |-----------|--------------------|----------|-----------------------------------------------|
-| accountId | string             | True     | Account ID to generate quote for              |
+| method | string             | True     | Method to call. Must be set to "StreamQuotes"     |
 | fromAsset | string             | True     | Asset to buy                                 |
 | toAsset   | string             | True     | Asset to sell                                |
-| fromAmount | number             | False     | Amount of 'fromAsset' to buy                  |
-| toAmount   | number             | False     | Amount of 'toAsset' to sell                   |
+| fromAssetQuantity | number             | False     | Amount of 'fromAsset' to buy                  |
+| toAssetQuantity   | number             | False     | Amount of 'toAsset' to sell                   |
 
 ### Response
 
