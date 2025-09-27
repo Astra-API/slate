@@ -6,6 +6,8 @@ Endpoint: `https://prod.astra-api.dev/v2`
 
 You can generate an API key at <https://terminal.astra-api.dev/settings/apikey>. Set the header `x-astra-api-key` to the value of your API key.
 
+Some endpoints may require you to provide your account ID. You can find this at <https://terminal.astra-api.dev/settings/profile>
+
 ## Stream quotes
 
 > Sample Request
