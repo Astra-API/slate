@@ -1,0 +1,96 @@
+<h2 id='orderbook-channel'>Orderbook Channel</h2>
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>wss://prod.astra-api.dev/ws?market=BINANCE-PERP-BTC-USDT&amp;dataType=ORDERBOOK
+</code></pre></div>
+<blockquote>
+<p>Sample Data Message</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"updateId"</span><span class="p">:</span><span class="w"> </span><span class="mi">37828320367</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30708.01</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.26141</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30707.97</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00571</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30708.02</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.005</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">30708.1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.08388</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Streams L2 orderbook updates from the specified market.</p>
+
+<p>For each exchange, we&#39;ve used whichever endpoint returns the most fine-grained orderbook updates with the lowest latency. For some exchanges, this is one update per tick, and for some exchanges, batched updates are the best that is available. <a href="mailto:contact@astra-api.dev">Contact us</a> for more information about how this is implemented under the hood.</p>
+<h3 id='message'>Message</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>updateId</td>
+<td>u64</td>
+<td>True</td>
+<td>Sequence ID for the orderbook update. <br/><br/> The exact format of this parameter may differ depending on the exchange, but it can be used to sequence updates. For any given market, updates with larger sequence IDs occurred later in time</td>
+</tr>
+<tr>
+<td>bids</td>
+<td>Array&lt;<a href="#bid">Bid</a>&gt;</td>
+<td>True</td>
+<td>List of updates to bids. <br/><br/> An update with parameters <code>updateId</code>,<code>price</code> and <code>quantity</code> means that the aggregated bid at price <code>price</code> was updated from its old quantity to <code>quantity</code> at the time indicated by the sequence number <code>updateId</code></td>
+</tr>
+<tr>
+<td>asks</td>
+<td>Array&lt;<a href="#ask">Ask</a>&gt;</td>
+<td>True</td>
+<td>List of updates to asks</td>
+</tr>
+</tbody></table>
+
+<!-- ### Action
+
+|Value|Description|
+|---|---|
+|SUBSCRIBE|Subscribe to a channel|
+|UNSUBSCRIBE|Unsubscribe from a channel| -->
+
+<!-- ```json
+{
+    "action": "SUBSCRIBE",
+    "payload": {
+        "exchange": "BINANCE",
+        "market": {
+            "baseAsset": {
+                "type": "SPOT",
+                "asset": "ETH"
+            },
+            "quoteAsset": "USDT"
+        },
+        "dataType": "ORDERBOOK"
+    }
+}
+``` -->
+
+<!-- ### OrderbookUpdate
+|Parameter|Type|Required|Description|
+|---|---|---|---|
+|side|string|True|Side for the update|
+|price|number|True|Price level for the update|
+|quantity|number|True|New quantity for bid at this price level|
+|sequenceNumber|number|True|Sequence number for update| -->

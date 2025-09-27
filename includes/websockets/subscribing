@@ -1,0 +1,70 @@
+<h2 id='subscribing'>Subscribing</h2>
+<p>You can have one active market data subscription per WebSocket connection. A &quot;subscription&quot; consists of a combination of a market and the data type you are subscribing to.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>wss://prod.astra-api.dev/ws?market=BINANCE-PERP-BTC-USDT&amp;dataType=ORDERBOOK
+</code></pre></div>
+<p>These are specified as query parameters in the initial connection request, as shown:</p>
+
+<aside class="notice">
+We will soon be adding support for switching the active subscription for a WebSocket connection that is already open.
+</aside>
+
+<!-- You can subscribe to multiple different exchange's specific Trade or Orderbook Updates channel concurrently by forwarding an list of `Subscription` messages through the WebSocket connection.  -->
+
+<!-- To understand more about how Astra handles the subscribing of exchanges, please see the `Subcription` data type in the Schema tab. -->
+
+<!-- > Sample message
+
+```json
+{
+  "action": "SUBSCRIBE",
+  "payload": {
+      "exchange": "BINANCE",
+      "market": {
+        "baseAsset": {
+          "type": "SPOT",
+          "asset": "BTC"
+        },
+        "quoteAsset": "USDT"
+      },
+      "dataType": "ORDERBOOK"
+    }
+}
+``` -->
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td><a href="#market">Market</a></td>
+<td>True</td>
+<td>The market which you are requesting data for</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td><a href="#data-type">DataType</a></td>
+<td>True</td>
+<td>The type of market data you want to stream</td>
+</tr>
+</tbody></table>
+
+<!-- ### Message
+
+|Value|Description|
+|---|---|
+|SUBSCRIBE|Subscribe to a channel|
+|UNSUBSCRIBE|Unsubscribe from a channel| -->
+
+<!-- 
+### Subscription
+
+|Parameter|Type|Default|Description|
+|---|---|---|---|
+|exchange|string|*required*|Action to perform|
+|market|string|*required*|Exchange to subscribe/unsubscribe|
+|dataType|[DataType](#datatype)|*required*|ID of an order on an exchange| -->

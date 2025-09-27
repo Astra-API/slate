@@ -1,0 +1,83 @@
+<h2 id='order'>Order</h2>
+<blockquote>
+<p>Sample Data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SPOT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="nl">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20000.00</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Astra represents all orders you&#39;ve initiated in this <code>Order</code> similar to a <code>Trade</code> object, in addition to including the specific order <code>id</code> tied to the order.</p>
+
+<aside class="success">
+Similarity in order and trade objects is intuitive! <code>Trade</code> updates returned from Astra are <code>Order</code> messages from other traders.
+</aside>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>True</td>
+<td>ID of the order on the exchange</td>
+</tr>
+<tr>
+<td>baseAsset</td>
+<td><a href="#asset">Asset</a></td>
+<td>True</td>
+<td>Base asset of market</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td><a href="#abstract-spot-asset">Abstract Spot Asset</a></td>
+<td>True</td>
+<td>Quote asset of market</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Float (f64)</td>
+<td>True</td>
+<td>Price of the order (in units of quoteAsset)</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Float (f64)</td>
+<td>True</td>
+<td>Quantity of the order (in units of baseAsset)</td>
+</tr>
+<tr>
+<td>side</td>
+<td><a href="#side">Side</a></td>
+<td>True</td>
+<td>Buy or sell order</td>
+</tr>
+</tbody></table>
+<h3 id='side'>Side</h3>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SELL</td>
+<td>Taker is selling the asset</td>
+</tr>
+<tr>
+<td>BUY</td>
+<td>Taker is buying the asset</td>
+</tr>
+</tbody></table>
