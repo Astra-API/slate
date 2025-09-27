@@ -1,4 +1,0 @@
-<h2 id='format-of-parameters'>Format of Parameters</h2>
-<p>All <code>String</code> type parameters fowarded to Astra are <code>UPPERCASE</code> only, unless specified otherwise in an information tag.</p>
-
-<p>All field names forwarded and recieved from Astra are <code>camelCase</code> unless specified otherwsie in an information tag.</p>

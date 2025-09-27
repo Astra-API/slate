@@ -1,4 +1,0 @@
-<h1 id='public-rest-api'>Public REST API</h1>
-<p><strong>Endpoint: <code>https://prod.astra-api.dev</code></strong></p>
-<h3 id='authentication'>Authentication</h3>
-<p>Remember to specify an authentication header with your API key, as described <a href="#3-send-your-first-request">above</a>. Otherwise, your requests will fail.</p>
