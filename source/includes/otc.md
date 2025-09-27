@@ -4,7 +4,7 @@
 
 Endpoint: `https://prod.astra-api.dev/v2`
 
-Set the header `x-astra-api-key` to the value of your API key.
+You can generate an API key at <https://terminal.astra-api.dev/settings/apikey>. Set the header `x-astra-api-key` to the value of your API key.
 
 ## Stream quotes
 
