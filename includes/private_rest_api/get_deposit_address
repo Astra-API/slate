@@ -1,0 +1,112 @@
+<h2 id='get-deposit-address'>Get Deposit Address</h2>
+<p><code>GET /deposit-address/{account_id}</code></p>
+
+<p>Fetches the deposit address for a specific account and network. Returns the address where users can send funds to be credited to their account.</p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_id</td>
+<td>UUID</td>
+<td>True</td>
+<td>The account ID to get the deposit address for</td>
+</tr>
+<tr>
+<td>network</td>
+<td>String</td>
+<td>True</td>
+<td>The blockchain network (e.g., &quot;bitcoin&quot;, &quot;ethereum&quot;, &quot;base&quot;)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell"><code>GET /deposit-address/<span class="o">{</span>account_id<span class="o">}</span>?network<span class="o">=</span>bitcoin
+</code></pre></div>
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc1qexample1234567890abcdef1234567890"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The deposit address for the specified network</td>
+</tr>
+</tbody></table>
+<h3 id='networks'>Networks</h3>
+<table><thead>
+<tr>
+<th>Network</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bitcoin</td>
+<td>Bitcoin network</td>
+</tr>
+<tr>
+<td>ethereum</td>
+<td>Ethereum mainnet (coming soon)</td>
+</tr>
+<tr>
+<td>base</td>
+<td>Base network (coming soon)</td>
+</tr>
+<tr>
+<td>arbitrum</td>
+<td>Arbitrum network (coming soon)</td>
+</tr>
+<tr>
+<td>solana</td>
+<td>Solana network (coming soon)</td>
+</tr>
+<tr>
+<td>avalanche</td>
+<td>Avalanche C-Chain (coming soon)</td>
+</tr>
+<tr>
+<td>optimism</td>
+<td>Optimism network (coming soon)</td>
+</tr>
+<tr>
+<td>polygon</td>
+<td>Polygon network (coming soon)</td>
+</tr>
+<tr>
+<td>bsc</td>
+<td>Binance Smart Chain (coming soon)</td>
+</tr>
+<tr>
+<td>algorand</td>
+<td>Algorand network (coming soon)</td>
+</tr>
+<tr>
+<td>noble</td>
+<td>Noble network (coming soon)</td>
+</tr>
+<tr>
+<td>stellar</td>
+<td>Stellar network (coming soon)</td>
+</tr>
+<tr>
+<td>sui</td>
+<td>Sui network (coming soon)</td>
+</tr>
+</tbody></table>

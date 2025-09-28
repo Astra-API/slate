@@ -1,0 +1,85 @@
+<h2 id='create-withdrawal-request'>Create Withdrawal Request</h2>
+<p><code>POST /withdrawal-request/{account_id}</code></p>
+
+<p>Creates a new withdrawal request for a specific account. The withdrawal will begin processing immediately. You can track the status using the <a href="#get-withdrawal-requests">Get Withdrawal Requests</a> endpoint</p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_id</td>
+<td>UUID</td>
+<td>True</td>
+<td>The account ID to create the withdrawal request for</td>
+</tr>
+</tbody></table>
+<h3 id='request-body'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>instrumentSymbol</td>
+<td>String</td>
+<td>True</td>
+<td>The asset symbol to withdraw (e.g., &quot;BTC&quot;, &quot;ETH&quot;, &quot;USDC&quot;)</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>True</td>
+<td>The amount to withdraw (as decimal string)</td>
+</tr>
+<tr>
+<td>network</td>
+<td>String</td>
+<td>True</td>
+<td>The blockchain network for the withdrawal (e.g., &quot;bitcoin&quot;, &quot;ethereum&quot;, &quot;base&quot;)</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>True</td>
+<td>The destination address for the withdrawal</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"instrumentSymbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitcoin"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc1qexample1234567890abcdef1234567890"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique identifier for the withdrawal request (UUID)</td>
+</tr>
+</tbody></table>

@@ -325,6 +325,15 @@
                   <li>
                     <a href="#get-withdrawal-requests" class="toc-h2 toc-link" data-title="Get Withdrawal Requests">Get Withdrawal Requests</a>
                   </li>
+                  <li>
+                    <a href="#create-withdrawal-request" class="toc-h2 toc-link" data-title="Create Withdrawal Request">Create Withdrawal Request</a>
+                  </li>
+                  <li>
+                    <a href="#get-deposit-address" class="toc-h2 toc-link" data-title="Get Deposit Address">Get Deposit Address</a>
+                  </li>
+                  <li>
+                    <a href="#get-express-deposit-address" class="toc-h2 toc-link" data-title="Get Express Deposit Address">Get Express Deposit Address</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -727,6 +736,258 @@ Replace `{ASTRA_API_KEY}` with the API key that you just generated. You should r
 <tr>
 <td>failed</td>
 <td>Withdrawal failed due to an error</td>
+</tr>
+</tbody></table>
+<h2 id='create-withdrawal-request'>Create Withdrawal Request</h2>
+<p><code>POST /withdrawal-request/{account_id}</code></p>
+
+<p>Creates a new withdrawal request for a specific account. The withdrawal will begin processing immediately. You can track the status using the <a href="#get-withdrawal-requests">Get Withdrawal Requests</a> endpoint</p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_id</td>
+<td>UUID</td>
+<td>True</td>
+<td>The account ID to create the withdrawal request for</td>
+</tr>
+</tbody></table>
+<h3 id='request-body'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>instrumentSymbol</td>
+<td>String</td>
+<td>True</td>
+<td>The asset symbol to withdraw (e.g., &quot;BTC&quot;, &quot;ETH&quot;, &quot;USDC&quot;)</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>True</td>
+<td>The amount to withdraw (as decimal string)</td>
+</tr>
+<tr>
+<td>network</td>
+<td>String</td>
+<td>True</td>
+<td>The blockchain network for the withdrawal (e.g., &quot;bitcoin&quot;, &quot;ethereum&quot;, &quot;base&quot;)</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>True</td>
+<td>The destination address for the withdrawal</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"instrumentSymbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitcoin"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc1qexample1234567890abcdef1234567890"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique identifier for the withdrawal request (UUID)</td>
+</tr>
+</tbody></table>
+<h2 id='get-deposit-address'>Get Deposit Address</h2>
+<p><code>GET /deposit-address/{account_id}</code></p>
+
+<p>Fetches the deposit address for a specific account and network. Returns the address where users can send funds to be credited to their account.</p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_id</td>
+<td>UUID</td>
+<td>True</td>
+<td>The account ID to get the deposit address for</td>
+</tr>
+<tr>
+<td>network</td>
+<td>String</td>
+<td>True</td>
+<td>The blockchain network (e.g., &quot;bitcoin&quot;, &quot;ethereum&quot;, &quot;base&quot;)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell"><code>GET /deposit-address/<span class="o">{</span>account_id<span class="o">}</span>?network<span class="o">=</span>bitcoin
+</code></pre></div>
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc1qexample1234567890abcdef1234567890"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The deposit address for the specified network</td>
+</tr>
+</tbody></table>
+<h3 id='networks'>Networks</h3>
+<table><thead>
+<tr>
+<th>Network</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bitcoin</td>
+<td>Bitcoin network</td>
+</tr>
+<tr>
+<td>ethereum</td>
+<td>Ethereum mainnet (coming soon)</td>
+</tr>
+<tr>
+<td>base</td>
+<td>Base network (coming soon)</td>
+</tr>
+<tr>
+<td>arbitrum</td>
+<td>Arbitrum network (coming soon)</td>
+</tr>
+<tr>
+<td>solana</td>
+<td>Solana network (coming soon)</td>
+</tr>
+<tr>
+<td>avalanche</td>
+<td>Avalanche C-Chain (coming soon)</td>
+</tr>
+<tr>
+<td>optimism</td>
+<td>Optimism network (coming soon)</td>
+</tr>
+<tr>
+<td>polygon</td>
+<td>Polygon network (coming soon)</td>
+</tr>
+<tr>
+<td>bsc</td>
+<td>Binance Smart Chain (coming soon)</td>
+</tr>
+<tr>
+<td>algorand</td>
+<td>Algorand network (coming soon)</td>
+</tr>
+<tr>
+<td>noble</td>
+<td>Noble network (coming soon)</td>
+</tr>
+<tr>
+<td>stellar</td>
+<td>Stellar network (coming soon)</td>
+</tr>
+<tr>
+<td>sui</td>
+<td>Sui network (coming soon)</td>
+</tr>
+</tbody></table>
+<h2 id='get-express-deposit-address'>Get Express Deposit Address</h2>
+<p><code>GET /express-deposit-address/{network}</code></p>
+
+<p>Fetches the express deposit address for a specific network. Express deposits are processed faster, but <em>must</em> be sent from a linked address.</p>
+
+<p>Express deposits have the following requirements:</p>
+
+<ul>
+<li>Must be sent from a <a href="https://terminal.astra-api.dev/settings/linkedAddresses">linked address</a></li>
+<li>For UTXO chains (Bitcoin, etc.), all input UTXOs must be from linked addresses</li>
+<li>Processed faster than standard deposits</li>
+</ul>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>network</td>
+<td>String</td>
+<td>True</td>
+<td>The blockchain network (e.g., &quot;bitcoin&quot;, &quot;ethereum&quot;, &quot;base&quot;)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitcoin"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc1qexample1234567890abcdef1234567890"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>network</td>
+<td>String</td>
+<td>The blockchain network for the address</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The express deposit address for the specified network</td>
 </tr>
 </tbody></table>
 <h1 id='otc'>OTC</h1><h2 id='stream-quotes'>Stream quotes</h2>

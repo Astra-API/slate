@@ -1,0 +1,55 @@
+<h2 id='get-express-deposit-address'>Get Express Deposit Address</h2>
+<p><code>GET /express-deposit-address/{network}</code></p>
+
+<p>Fetches the express deposit address for a specific network. Express deposits are processed faster, but <em>must</em> be sent from a linked address.</p>
+
+<p>Express deposits have the following requirements:</p>
+
+<ul>
+<li>Must be sent from a <a href="https://terminal.astra-api.dev/settings/linkedAddresses">linked address</a></li>
+<li>For UTXO chains (Bitcoin, etc.), all input UTXOs must be from linked addresses</li>
+<li>Processed faster than standard deposits</li>
+</ul>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>network</td>
+<td>String</td>
+<td>True</td>
+<td>The blockchain network (e.g., &quot;bitcoin&quot;, &quot;ethereum&quot;, &quot;base&quot;)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitcoin"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc1qexample1234567890abcdef1234567890"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>network</td>
+<td>String</td>
+<td>The blockchain network for the address</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>The express deposit address for the specified network</td>
+</tr>
+</tbody></table>
