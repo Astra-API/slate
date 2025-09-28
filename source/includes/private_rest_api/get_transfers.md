@@ -1,4 +1,4 @@
-## Get Transfers
+## Get Transfer History
 
 `GET /transfers/{account_id}`
 

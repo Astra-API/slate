@@ -35,6 +35,8 @@ includes:
   # - private_rest_api/get_fills
   - private_rest_api/get_balances
   - private_rest_api/get_transfers
+  - private_rest_api/get_otc_history
+  - private_rest_api/get_transaction_history
   - private_rest_api/get_withdrawal_requests
   - private_rest_api/create_withdrawal_request
   - private_rest_api/get_deposit_address
