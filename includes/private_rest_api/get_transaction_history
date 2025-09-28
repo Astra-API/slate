@@ -1,0 +1,152 @@
+<h2 id='get-transaction-history'>Get Transaction History</h2>
+<p><code>GET /transactions/{account_id}</code></p>
+
+<p>Fetches the full raw transaction history for a specific account. Any operation that credits or debits this account is considered a &quot;transaction&quot;. So deposits, withdrawals, and fees will all show up as transactions, OTC trades will show up as two transactions (one for each asset involved in the trade). This endpoint is usually only used for things like reporting, balance reconciliation, etc. To get more detailed info about specific types of transactions, see the following endpoints:</p>
+
+<ul>
+<li><a href="#get-otc-history">Get OTC History</a>,</li>
+<li><a href="#get-transfer-history">Get Transfer History</a></li>
+<li><a href="#get-withdrawal-requests">Get Withdrawal Requests</a></li>
+</ul>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_id</td>
+<td>UUID</td>
+<td>True</td>
+<td>The account ID to fetch transaction history for</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"debitFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creditTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deposit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-15T10:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"idemKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit_123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tradeDisplayId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440003"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440004"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"debitFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creditTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440005"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTC Trade"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-14T15:20:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"idemKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade_456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tradeDisplayId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440006"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<p>The response is a JSON array of transaction objects, ordered by creation date (most recent first).</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>displayId</td>
+<td>String</td>
+<td>Unique display identifier for the transaction (UUID)</td>
+</tr>
+<tr>
+<td>instrumentId</td>
+<td>String</td>
+<td>Instrument ID for the asset involved in the transaction</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Symbol of the asset (e.g., &quot;BTC&quot;, &quot;ETH&quot;, &quot;USDC&quot;)</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Transaction amount (as decimal string)</td>
+</tr>
+<tr>
+<td>debitFrom</td>
+<td>String</td>
+<td>Account ID that was debited (money taken from)</td>
+</tr>
+<tr>
+<td>creditTo</td>
+<td>String</td>
+<td>Account ID that was credited (money given to)</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>String or null</td>
+<td>Additional notes about the transaction</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>String</td>
+<td>ISO 8601 timestamp when the transaction was created</td>
+</tr>
+<tr>
+<td>idemKey</td>
+<td>String or null</td>
+<td>Idempotency key for the transaction</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String or null</td>
+<td>Transaction type: &quot;deposit&quot;, &quot;withdrawal&quot;, &quot;trade&quot;, &quot;fee&quot;, or null</td>
+</tr>
+<tr>
+<td>tradeDisplayId</td>
+<td>String or null</td>
+<td>Display ID of the associated trade (if this transaction is part of a trade)</td>
+</tr>
+</tbody></table>
+<h3 id='transaction-types'>Transaction Types</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deposit</td>
+<td>Incoming funds to the account</td>
+</tr>
+<tr>
+<td>withdrawal</td>
+<td>Outgoing funds from the account</td>
+</tr>
+<tr>
+<td>trade</td>
+<td>Transaction related to a trade (buy/sell)</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>Fee charged for a service</td>
+</tr>
+<tr>
+<td>null</td>
+<td>Other transaction types or legacy transactions</td>
+</tr>
+</tbody></table>

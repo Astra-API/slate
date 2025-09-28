@@ -1,4 +1,4 @@
-<h2 id='get-transfers'>Get Transfers</h2>
+<h2 id='get-transfer-history'>Get Transfer History</h2>
 <p><code>GET /transfers/{account_id}</code></p>
 
 <p>Fetches all transfers (deposits and withdrawals) for a specific account. Returns a list of transfers with their amounts, types, and transaction details.</p>

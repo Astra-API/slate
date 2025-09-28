@@ -320,7 +320,13 @@
                     <a href="#get-balances" class="toc-h2 toc-link" data-title="Get Balances">Get Balances</a>
                   </li>
                   <li>
-                    <a href="#get-transfers" class="toc-h2 toc-link" data-title="Get Transfers">Get Transfers</a>
+                    <a href="#get-transfer-history" class="toc-h2 toc-link" data-title="Get Transfer History">Get Transfer History</a>
+                  </li>
+                  <li>
+                    <a href="#get-otc-history" class="toc-h2 toc-link" data-title="Get OTC History">Get OTC History</a>
+                  </li>
+                  <li>
+                    <a href="#get-transaction-history" class="toc-h2 toc-link" data-title="Get Transaction History">Get Transaction History</a>
                   </li>
                   <li>
                     <a href="#get-withdrawal-requests" class="toc-h2 toc-link" data-title="Get Withdrawal Requests">Get Withdrawal Requests</a>
@@ -474,7 +480,7 @@ Replace `{ASTRA_API_KEY}` with the API key that you just generated. You should r
 <td>The current balance amount as a decimal string</td>
 </tr>
 </tbody></table>
-<h2 id='get-transfers'>Get Transfers</h2>
+<h2 id='get-transfer-history'>Get Transfer History</h2>
 <p><code>GET /transfers/{account_id}</code></p>
 
 <p>Fetches all transfers (deposits and withdrawals) for a specific account. Returns a list of transfers with their amounts, types, and transaction details.</p>
@@ -583,6 +589,293 @@ Replace `{ASTRA_API_KEY}` with the API key that you just generated. You should r
 <tr>
 <td>withdrawal</td>
 <td>Outgoing transfer that debits the account</td>
+</tr>
+</tbody></table>
+<h2 id='get-otc-history'>Get OTC History</h2>
+<p><code>GET /converts/{account_id}</code></p>
+
+<p>Fetches the OTC trade history for a specific account. We also use the term &quot;convert&quot; or &quot;swap&quot; to refer to an OTC trade in some places.</p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_id</td>
+<td>UUID</td>
+<td>True</td>
+<td>The account ID to fetch OTC history for</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"takerAccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"makerAccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buyInstrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buyQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buyTxnId"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sellInstrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440003"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sellQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sellTxnId"</span><span class="p">:</span><span class="w"> </span><span class="mi">457</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"otc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-15T10:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-15T10:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buySymbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sellSymbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<p>The response is a JSON array of OTC trade objects, ordered by creation date (most recent first).</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>displayId</td>
+<td>String</td>
+<td>Unique display identifier for the trade (UUID)</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Integer</td>
+<td>Internal trade ID</td>
+</tr>
+<tr>
+<td>takerAccountId</td>
+<td>String</td>
+<td>Account ID of the trade taker (the requesting account)</td>
+</tr>
+<tr>
+<td>makerAccountId</td>
+<td>String</td>
+<td>Account ID of the trade maker (counterparty)</td>
+</tr>
+<tr>
+<td>buyInstrumentId</td>
+<td>String</td>
+<td>Instrument ID for the asset being bought</td>
+</tr>
+<tr>
+<td>buyQuantity</td>
+<td>String</td>
+<td>Quantity of the asset being bought (as decimal string)</td>
+</tr>
+<tr>
+<td>buyTxnId</td>
+<td>Integer or null</td>
+<td>Transaction ID for the buy side</td>
+</tr>
+<tr>
+<td>sellInstrumentId</td>
+<td>String</td>
+<td>Instrument ID for the asset being sold</td>
+</tr>
+<tr>
+<td>sellQuantity</td>
+<td>String</td>
+<td>Quantity of the asset being sold (as decimal string)</td>
+</tr>
+<tr>
+<td>sellTxnId</td>
+<td>Integer or null</td>
+<td>Transaction ID for the sell side</td>
+</tr>
+<tr>
+<td>category</td>
+<td>String or null</td>
+<td>Trade category (e.g., &quot;otc&quot;)</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>String or null</td>
+<td>Additional notes about the trade</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>String</td>
+<td>ISO 8601 timestamp when the trade was created</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>String</td>
+<td>ISO 8601 timestamp when the trade was last updated</td>
+</tr>
+<tr>
+<td>buySymbol</td>
+<td>String</td>
+<td>Symbol of the asset being bought (e.g., &quot;ETH&quot;, &quot;BTC&quot;)</td>
+</tr>
+<tr>
+<td>sellSymbol</td>
+<td>String</td>
+<td>Symbol of the asset being sold (e.g., &quot;ETH&quot;, &quot;BTC&quot;)</td>
+</tr>
+</tbody></table>
+<h2 id='get-transaction-history'>Get Transaction History</h2>
+<p><code>GET /transactions/{account_id}</code></p>
+
+<p>Fetches the full raw transaction history for a specific account. Any operation that credits or debits this account is considered a &quot;transaction&quot;. So deposits, withdrawals, and fees will all show up as transactions, OTC trades will show up as two transactions (one for each asset involved in the trade). This endpoint is usually only used for things like reporting, balance reconciliation, etc. To get more detailed info about specific types of transactions, see the following endpoints:</p>
+
+<ul>
+<li><a href="#get-otc-history">Get OTC History</a>,</li>
+<li><a href="#get-transfer-history">Get Transfer History</a></li>
+<li><a href="#get-withdrawal-requests">Get Withdrawal Requests</a></li>
+</ul>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_id</td>
+<td>UUID</td>
+<td>True</td>
+<td>The account ID to fetch transaction history for</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"debitFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creditTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deposit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-15T10:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"idemKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit_123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tradeDisplayId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440003"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440004"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"debitFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"creditTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440005"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTC Trade"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-14T15:20:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"idemKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade_456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tradeDisplayId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440006"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<p>The response is a JSON array of transaction objects, ordered by creation date (most recent first).</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>displayId</td>
+<td>String</td>
+<td>Unique display identifier for the transaction (UUID)</td>
+</tr>
+<tr>
+<td>instrumentId</td>
+<td>String</td>
+<td>Instrument ID for the asset involved in the transaction</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Symbol of the asset (e.g., &quot;BTC&quot;, &quot;ETH&quot;, &quot;USDC&quot;)</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Transaction amount (as decimal string)</td>
+</tr>
+<tr>
+<td>debitFrom</td>
+<td>String</td>
+<td>Account ID that was debited (money taken from)</td>
+</tr>
+<tr>
+<td>creditTo</td>
+<td>String</td>
+<td>Account ID that was credited (money given to)</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>String or null</td>
+<td>Additional notes about the transaction</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>String</td>
+<td>ISO 8601 timestamp when the transaction was created</td>
+</tr>
+<tr>
+<td>idemKey</td>
+<td>String or null</td>
+<td>Idempotency key for the transaction</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String or null</td>
+<td>Transaction type: &quot;deposit&quot;, &quot;withdrawal&quot;, &quot;trade&quot;, &quot;fee&quot;, or null</td>
+</tr>
+<tr>
+<td>tradeDisplayId</td>
+<td>String or null</td>
+<td>Display ID of the associated trade (if this transaction is part of a trade)</td>
+</tr>
+</tbody></table>
+<h3 id='transaction-types'>Transaction Types</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deposit</td>
+<td>Incoming funds to the account</td>
+</tr>
+<tr>
+<td>withdrawal</td>
+<td>Outgoing funds from the account</td>
+</tr>
+<tr>
+<td>trade</td>
+<td>Transaction related to a trade (buy/sell)</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>Fee charged for a service</td>
+</tr>
+<tr>
+<td>null</td>
+<td>Other transaction types or legacy transactions</td>
 </tr>
 </tbody></table>
 <h2 id='get-withdrawal-requests'>Get Withdrawal Requests</h2>
