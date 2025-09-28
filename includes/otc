@@ -1,10 +1,4 @@
-<h1 id='otc'>OTC</h1><h2 id='authentication'>Authentication</h2>
-<p>Endpoint: <code>https://prod.astra-api.dev/v2</code></p>
-
-<p>You can generate an API key at <a href="https://terminal.astra-api.dev/settings/apikey">https://terminal.astra-api.dev/settings/apikey</a>. Set the header <code>x-astra-api-key</code> to the value of your API key.</p>
-
-<p>Some endpoints may require you to provide your account ID. You can find this at <a href="https://terminal.astra-api.dev/settings/profile">https://terminal.astra-api.dev/settings/profile</a></p>
-<h2 id='stream-quotes'>Stream quotes</h2>
+<h1 id='otc'>OTC</h1><h2 id='stream-quotes'>Stream quotes</h2>
 <blockquote>
 <p>Sample Request</p>
 </blockquote>

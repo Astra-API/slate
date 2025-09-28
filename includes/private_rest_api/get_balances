@@ -1,38 +1,53 @@
 <h2 id='get-balances'>Get Balances</h2>
-<p><code>GET /balances</code></p>
+<p><code>GET /balances/{account_id}</code></p>
 
-<p>Fetches the user&#39;s balances of all assets on the exchange. This includes deposits, collateral and open positions.</p>
+<p>Fetches the balances of this account. Returns a mapping of asset symbols to their current balances.</p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_id</td>
+<td>UUID</td>
+<td>True</td>
+<td>The account ID to fetch balances for</td>
+</tr>
+</tbody></table>
 
-<aside class="notice">
-Coming soon!
-</aside>
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.21"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ETH"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.67"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"SOL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.11"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"USDC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<p>The response is a JSON object where:
+- <strong>Keys</strong> are asset symbols (strings)
+- <strong>Values</strong> are the current balance amounts (strings representing decimal numbers)</p>
 
-<!-- > Sample Request
-
-```json
-{
-  "exchange": "BINANCE"
-}
-```
-
-### Request
-
-|Parameter|Type|Required|Description|
-|---|---|---|---|
-|exchange|[Exchange](#exchange)|True|Exchange to fetch data from|
-
-> Sample Response
-
-```json
-{
-  "BTC": 1.21,
-  "ETH": 5.67,
-  "SOL": 10.11
-}
-```
-
-### Response
-
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|asset symbol|Float (f64)|False|List of assets and corresponding amounts linked to user.| -->
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asset</td>
+<td>String</td>
+<td>The symbol of the asset (e.g., &quot;BTC&quot;, &quot;ETH&quot;, &quot;USDC&quot;)</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>String</td>
+<td>The current balance amount as a decimal string</td>
+</tr>
+</tbody></table>

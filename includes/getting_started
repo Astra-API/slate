@@ -1,56 +1,67 @@
-<h1 id='getting-started'>Getting Started</h1><h3 id='1-create-an-account'>1. Create an account</h3>
-<p>First, create an account with us here: <a href="https://terminal.astra-api.dev/settings/apikeys">https://terminal.astra-api.dev/settings/apikeys</a>. You can use your Astra account to access all of our products and services.</p>
+<h1 id='getting-started'>Getting Started</h1>
+<!-- ### 1. Create an account
 
-<p><img src="/images/astra-terminal-login-page-1150e7d0.png" alt="Astra Terminal login page" /></p>
-<h3 id='2-create-an-api-key'>2. Create an API key</h3>
-<p>Navigate to <a href="https://terminal.astra-api.dev/settings/apikeys">https://terminal.astra-api.dev/settings/apikeys</a> and create an API key. The key will only be displayed once upon creation, so make sure you save it.</p>
+First, create an account with us here: <https://terminal.astra-api.dev/settings/apikeys>. You can use your Astra account to access all of our products and services.
 
-<p><img src="/images/astra-terminal-api-keys-page-8a93f835.png" alt="Astra Terminal API keys page" /></p>
-<h3 id='3-send-your-first-request'>3. Send your first request</h3>
+![Astra Terminal login page](astra-terminal-login-page.png)
+
+
+### 2. Create an API key
+
+Navigate to <https://terminal.astra-api.dev/settings/apikeys> and create an API key. The key will only be displayed once upon creation, so make sure you save it.
+
+![Astra Terminal API keys page](astra-terminal-api-keys-page.png) -->
+
+<!-- ### 3. Send your first request -->
+
 <p><strong>Endpoints</strong></p>
 
 <p>You can use the following endpoints to access our hosted API:</p>
 
 <ul>
-<li>REST endpoint: <code>https://prod.astra-api.dev</code></li>
-<li>WebSocket endpoint: <code>wss://prod.astra-api.dev/ws</code></li>
+<li>REST endpoint: <code>https://prod.astra-api.dev/v2</code></li>
+<li>WebSocket endpoint: <code>wss://prod.astra-api.dev/v2</code></li>
 </ul>
 
 <p><strong>Authentication</strong></p>
 
-<p>All requests to Astra API need to be authenticated</p>
+<p>All requests to Astra API need to be authenticated with the <code>x-astra-api-key</code> header</p>
+
+<p>You can generate an API key at <a href="https://terminal.astra-api.dev/settings/apikey">https://terminal.astra-api.dev/settings/apikey</a>. Set the header <code>x-astra-api-key</code> to the value of your API key.</p>
 <div class="highlight"><pre class="highlight plaintext"><code>{
-    "x-astra-api-key": "Bearer kadjfasfl.KjUBAhdIafaDFSCsajfaIowSADxkaw"
+    "x-astra-api-key": "KjUBAhdIafaDFSCsajfaIowSADxkaw"
 }
 </code></pre></div>
-<p>You can authenticate by specifying a header named <code>x-astra-api-key</code> with the value <code>Bearer {KEY}</code>, where you replace &quot;KEY&quot; with the value of your API key. For example, if the API key you created in the previous step was <code>kadjfasfl.KjUBAhdIafaDFSCsajfaIowSADxkaw</code>, you would include the header displayed to the right.</p>
+<!-- You can authenticate by specifying a header named `x-astra-api-key` with the value `Bearer {KEY}`, where you replace "KEY" with the value of your API key. For example, if the API key you created in the previous step was `kadjfasfl.KjUBAhdIafaDFSCsajfaIowSADxkaw`, you would include the header displayed to the right.
 
-<p>Requests to the public market data endpoints do not require any additional authentication beyond your Astra API key. Private endpoints also require you to provide your exchange API keys for the specific exchange(s) you are trading on. More info on how to do this will be released once we enable support for private endpoints (currently in development).</p>
+Requests to the public market data endpoints do not require any additional authentication beyond your Astra API key. Private endpoints also require you to provide your exchange API keys for the specific exchange(s) you are trading on. More info on how to do this will be released once we enable support for private endpoints (currently in development). -->
 
-<p><strong>Send a request</strong></p>
+<!-- **Send a request**
 
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell"><code>curl <span class="nt">--location</span> <span class="s1">'http://prod.astra-api.dev/orderbook?market=BINANCE-SPOT-BTC-USDT'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-astra-api-key: Bearer {ASTRA_API_KEY}'</span>
-</code></pre></div>
-<blockquote>
-<p>Sample Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.41</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.10646</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.39</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00975</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.38</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00975</span><span class="p">},</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.42</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.21005</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.59</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.77624</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">51485.89</span><span class="p">,</span><span class="w"> </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.38811</span><span class="p">},</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Use your favorite HTTP client to send a market data request. Here&#39;s an example curl command you can use:</p>
+> Sample Request
 
-<p>Replace <code>{ASTRA_API_KEY}</code> with the API key that you just generated. You should receive a response with a current snapshot of the orderbook for that market!</p>
+```bash
+curl --location 'http://prod.astra-api.dev/orderbook?market=BINANCE-SPOT-BTC-USDT' \
+--header 'x-astra-api-key: Bearer {ASTRA_API_KEY}'
+```
+
+> Sample Response
+
+```json
+{
+    "bids": [
+        {"price": 51485.41, "quantity": 4.10646},
+        {"price": 51485.39, "quantity": 0.00975},
+        {"price": 51485.38, "quantity": 0.00975},
+    ],
+    "asks": [
+        {"price": 51485.42, "quantity": 2.21005},
+        {"price": 51485.59, "quantity": 0.77624},
+        {"price": 51485.89, "quantity": 0.38811},
+    ]
+}
+```
+
+Use your favorite HTTP client to send a market data request. Here's an example curl command you can use:
+
+Replace `{ASTRA_API_KEY}` with the API key that you just generated. You should receive a response with a current snapshot of the orderbook for that market! -->

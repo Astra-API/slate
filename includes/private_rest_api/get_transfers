@@ -1,0 +1,111 @@
+<h2 id='get-transfers'>Get Transfers</h2>
+<p><code>GET /transfers/{account_id}</code></p>
+
+<p>Fetches all transfers (deposits and withdrawals) for a specific account. Returns a list of transfers with their amounts, types, and transaction details.</p>
+<h3 id='request'>Request</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_id</td>
+<td>UUID</td>
+<td>True</td>
+<td>The account ID to fetch transfers for</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Sample Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"226"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-15T10:30:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-15T10:30:00Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"225"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-14T15:20:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transferType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdrawal"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdrawal"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1234567890abcdef1234567890abcdef12345678"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethereum"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"withdrawal_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"550e8400-e29b-41d4-a716-446655440000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-14T15:20:00Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='response'>Response</h3>
+<p>The response is a JSON array of transfer objects, ordered by creation date (most recent first).</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique identifier for the transfer (integer as string)</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>String</td>
+<td>ISO 8601 timestamp when the transfer was created</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>The asset symbol being transferred (e.g., &quot;BTC&quot;, &quot;ETH&quot;, &quot;USDC&quot;)</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>The amount transferred (as decimal string)</td>
+</tr>
+<tr>
+<td>transferType</td>
+<td>String</td>
+<td>Type of transfer: &quot;deposit&quot; or &quot;withdrawal&quot;</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>Object or null</td>
+<td>Additional metadata associated with the transfer. For withdrawals: contains type, address, network, and withdrawal_id. For deposits: may contain transaction details (tx object with hex, txid, vout) or be null</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>String</td>
+<td>ISO 8601 timestamp when the transfer was last updated</td>
+</tr>
+</tbody></table>
+<h3 id='transfer-types'>Transfer Types</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deposit</td>
+<td>Incoming transfer that credits the account</td>
+</tr>
+<tr>
+<td>withdrawal</td>
+<td>Outgoing transfer that debits the account</td>
+</tr>
+</tbody></table>

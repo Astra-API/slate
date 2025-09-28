@@ -1,1 +1,2 @@
 <h1 id='private-rest-api'>Private REST API</h1>
+<p>Some endpoints may require you to provide your account ID. You can find this at <a href="https://terminal.astra-api.dev/settings/profile">https://terminal.astra-api.dev/settings/profile</a></p>
