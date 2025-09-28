@@ -1,39 +1,33 @@
 ## Get Balances
 
-`GET /balances`
+`GET /balances/{account_id}`
 
-Fetches the user's balances of all assets on the exchange. This includes deposits, collateral and open positions.
-
-<aside class="notice">
-Coming soon!
-</aside>
-
-<!-- > Sample Request
-
-```json
-{
-  "exchange": "BINANCE"
-}
-```
+Fetches the balances of this account. Returns a mapping of asset symbols to their current balances.
 
 ### Request
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
-|exchange|[Exchange](#exchange)|True|Exchange to fetch data from|
+|account_id|UUID|True|The account ID to fetch balances for|
 
 > Sample Response
 
 ```json
 {
-  "BTC": 1.21,
-  "ETH": 5.67,
-  "SOL": 10.11
+  "BTC": "1.21",
+  "ETH": "5.67",
+  "SOL": "10.11",
+  "USDC": "1000.00"
 }
 ```
 
 ### Response
 
-|Name|Type|Required|Description|
-|---|---|---|---|---|
-|asset symbol|Float (f64)|False|List of assets and corresponding amounts linked to user.| -->
+The response is a JSON object where:
+- **Keys** are asset symbols (strings)
+- **Values** are the current balance amounts (strings representing decimal numbers)
+
+|Name|Type|Description|
+|---|---|---|
+|asset|String|The symbol of the asset (e.g., "BTC", "ETH", "USDC")|
+|balance|String|The current balance amount as a decimal string|

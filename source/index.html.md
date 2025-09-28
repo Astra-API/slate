@@ -12,49 +12,52 @@ toc_footers:
 
 # Order of files determines outline of website
 includes:
-  - intro
+  # - intro
   - getting_started
 
   # - auth/intro
 
-  - public_rest_api/intro
-  - public_rest_api/get_markets
+  # - public_rest_api/intro
+  # - public_rest_api/get_markets
   # - public_rest_api/get_price
   # - public_rest_api/get_bbo
-  - public_rest_api/get_orderbook
+  # - public_rest_api/get_orderbook
   # - public_rest_api/get_trades
 
   
-  - websockets/intro
-  - websockets/subscribing
-  - websockets/orderbook_updates
-  - websockets/trade_updates
+  # - websockets/intro
+  # - websockets/subscribing
+  # - websockets/orderbook_updates
+  # - websockets/trade_updates
 
   - private_rest_api/intro
-  - private_rest_api/get_orders
-  - private_rest_api/get_fills
+  # - private_rest_api/get_orders
+  # - private_rest_api/get_fills
   - private_rest_api/get_balances
-  - private_rest_api/get_positions
-  - private_rest_api/place_order
-  - private_rest_api/cancel_order
+  - private_rest_api/get_transfers
+  - private_rest_api/get_withdrawal_requests
+  # - private_rest_api/get_positions
+  # - private_rest_api/place_order
+  # - private_rest_api/cancel_order
 
-  - schema/intro
+  - otc
+
+  # - schema/intro
   # - schema/format_of_parameters
-  - schema/exchange
-  - schema/market
-  - schema/market_metadata
-  - schema/asset_type
+  # - schema/exchange
+  # - schema/market
+  # - schema/market_metadata
+  # - schema/asset_type
   # - schema/asset
-  - schema/abstract_token
-  - schema/data_type
-  - schema/bid
-  - schema/ask
-  - schema/trade
+  # - schema/abstract_token
+  # - schema/data_type
+  # - schema/bid
+  # - schema/ask
+  # - schema/trade
   # - schema/order
   # - schema/subscription
 
-  - self_hosting
-  - otc
+  # - self_hosting
 
 search: true
 
