@@ -36,6 +36,7 @@ includes:
   - private_rest_api/get_balances
   - private_rest_api/get_transfers
   - private_rest_api/get_withdrawal_requests
+  - private_rest_api/create_withdrawal_request
   - private_rest_api/get_deposit_address
   - private_rest_api/get_express_deposit_address
   # - private_rest_api/get_positions
