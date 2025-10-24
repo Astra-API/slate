@@ -430,7 +430,12 @@ Replace `{ASTRA_API_KEY}` with the API key that you just generated. You should r
 <h2 id='get-balances'>Get Balances</h2>
 <p><code>GET /balances/{account_id}</code></p>
 
-<p>Fetches the balances of this account. Returns a mapping of asset symbols to their current balances.</p>
+<p>Fetches the balances of this account. Returns a mapping of instrument IDs to their balance details.</p>
+
+<p>If you have a balances in a blockchain token, the response will contain fields identifying the network
+and contract address of the token.</p>
+
+<p>Some instruments, like popular stablecoins (USDC, USDT) and native tokens (BTC, ETH), are considered blockchain-agnostic in our systems, and will show up without a network or address.</p>
 <h3 id='request'>Request</h3>
 <table><thead>
 <tr>
@@ -452,15 +457,32 @@ Replace `{ASTRA_API_KEY}` with the API key that you just generated. You should r
 <p>Sample Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"BTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.21"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ETH"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.67"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"SOL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.11"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"USDC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.00"</span><span class="w">
+  </span><span class="nl">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.21"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> 
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"456e7890-e89b-12d3-a456-426614174001"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456e7890-e89b-12d3-a456-426614174001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.67"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethereum"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"789e0123-e89b-12d3-a456-426614174002"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789e0123-e89b-12d3-a456-426614174002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.11"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response'>Response</h3>
 <p>The response is a JSON object where:
-- <strong>Keys</strong> are asset symbols (strings)
-- <strong>Values</strong> are the current balance amounts (strings representing decimal numbers)</p>
+- <strong>Keys</strong> are instrument IDs (UUIDs)
+- <strong>Values</strong> are balance objects containing detailed information about each asset</p>
 
 <table><thead>
 <tr>
@@ -470,14 +492,29 @@ Replace `{ASTRA_API_KEY}` with the API key that you just generated. You should r
 </tr>
 </thead><tbody>
 <tr>
-<td>asset</td>
-<td>String</td>
-<td>The symbol of the asset (e.g., &quot;BTC&quot;, &quot;ETH&quot;, &quot;USDC&quot;)</td>
+<td>instrumentId</td>
+<td>UUID</td>
+<td>The unique identifier for the instrument</td>
 </tr>
 <tr>
-<td>balance</td>
+<td>symbol</td>
+<td>String or null</td>
+<td>The symbol of the asset (e.g., &quot;BTC&quot;, &quot;ETH&quot;, &quot;SOL&quot;)</td>
+</tr>
+<tr>
+<td>amount</td>
 <td>String</td>
 <td>The current balance amount as a decimal string</td>
+</tr>
+<tr>
+<td>network</td>
+<td>String or null</td>
+<td>The blockchain network for this asset (e.g., &quot;bitcoin&quot;, &quot;ethereum&quot;, &quot;solana&quot;)</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String or null</td>
+<td>The contract address for this token on the specified network</td>
 </tr>
 </tbody></table>
 <h2 id='get-transfer-history'>Get Transfer History</h2>
