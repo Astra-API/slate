@@ -1,7 +1,7 @@
 <h2 id='get-express-deposit-address'>Get Express Deposit Address</h2>
-<p><code>GET /express-deposit-address/{network}</code></p>
+<p><code>GET /express-deposit-address</code></p>
 
-<p>Fetches the express deposit address for a specific network. Express deposits are processed faster, but <em>must</em> be sent from a linked address.</p>
+<p>Fetches the express deposit address for a specific coin and network. Express deposits are processed faster, but <em>must</em> be sent from a linked address.</p>
 
 <p>Express deposits have the following requirements:</p>
 
@@ -20,6 +20,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>coin</td>
+<td>String</td>
+<td>True</td>
+<td>The coin symbol (e.g., &quot;BTC&quot;, &quot;ETH&quot;, &quot;USDC&quot;)</td>
+</tr>
+<tr>
 <td>network</td>
 <td>String</td>
 <td>True</td>
@@ -31,7 +37,6 @@
 <p>Sample Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitcoin"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc1qexample1234567890abcdef1234567890"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='response'>Response</h3>
@@ -43,13 +48,8 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>network</td>
-<td>String</td>
-<td>The blockchain network for the address</td>
-</tr>
-<tr>
 <td>address</td>
 <td>String</td>
-<td>The express deposit address for the specified network</td>
+<td>The express deposit address for the specified coin and network</td>
 </tr>
 </tbody></table>
