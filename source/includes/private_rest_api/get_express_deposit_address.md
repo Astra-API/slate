@@ -1,8 +1,8 @@
 ## Get Express Deposit Address
 
-`GET /express-deposit-address/{network}`
+`GET /express-deposit-address`
 
-Fetches the express deposit address for a specific network. Express deposits are processed faster, but *must* be sent from a linked address.
+Fetches the express deposit address for a specific coin and network. Express deposits are processed faster, but *must* be sent from a linked address.
 
 Express deposits have the following requirements:
 
@@ -14,13 +14,13 @@ Express deposits have the following requirements:
 
 |Parameter|Type|Required|Description|
 |---|---|---|---|
+|coin|String|True|The coin symbol (e.g., "BTC", "ETH", "USDC")|
 |network|String|True|The blockchain network (e.g., "bitcoin", "ethereum", "base")|
 
 > Sample Response
 
 ```json
 {
-  "network": "bitcoin",
   "address": "bc1qexample1234567890abcdef1234567890"
 }
 ```
@@ -29,6 +29,5 @@ Express deposits have the following requirements:
 
 |Name|Type|Description|
 |---|---|---|
-|network|String|The blockchain network for the address|
-|address|String|The express deposit address for the specified network|
+|address|String|The express deposit address for the specified coin and network|
 
