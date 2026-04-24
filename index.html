@@ -1479,7 +1479,9 @@ and contract address of the token.</p>
 <blockquote>
 <p>Sample Response</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0743434-66c8-49b7-aca2-46c910a54cf1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><code>POST /otc/accept-quote/{account_id}</code></p>
 
@@ -1507,8 +1509,21 @@ and contract address of the token.</p>
 </tr>
 </tbody></table>
 <h3 id='response-2'>Response</h3>
-<p>If successful, returns a 200 response with an empty JSON in the response body. 
-Otherwise, returns an error message.</p>
+<p>If successful, returns a 200 response with the executed trade&#39;s display ID. Otherwise, returns an error message.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>displayId</td>
+<td>string</td>
+<td>UUID identifying the executed OTC trade</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
