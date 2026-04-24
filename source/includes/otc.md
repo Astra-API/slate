@@ -89,7 +89,9 @@ POST /otc/accept-quote/{account_id}
 > Sample Response
 
 ```json
-{}
+{
+    "displayId": "a0743434-66c8-49b7-aca2-46c910a54cf1"
+}
 ```
 
 `POST /otc/accept-quote/{account_id}`
@@ -105,5 +107,8 @@ Accepts an OTC trade quote and completes the trade.
 
 ### Response
 
-If successful, returns a 200 response with an empty JSON in the response body. 
-Otherwise, returns an error message.
+If successful, returns a 200 response with the executed trade's display ID. Otherwise, returns an error message.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| displayId | string | UUID identifying the executed OTC trade |
